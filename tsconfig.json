@@ -1,0 +1,31 @@
+{
+    "compilerOptions": {
+      "module": "commonjs",
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "target": "es6",
+      "sourceMap": true,
+      "outDir": "dist",
+      "baseUrl": ".",
+      "moduleResolution": "node",
+      "strictNullChecks": true,
+      "noImplicitAny": true,
+      "noImplicitThis" : true,
+      "alwaysStrict" : true,
+      "strictFunctionTypes": true,
+      "strictPropertyInitialization": true,
+      "resolveJsonModule": true,
+      "watch": false,
+      "paths": {
+        "*": [
+          "node_modules/*"
+        ]
+      },
+      "lib": [
+        "es2019"
+      ]
+    },
+    "include": [
+      "src/**/*"
+    ]
+  }

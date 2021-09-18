@@ -1,0 +1,26 @@
+{
+    "name": "spotterbot",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build": "tsc",
+        "watch-ts": "tsc -w",
+        "start": "npm run build && node dist/",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/LeGaZViper/SpotterBot.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/LeGaZViper/SpotterBot/issues"
+    },
+    "homepage": "https://github.com/LeGaZViper/SpotterBot#readme",
+    "dependencies": {
+        "@types/node": "^16.9.2",
+        "typescript": "^4.4.3"
+    }
+}
