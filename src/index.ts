@@ -1,7 +1,5 @@
-const http = require("http");
-
-console.log("hello world!");
+import http from "http";
 
 http.createServer(() => {
-    console.log("hello world");
+    console.log("hello world kokots");
 }).listen("8000");
