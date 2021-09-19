@@ -4,8 +4,9 @@
     "description": "## Notes",
     "main": "index.js",
     "scripts": {
+        "deploy-commands": "node dist/discord/deployCommands.js",
         "build": "tsc",
-        "start": "npm run build && nodemon dist/index.js",
+        "start": "npm run build && node dist/discord/deployCommands.js && nodemon dist/",
         "dev": "tsc -w"
     },
     "repository": {
