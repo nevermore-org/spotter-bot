@@ -1,7 +1,7 @@
 ## SpotterBot
 
-## Notes
+## Useful links:
 
-https://buddy.works/tutorials/how-to-build-a-discord-bot-in-node-js-for-beginners
-
-##
+https://discordjs.guide/
+https://daveceddia.com/deploy-git-repo-to-server/
+https://discord.com/developers/docs/intro
