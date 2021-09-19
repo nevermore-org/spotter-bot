@@ -1,5 +1,6 @@
 import DiscordCommandInterface from "../../model/discord/DiscordCommandInterface";
-import pingController from "../controller/pingController";
+import FractalsController from "../controller/guildwars/FractalsController";
+import PingController from "../controller/PingController";
 
 /**
  * # WIP #
@@ -8,9 +9,12 @@ import pingController from "../controller/pingController";
  */
 const COMMANDS: Record<string, DiscordCommandInterface> = {
     "ping": {
-        name: "ping",
         description: "makes pong after ping",
-        controller: new pingController(),
+        controller: new PingController()
+    },
+    "fractals": {
+        description: "returns daily fractals",
+        controller: new FractalsController()
     }
 };
 

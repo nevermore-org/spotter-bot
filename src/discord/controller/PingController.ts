@@ -1,7 +1,10 @@
-import { CommandInteraction, Interaction } from "discord.js";
+import { CommandInteraction } from "discord.js";
 import DiscordControllerInterface from "../../model/discord/DiscordControllerInterface";
 
-export default class pingController implements DiscordControllerInterface {
+/**
+ * /ping
+ */
+export default class PingController implements DiscordControllerInterface {
     public handleInteraction = async (interaction: CommandInteraction): Promise<void> => {
         interaction.reply("Pong!");
     }

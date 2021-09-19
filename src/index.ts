@@ -5,12 +5,15 @@ import DiscordControllerInterface from './model/discord/DiscordControllerInterfa
 
 loadDotenv();
 
-const client: Client = new Client({ intents: [Intents.FLAGS.GUILDS] }); //create new client
+const client: Client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
 client.once('ready', () => {
     console.log(`Logged in as ${client?.user?.tag}`);
 });
 
+/**
+ * Listens for interaction with the bot API
+ */
 client.on("interactionCreate", async (interaction: Interaction) => {
     if (!interaction.isCommand()) return;
 
@@ -26,5 +29,4 @@ client.on("interactionCreate", async (interaction: Interaction) => {
     }
 });
 
-//make sure this line is the last line
-client.login(process.env.CLIENT_TOKEN); //login bot using token
+client.login(process.env.CLIENT_TOKEN);
