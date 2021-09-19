@@ -1,7 +1,9 @@
-require('dotenv').config();
 import { Intents, Interaction, Client } from 'discord.js';
+import loadDotenv from './Config/Config';
 import COMMANDS from './discord/command/Commands';
 import DiscordControllerInterface from './model/discord/DiscordControllerInterface';
+
+loadDotenv();
 
 const client: Client = new Client({ intents: [Intents.FLAGS.GUILDS] }); //create new client
 

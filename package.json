@@ -4,9 +4,9 @@
     "description": "## Notes",
     "main": "index.js",
     "scripts": {
-        "deploy-commands": "node dist/discord/deployCommands.js",
+        "deploy-commands": "cross-env NODE_ENV=local node dist/discord/deployCommands.js",
         "build": "tsc",
-        "start": "npm run build && node dist/discord/deployCommands.js && nodemon dist/",
+        "start": "npm run build && npm run deploy-commands && cross-env NODE_ENV=local nodemon dist/",
         "dev": "tsc -w"
     },
     "repository": {
@@ -22,6 +22,7 @@
     "dependencies": {
         "@discordjs/rest": "^0.1.0-canary.0",
         "@types/node": "^16.9.3",
+        "cross-env": "^7.0.3",
         "discord-api-types": "^0.23.1",
         "discord.js": "^13.1.0",
         "dotenv": "^10.0.0",

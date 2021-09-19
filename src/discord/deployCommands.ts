@@ -1,7 +1,8 @@
-require('dotenv').config();
 import { REST } from '@discordjs/rest';
 import { Routes } from 'discord-api-types/v9';
+import loadDotenv from '../Config/Config';
 import COMMANDS from "./command/Commands";
+
 
 /**
  * Deploys slash commands from COMMANDS array (WIP)
@@ -39,4 +40,5 @@ async function deployCommands(token: string, clientId: string, guildId: string =
     }
 }
 
+loadDotenv();
 deployCommands(String(process.env.CLIENT_TOKEN), String(process.env.APPLICATION_ID), String(process.env.GUILD_ID))
