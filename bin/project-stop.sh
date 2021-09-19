@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 function stop_docker_container(){
     docker-compose down
 }
