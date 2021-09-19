@@ -1,7 +1,7 @@
 import { CommandInteraction, MessageActionRow, MessageButton, MessageEmbed } from "discord.js";
-import DiscordControllerInterface from "../../../model/discord/DiscordControllerInterface";
-import DailyAPI from "../../../guildwars/DailyAPI";
-import Fractal from "../../../model/guildwars/Fractal";
+import DiscordControllerInterface from "../../../Model/Discord/DiscordControllerInterface";
+import DailyAPI from "../../../Guildwars/DailyAPI";
+import Fractal from "../../../Model/Guildwars/Fractal";
 
 /**
  * /fractals

@@ -1,6 +1,6 @@
 import axios from "axios"
-import { Achievement } from "../model/guildwars/Achievement";
-import Fractal from "../model/guildwars/Fractal";
+import { Achievement } from "../Model/Guildwars/Achievement";
+import Fractal from "../Model/Guildwars/Fractal";
 import { GW_API_URL } from "./GW_API_URL";
 import GW_FRACTALS from "./GW_FRACTALS";
 

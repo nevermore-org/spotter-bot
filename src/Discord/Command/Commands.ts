@@ -1,6 +1,6 @@
-import DiscordCommandInterface from "../../model/discord/DiscordCommandInterface";
-import FractalsController from "../controller/guildwars/FractalsController";
-import PingController from "../controller/PingController";
+import DiscordCommandInterface from "../../Model/Discord/DiscordCommandInterface";
+import FractalsController from "../Controller/Guildwars/FractalsController";
+import PingController from "../Controller/PingController";
 
 /**
  * # WIP #

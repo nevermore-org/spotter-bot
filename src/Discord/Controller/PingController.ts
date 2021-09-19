@@ -1,5 +1,5 @@
 import { CommandInteraction } from "discord.js";
-import DiscordControllerInterface from "../../model/discord/DiscordControllerInterface";
+import DiscordControllerInterface from "../../Model/Discord/DiscordControllerInterface";
 
 /**
  * /ping
