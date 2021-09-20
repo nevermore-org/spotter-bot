@@ -14,57 +14,70 @@ export default class FractalsController implements DiscordControllerInterface {
     }
 
     public handleInteraction = async (interaction: CommandInteraction): Promise<void> => {
-        const fractals: Fractal[] = await this.dailyAPI.getTodayFractals();
-        this.createView(interaction, fractals);
+        const fractalsToday: Fractal[] = await this.dailyAPI.getDailyFractals(true);
+        const fractalsTomorrow : Fractal[] = await this.dailyAPI.getDailyFractals(false);
+        this.createView(interaction, fractalsToday, fractalsTomorrow);
     }
 
-    private createView = async (interaction: CommandInteraction, data: Fractal[]): Promise<void> => {
+    private createView = async (interaction: CommandInteraction, data: Fractal[], dataTomorrow: Fractal[]): Promise<void> => {
+
         const embedDaily = new MessageEmbed()
             .setColor('#BAD4A1')
-            .setTitle("Fractal dailies")
+            .setTitle("Fractal dailies - Today")
             .setThumbnail("https://render.guildwars2.com/file/4A5834E40CDC6A0C44085B1F697565002D71CD47/1228226.png")
             .addFields(
                 { name: "T4 Fractals", value: `${data[6].name}\n${data[10].name}\n${data[14].name}` },
                 { name: "Recommended fractals", value: `${data[0].name}\n${data[1].name}\n${data[2].name}` },
             )
             .setTimestamp();
+        
+        const embedTomorrow = new MessageEmbed()
+        .setColor('#BAD4A1')
+        .setTitle("Fractal dailies - Tomorrow")
+        .setThumbnail("https://render.guildwars2.com/file/4A5834E40CDC6A0C44085B1F697565002D71CD47/1228226.png")
+        .addFields(
+            { name: "T4 Fractals", value: `${dataTomorrow[6].name}\n${dataTomorrow[10].name}\n${dataTomorrow[14].name}` },
+            { name: "Recommended fractals", value: `${dataTomorrow[0].name}\n${dataTomorrow[1].name}\n${dataTomorrow[2].name}` },
+        )
+        .setTimestamp();
 
-        const embedRecs = new MessageEmbed()
-            .setColor('#BAD4A1')
-            .setTitle("Fractal recommended")
-            .setThumbnail("https://render.guildwars2.com/file/4A5834E40CDC6A0C44085B1F697565002D71CD47/1228226.png")
-            .addFields(
-                { name: "Recommended fractals", value: `${data[0].name}\n${data[1].name}\n${data[2].name}` },
-            )
-            .setTimestamp();
+        // const embedRecs = new MessageEmbed()
+        //     .setColor('#BAD4A1')
+        //     .setTitle("Fractal recommended")
+        //     .setThumbnail("https://render.guildwars2.com/file/4A5834E40CDC6A0C44085B1F697565002D71CD47/1228226.png")
+        //     .addFields(
+        //         { name: "Recommended fractals", value: `${data[0].name}\n${data[1].name}\n${data[2].name}` },
+        //     )
+        //     .setTimestamp();
+        
+        const buttonToday = new MessageActionRow()
+        .addComponents(
+            new MessageButton()
+                .setCustomId('today')
+                .setLabel('Switch to Today')
+                .setStyle('SUCCESS')
+        );
 
-        // const buttonsDaily = new MessageActionRow()
-        //     .addComponents(
-        //         new MessageButton()
-        //             .setCustomId('daily')
-        //             .setLabel('Daily')
-        //             .setStyle('PRIMARY')
-        //             .setDisabled(true),
-        //         new MessageButton()
-        //             .setCustomId('recs')
-        //             .setLabel('Recommended')
-        //             .setStyle('SECONDARY'),
-        //     );
+        const buttonTomorrow = new MessageActionRow()
+            .addComponents(
+                new MessageButton()
+                    .setCustomId('tomorrow')
+                    .setLabel('Switch to Tomorrow')
+                    .setStyle('PRIMARY')
+        );
 
-        // const buttonsRecs = new MessageActionRow()
-        //     .addComponents(
-        //         new MessageButton()
-        //             .setCustomId('daily')
-        //             .setLabel('Daily')
-        //             .setStyle('SECONDARY'),
-        //         new MessageButton()
-        //             .setCustomId('recs')
-        //             .setLabel('Recommended')
-        //             .setStyle('PRIMARY')
-        //             .setDisabled(true)
-        //     );
+                
+        const collector = interaction.channel?.createMessageComponentCollector({componentType: 'BUTTON'});
 
-        // const collector = interaction.channel?.createMessageComponentCollector();
+        collector?.on("collect", async interaction => {
+            if (interaction.customId === "tomorrow"){
+                await interaction.update({embeds: [embedTomorrow], components:[buttonToday]})
+            }
+            else if (interaction.customId === "today") {
+                await interaction.update({embeds: [embedDaily], components:[buttonTomorrow]})                    
+            }
+            
+        });
 
         // collector?.on("collect", async interaction => {
         //     try {
@@ -78,6 +91,6 @@ export default class FractalsController implements DiscordControllerInterface {
         //     }
         // });
 
-        await interaction.reply({ embeds: [embedDaily] });
+        await interaction.reply({ embeds: [embedDaily], components: [buttonTomorrow]});
     }
 }

@@ -6,10 +6,10 @@ import GW_FRACTALS from "./GW_FRACTALS";
 
 export default class DailyAPI {
     /**
-     * Returns daily fractals (t4 + recs) for current day
+     * Returns daily fractals (t4 + recs) for either today or tomorrow
      */
-    public getTodayFractals = async () => {
-        const dailyResponse = await axios.get(GW_API_URL.DAILY);
+    public getDailyFractals = async (today:boolean) => {
+        const dailyResponse = await axios.get(today ? GW_API_URL.DAILY : GW_API_URL.TOMORROW);
         //GW2 API actually returns daily fractals ACHIEVEMENTS rather than fractals themselves
         const fractalAchievements: Achievement[] = dailyResponse.data.fractals;
 
