@@ -1,5 +1,6 @@
 import DiscordCommandInterface from "../../Model/Discord/DiscordCommandInterface";
 import FractalsController from "../Controller/Guildwars/FractalsController";
+import InstabilitiesController from "../Controller/Guildwars/InstabilitiesController";
 import PingController from "../Controller/PingController";
 
 /**
@@ -15,6 +16,11 @@ const COMMANDS: Record<string, DiscordCommandInterface> = {
     "fractals": {
         description: "returns daily fractals",
         controller: new FractalsController()
+    },
+    // deploying didnt work for some reason
+    "instabilities": {
+        description: "returns today's instabilities",
+        controller: new InstabilitiesController()
     }
 };
 
