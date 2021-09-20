@@ -27,7 +27,7 @@ export default class FractalsController implements DiscordControllerInterface {
             .setThumbnail("https://render.guildwars2.com/file/4A5834E40CDC6A0C44085B1F697565002D71CD47/1228226.png")
             .addFields(
                 { name: "T4 Fractals", value: `${data[6].name}\n${data[10].name}\n${data[14].name}` },
-                { name: "Recommended fractals", value: `${data[0].name}\n${data[1].name}\n${data[2].name}` },
+                { name: "Recommended fractals", value: `${data[2].name}\n${data[1].name}\n${data[0].name}` },
             )
             .setTimestamp();
         
@@ -37,7 +37,7 @@ export default class FractalsController implements DiscordControllerInterface {
         .setThumbnail("https://render.guildwars2.com/file/4A5834E40CDC6A0C44085B1F697565002D71CD47/1228226.png")
         .addFields(
             { name: "T4 Fractals", value: `${dataTomorrow[6].name}\n${dataTomorrow[10].name}\n${dataTomorrow[14].name}` },
-            { name: "Recommended fractals", value: `${dataTomorrow[0].name}\n${dataTomorrow[1].name}\n${dataTomorrow[2].name}` },
+            { name: "Recommended fractals", value: `${dataTomorrow[2].name}\n${dataTomorrow[1].name}\n${dataTomorrow[0].name}` },
         )
         .setTimestamp();
 
