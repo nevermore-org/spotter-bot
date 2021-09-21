@@ -4,7 +4,7 @@
     "description": "## Notes",
     "main": "index.js",
     "scripts": {
-        "deploy-commands": "cross-env NODE_ENV=local node dist/discord/deployCommands.js",
+        "deploy-commands": "cross-env NODE_ENV=local node dist/Discord/deployCommands.js",
         "build": "tsc",
         "start": "cross-env NODE_ENV=local nodemon --legacy-watch --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
         "prod": "npm run build && npm run deploy-commands && cross-env NODE_ENV=local nodemon dist/"
