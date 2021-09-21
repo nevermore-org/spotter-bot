@@ -52,7 +52,6 @@ export default class DailyAPI {
         // don't need the "Daily Tier 4" part
         const names: string[] = [fractals[6].name, fractals[10].name, fractals[14].name].map( name => name.slice(13));
         const levels = names.map( name => GW_T4[name] as string[]);
-        console.log(dayOfYear(new Date()));
         
         return levels;
     }
@@ -65,6 +64,18 @@ export default class DailyAPI {
         return levels.map( (fractalType: string []) => 
             fractalType.map(level => INSTABILITIES[level][dayOfYear(new Date())]).map(instabIndices => 
                 instabIndices.map((instabIndex:number) => INST_NAMES[instabIndex])));
+    }
+    /**
+     * Returns formatted string of instabilities
+     * @param instabs 
+     * @param index
+     */
+
+    public formatInstabilities(instabs : string [][][], index: number){
+        var formattedInstabs : string = `${instabs[index][0][0]} - ${instabs[index][0][1]} - ${instabs[index][0][2]}`;
+        // return three instabilities if the fractal is unique; return 6 if two are possible
+        return `${instabs[index].length == 1 ? formattedInstabs : 
+            `${formattedInstabs} __**OR**__\n ${instabs[index][1][0]} - ${instabs[index][1][1]} - ${instabs[index][1][2]}`}`
     }
 
 }

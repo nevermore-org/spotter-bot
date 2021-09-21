@@ -21,14 +21,14 @@ export default class InstabilitiesController implements DiscordControllerInterfa
     private createView = async (interaction: CommandInteraction, data: Fractal[], instabs: string[][][]): Promise<void> => {
 
         const embedInstabilities = new MessageEmbed()
-            .setColor('#EB8258')
+            .setColor('#BAD4A1')
             .setTitle("Instabilities")
-            .setThumbnail("https://render.guildwars2.com/file/4A5834E40CDC6A0C44085B1F697565002D71CD47/1228226.png")
-            // ! really simple view for now, gotta change this somehow
+            .setThumbnail("https://wiki.guildwars2.com/images/6/6f/Mists_Convergence_Overhead.png") // might want to change this later
+            
             .addFields( 
-                { name: `${data[6].name.slice(13)}`, value: `${instabs[0]}`},
-                { name: `${data[10].name.slice(13)}`, value: `${instabs[1]}` },
-                { name: `${data[14].name.slice(13)}`, value: `${instabs[2]}` }
+                { name: `${data[6].name.slice(13)}`, value: this.dailyAPI.formatInstabilities(instabs, 0)},
+                { name: `${data[10].name.slice(13)}`, value: this.dailyAPI.formatInstabilities(instabs, 1) },
+                { name: `${data[14].name.slice(13)}`, value: this.dailyAPI.formatInstabilities(instabs, 2) }
             )
             .setTimestamp();
 
