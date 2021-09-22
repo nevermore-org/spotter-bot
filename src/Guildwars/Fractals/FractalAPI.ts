@@ -1,17 +1,17 @@
 import axios from "axios"
-import { Achievement } from "../Model/Guildwars/Achievement";
-import Fractal from "../Model/Guildwars/Fractal";
+import { Achievement } from "../../Model/Guildwars/Achievement";
+import Fractal from "../../Model/Guildwars/Fractal";
 import { GW_API_URL } from "./GW_API_URL";
 import GW_FRACTALS from "./GW_FRACTALS";
 import GW_T4 from "./GW_T4";
-import INSTABILITIES from "../Guildwars/INSTABILITIES";
-import INST_NAMES from "../Guildwars/INST_NAMES";
+import INSTABILITIES from "./GW_INSTABILITIES";
+import INST_NAMES from "./GW_INST_NAMES";
 import { isDataView } from "util/types";
 
 // fuuuuu, daily reset happens at 2 AM, NOT at 0:00 (hence why - 3600 * 1000 aka 2 hours)
 const dayOfYear = (date:any) => Math.floor((date - 3600 * 1000 - new Date(date.getFullYear(), 0, 0).valueOf()) / 1000 / 60 / 60 / 24);
 
-export default class DailyAPI {
+export default class FractalAPI {
     /**
      * Returns daily fractals (t4 + recs) for either today or tomorrow
      */

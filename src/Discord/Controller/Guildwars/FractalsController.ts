@@ -1,21 +1,21 @@
 import { CommandInteraction, MessageActionRow, MessageButton, MessageEmbed } from "discord.js";
 import DiscordControllerInterface from "../../../Model/Discord/DiscordControllerInterface";
-import DailyAPI from "../../../Guildwars/DailyAPI";
+import FractalAPI from "../../../Guildwars/Fractals/FractalAPI";
 import Fractal from "../../../Model/Guildwars/Fractal";
 
 /**
  * /fractals
  */
 export default class FractalsController implements DiscordControllerInterface {
-    private dailyAPI: DailyAPI;
+    private fractalAPI: FractalAPI;
 
     constructor() {
-        this.dailyAPI = new DailyAPI();
+        this.fractalAPI = new FractalAPI();
     }
 
     public handleInteraction = async (interaction: CommandInteraction): Promise<void> => {
-        const fractalsToday: Fractal[] = await this.dailyAPI.getDailyFractals(true);
-        const fractalsTomorrow : Fractal[] = await this.dailyAPI.getDailyFractals(false);
+        const fractalsToday: Fractal[] = await this.fractalAPI.getDailyFractals(true);
+        const fractalsTomorrow : Fractal[] = await this.fractalAPI.getDailyFractals(false);
         
         this.createView(interaction, fractalsToday, fractalsTomorrow);
     }
