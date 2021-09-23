@@ -2,6 +2,7 @@ import { CommandInteraction, MessageActionRow, MessageButton, MessageEmbed } fro
 import DiscordControllerInterface from "../../../Model/Discord/DiscordControllerInterface";
 import FractalAPI from "../../../Guildwars/Fractals/FractalAPI";
 import Fractal from "../../../Model/Guildwars/Fractal";
+import BaseFractal from "../../../Model/Guildwars/BaseFractal";
 
 export default class InstabilitiesController implements DiscordControllerInterface {
     private fractalAPI: FractalAPI;
@@ -12,7 +13,7 @@ export default class InstabilitiesController implements DiscordControllerInterfa
 
     public handleInteraction = async (interaction: CommandInteraction): Promise<void> => {
         const fractals: Fractal[] = await this.fractalAPI.getDailyFractals(true);
-        const levels: number[][] = this.fractalAPI.getDailyT4Levels(fractals);
+        const levels: BaseFractal[][] = this.fractalAPI.getDailyT4Levels(fractals);
         const instabs: string[][][] = this.fractalAPI.getDailyInstabilities(levels);
 
         this.createView(interaction, fractals, instabs);

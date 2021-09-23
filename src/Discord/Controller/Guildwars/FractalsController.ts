@@ -41,15 +41,6 @@ export default class FractalsController implements DiscordControllerInterface {
             { name: "Recommended fractals", value: `${dataTomorrow[2].name}\n${dataTomorrow[1].name}\n${dataTomorrow[0].name}` },
         )
         .setTimestamp();
-
-        // const embedRecs = new MessageEmbed()
-        //     .setColor('#BAD4A1')
-        //     .setTitle("Fractal recommended")
-        //     .setThumbnail("https://render.guildwars2.com/file/4A5834E40CDC6A0C44085B1F697565002D71CD47/1228226.png")
-        //     .addFields(
-        //         { name: "Recommended fractals", value: `${data[0].name}\n${data[1].name}\n${data[2].name}` },
-        //     )
-        //     .setTimestamp();
         
         const buttonToday = new MessageActionRow()
         .addComponents(
