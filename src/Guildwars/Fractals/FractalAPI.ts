@@ -21,6 +21,7 @@ export default class FractalAPI {
         const fractalResponse = await axios.get(`${GW_API_URL.ACHIEVEMENTS}?ids=${fractalIds}`);
 
         const fractals: Fractal[] = fractalResponse.data;
+        
         const parsedFractals = this.parseRecommendedFractals(fractals);
 
         return parsedFractals;
@@ -77,8 +78,8 @@ export default class FractalAPI {
 
         // replaces each level with list of instability indices; then replaces those with their names
         let getInstabilitiesForLevel = (level: number) => (GW_INSTABILITIES[level][today]).map(index => GW_INST_NAMES[index]);
-
-        return levels.map((fractalType: number[]) => fractalType.map(level => getInstabilitiesForLevel(level)));
+        
+        return levels.map(fractalType => fractalType.map(level => getInstabilitiesForLevel(level)));
         // [ [ [ 4, 3, 16 ], [ 8, 5, 2 ] ], [ [ 15, 17, 6 ] ], [ [ 7, 15, 4 ] ] ]
 
         // return levels.map( (fractalType: number []) => 
