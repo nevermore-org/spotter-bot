@@ -24,14 +24,14 @@ export default class InstabilitiesController implements DiscordControllerInterfa
             .setColor('#BAD4A1')
             .setTitle("Instabilities")
             .setThumbnail("https://wiki.guildwars2.com/images/6/6f/Mists_Convergence_Overhead.png") // might want to change this later
-            
-            .addFields( 
-                { name: `${data[6].name.slice(13)}`, value: this.fractalAPI.formatInstabilities(instabs, 0)},
+
+            .addFields(
+                { name: `${data[6].name.slice(13)}`, value: this.fractalAPI.formatInstabilities(instabs, 0) },
                 { name: `${data[10].name.slice(13)}`, value: this.fractalAPI.formatInstabilities(instabs, 1) },
                 { name: `${data[14].name.slice(13)}`, value: this.fractalAPI.formatInstabilities(instabs, 2) }
             )
             .setTimestamp();
 
-        await interaction.reply({ embeds: [embedInstabilities]});
+        await interaction.reply({ embeds: [embedInstabilities] });
     }
 }

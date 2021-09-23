@@ -106,7 +106,6 @@ const GW_FRACTALS: Record<number, string> = {
     98: "Nightmare",
     99: "Shattered Observatory",
     100: "Sunqua Peak"
-
-}
+};
 
 export default GW_FRACTALS;
