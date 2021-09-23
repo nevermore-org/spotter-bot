@@ -12,7 +12,7 @@ export default class InstabilitiesController implements DiscordControllerInterfa
 
     public handleInteraction = async (interaction: CommandInteraction): Promise<void> => {
         const fractals: Fractal[] = await this.fractalAPI.getDailyFractals(true);
-        const levels: string[][] = this.fractalAPI.getDailyFractalsLevels(fractals);
+        const levels: number[][] = this.fractalAPI.getDailyT4Levels(fractals);
         const instabs: string[][][] = this.fractalAPI.getDailyInstabilities(levels);
 
         this.createView(interaction, fractals, instabs);

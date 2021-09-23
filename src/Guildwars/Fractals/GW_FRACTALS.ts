@@ -1,4 +1,4 @@
-const GW_FRACTALS: any = {
+const GW_FRACTALS: Record<number, string> = {
     //T1
     1: "Volcanic",
     2: "Uncategorized",
