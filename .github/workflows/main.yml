@@ -12,9 +12,9 @@ jobs:
       - uses: actions/checkout@v2
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
-          heroku_api_key: d6bd6071-39b5-4502-b708-23621b419f43
-          heroku_app_name: nevermore-spotter-bot
-          heroku_email: krystof.liskovec@gmail.com
+          heroku_api_key: ${{ secrets.HEROKU_API_TOKEN }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
           env_file: .env
           branch: production
           dontuseforce: true
