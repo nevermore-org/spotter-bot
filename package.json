@@ -7,8 +7,9 @@
     "deploy-commands": "tsc && cross-env NODE_ENV=local node dist/Discord/deployCommands.js",
     "deploy-commands-prod": "cross-env NODE_ENV=prod node dist/Discord/deployCommands.js",
     "build": "tsc",
-    "start": "cross-env NODE_ENV=local ts-node-dev src/index.ts",
-    "start-prod": "npm run build && npm run deploy-commands-prod && cross-env NODE_ENV=prod nodemon dist/"
+    "start-dev": "cross-env NODE_ENV=local ts-node-dev src/index.ts",
+    "start-prod": "npm run build && npm run deploy-commands-prod && cross-env NODE_ENV=prod node dist/",
+    "start": "npm run build && npm run deploy-commands-prod && cross-env NODE_ENV=prod node dist/"
   },
   "repository": {
     "type": "git",
@@ -35,5 +36,9 @@
     "@types/node": "^16.10.1",
     "@types/node-fetch": "^3.0.3",
     "ts-node-dev": "^1.1.8"
-  }
+  },
+  "engines": {
+    "node": ">=16.8.0"
+  },
+  "engineStrict": true
 }
