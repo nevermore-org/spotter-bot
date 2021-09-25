@@ -85,6 +85,6 @@ export default class FractalsController implements DiscordControllerInterface {
         //     }
         // });
 
-        await interaction.reply({ embeds: [embedDaily], components: [] });
+        await interaction.reply({ embeds: [embedDaily] });
     }
 }
