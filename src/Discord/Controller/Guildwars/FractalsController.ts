@@ -17,8 +17,8 @@ export default class FractalsController implements DiscordControllerInterface {
 
     public handleInteraction = async (interaction: CommandInteraction): Promise<void> => {
         const fractalsToday: Fractal[] = await this.fractalAPI.getDailyFractals(true);
-        const fractalsTomorrow : Fractal[] = await this.fractalAPI.getDailyFractals(false);
-        
+        const fractalsTomorrow: Fractal[] = await this.fractalAPI.getDailyFractals(false);
+
         this.createView(interaction, fractalsToday, fractalsTomorrow);
     }
 
@@ -33,45 +33,45 @@ export default class FractalsController implements DiscordControllerInterface {
                 { name: "Recommended fractals", value: `${data[2].name}\n${data[1].name}\n${data[0].name}` },
             )
             .setTimestamp();
-        
+
         const embedTomorrow = new MessageEmbed()
-        .setColor('#BAD4A1')
-        .setTitle("Fractal dailies - Tomorrow")
-        .setThumbnail("https://render.guildwars2.com/file/4A5834E40CDC6A0C44085B1F697565002D71CD47/1228226.png")
-        .addFields(
-            { name: "T4 Fractals", value: `${dataTomorrow[6].name}\n${dataTomorrow[10].name}\n${dataTomorrow[14].name}` },
-            { name: "Recommended fractals", value: `${dataTomorrow[2].name}\n${dataTomorrow[1].name}\n${dataTomorrow[0].name}` },
-        )
-        .setTimestamp();
-        
-        const buttonToday = new MessageActionRow()
-        .addComponents(
-            new MessageButton()
-                .setCustomId('today')
-                .setLabel('Switch to Today')
-                .setStyle('SUCCESS')
-        );
+            .setColor('#BAD4A1')
+            .setTitle("Fractal dailies - Tomorrow")
+            .setThumbnail("https://render.guildwars2.com/file/4A5834E40CDC6A0C44085B1F697565002D71CD47/1228226.png")
+            .addFields(
+                { name: "T4 Fractals", value: `${dataTomorrow[6].name}\n${dataTomorrow[10].name}\n${dataTomorrow[14].name}` },
+                { name: "Recommended fractals", value: `${dataTomorrow[2].name}\n${dataTomorrow[1].name}\n${dataTomorrow[0].name}` },
+            )
+            .setTimestamp();
 
-        const buttonTomorrow = new MessageActionRow()
-            .addComponents(
-                new MessageButton()
-                    .setCustomId('tomorrow')
-                    .setLabel('Switch to Tomorrow')
-                    .setStyle('PRIMARY')
-        );
+        // const buttonToday = new MessageActionRow()
+        // .addComponents(
+        //     new MessageButton()
+        //         .setCustomId('today')
+        //         .setLabel('Switch to Today')
+        //         .setStyle('SUCCESS')
+        // );
 
-                
-        const collector = interaction.channel?.createMessageComponentCollector({componentType: 'BUTTON'});
+        // const buttonTomorrow = new MessageActionRow()
+        //     .addComponents(
+        //         new MessageButton()
+        //             .setCustomId('tomorrow')
+        //             .setLabel('Switch to Tomorrow')
+        //             .setStyle('PRIMARY')
+        // );
 
-        collector?.on("collect", async interaction => {
-            if (interaction.customId === "tomorrow"){
-                await interaction.update({embeds: [embedTomorrow], components:[buttonToday]})
-            }
-            else if (interaction.customId === "today") {
-                await interaction.update({embeds: [embedDaily], components:[buttonTomorrow]})                    
-            }
-            
-        });
+
+        // const collector = interaction.channel?.createMessageComponentCollector({ componentType: 'BUTTON' });
+
+        // collector?.on("collect", async interaction => {
+        //     if (interaction.customId === "tomorrow") {
+        //         await interaction.update({ embeds: [embedTomorrow], components: [buttonToday] })
+        //     }
+        //     else if (interaction.customId === "today") {
+        //         await interaction.update({ embeds: [embedDaily], components: [buttonTomorrow] })
+        //     }
+
+        // });
 
         // collector?.on("collect", async interaction => {
         //     try {
@@ -85,6 +85,6 @@ export default class FractalsController implements DiscordControllerInterface {
         //     }
         // });
 
-        await interaction.reply({ embeds: [embedDaily], components: [buttonTomorrow]});
+        await interaction.reply({ embeds: [embedDaily], components: [] });
     }
 }
