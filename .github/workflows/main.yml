@@ -19,4 +19,4 @@ jobs:
           branch: production
           dontuseforce: true
           dontautocreate: true
-          usedocker: false
+          usedocker: true
