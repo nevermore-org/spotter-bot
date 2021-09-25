@@ -1,7 +1,7 @@
 #!/bin/bash
 
-function get_to_docker_container(){
-    docker exec -it spotterbot_node-app_1 /bin/bash
+function to_project(){
+    docker-compose exec -u node node-env bash || docker-compose exec -u node node-app bash
 }
 
-get_to_docker_container
+to_project
