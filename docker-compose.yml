@@ -24,7 +24,7 @@ services:
       bash -c "
           sleep 3 &&
           npm ci &&
-          npm start
+          npm start-dev
       "
   mongo:
     image: mongo
