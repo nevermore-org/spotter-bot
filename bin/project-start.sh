@@ -1,7 +1,10 @@
 #!/bin/bash
 
 function create_volumes(){
+    MY_UID=$1
+    MY_GID=$2
     docker volume create node-16
+    docker run --rm -it -v node-16:/node-16 busybox su -s /bin/sh -c "chown $MY_UID:$MY_GID /node-16"
 }
 
 function start_docker_compose(){
@@ -48,5 +51,5 @@ do
     esac
 done
 
-create_volumes
+create_volumes $MY_UID $MY_GID
 start_docker_compose $ONLY_ENV $DOCKER_COMPOSE_FILE $MY_UID $MY_GID

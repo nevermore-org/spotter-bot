@@ -44,5 +44,5 @@ networks:
 
 volumes:
   node-16:
-    external: false
+    external: true
   spotter:
