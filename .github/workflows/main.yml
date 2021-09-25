@@ -13,10 +13,10 @@ jobs:
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: d6bd6071-39b5-4502-b708-23621b419f43
-          heroku_app_name: nevermore-spotter-bot
+          heroku_app_name: nevermore-spotter-bot-nodocker
           heroku_email: krystof.liskovec@gmail.com
           env_file: .env
           branch: production
           dontuseforce: true
           dontautocreate: true
-          usedocker: true
+          usedocker: false
