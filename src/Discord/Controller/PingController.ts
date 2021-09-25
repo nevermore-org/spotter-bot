@@ -6,6 +6,6 @@ import DiscordControllerInterface from "../../Model/Discord/DiscordControllerInt
  */
 export default class PingController implements DiscordControllerInterface {
     public handleInteraction = async (interaction: CommandInteraction): Promise<void> => {
-        interaction.reply("Pong!");
+        interaction.reply("Pong from heroku!");
     }
 }
