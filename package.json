@@ -1,38 +1,39 @@
 {
-    "name": "spotter-bot",
-    "version": "1.0.0",
-    "description": "## Notes",
-    "main": "index.js",
-    "scripts": {
-        "deploy-commands": "cross-env NODE_ENV=local node dist/Discord/deployCommands.js",
-        "build": "tsc",
-        "start": "cross-env NODE_ENV=local nodemon --legacy-watch --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
-        "prod": "npm run build && npm run deploy-commands && cross-env NODE_ENV=local nodemon dist/"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/LeGaZViper/SpotterBot.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/LeGaZViper/SpotterBot/issues"
-    },
-    "homepage": "https://github.com/LeGaZViper/SpotterBot#readme",
-    "dependencies": {
-        "@discordjs/rest": "^0.1.0-canary.0",
-        "@types/node": "^16.9.3",
-        "axios": "^0.21.4",
-        "cross-env": "^7.0.3",
-        "discord-api-types": "^0.23.1",
-        "discord.js": "^13.1.0",
-        "dotenv": "^10.0.0",
-        "mongodb": "^4.1.2",
-        "nodemon": "^2.0.12",
-        "ts-node": "^10.2.1",
-        "typescript": "^4.4.3"
-    },
-    "devDependencies": {
-        "@types/node-fetch": "^3.0.3"
-    }
+  "name": "spotter-bot",
+  "version": "1.0.0",
+  "description": "## Notes",
+  "main": "index.js",
+  "scripts": {
+    "deploy-commands": "tsc && cross-env NODE_ENV=local node dist/Discord/deployCommands.js",
+    "deploy-commands-prod": "cross-env NODE_ENV=prod node dist/Discord/deployCommands.js",
+    "build": "tsc",
+    "start": "cross-env NODE_ENV=local ts-node-dev src/index.ts",
+    "start-prod": "npm run build && npm run deploy-commands-prod && cross-env NODE_ENV=prod nodemon dist/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeGaZViper/SpotterBot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeGaZViper/SpotterBot/issues"
+  },
+  "homepage": "https://github.com/LeGaZViper/SpotterBot#readme",
+  "dependencies": {
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "axios": "^0.21.4",
+    "cross-env": "^7.0.3",
+    "discord-api-types": "^0.23.1",
+    "discord.js": "^13.1.0",
+    "dotenv": "^10.0.0",
+    "mongodb": "^4.1.2",
+    "nodemon": "^2.0.13",
+    "typescript": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^16.10.1",
+    "@types/node-fetch": "^3.0.3",
+    "ts-node-dev": "^1.1.8"
+  }
 }

@@ -12,42 +12,6 @@
       "skipLibCheck": true,
       "forceConsistentCasingInFileNames": true
     },
-    "include": [
-      "src/**/*"
-    ]
-  }
-
-// {
-//     "compilerOptions": {
-//       "module": "commonjs",
-//       "target": "es6",
-//       "sourceMap": true,
-//       "outDir": "dist",
-//       "baseUrl": ".",
-//       "moduleResolution": "node",
-//       "strictNullChecks": true,
-//       "noImplicitAny": true,
-//       "noImplicitThis" : true,
-//       "alwaysStrict" : true,
-//       "strictFunctionTypes": true,
-//       "strictPropertyInitialization": true,
-//       "resolveJsonModule": true,
-//       "typeRoots": [
-//         "node_modules/@types"
-//       ],
-//       "types": [
-//           "node",
-//       ],
-//       "watch": false,
-//       "lib": [
-//         "es6",
-//         "dom"
-//       ]
-//     },
-//     "include": [
-//       "src/**/*"
-//     ],
-//     "exclude": [
-//         "node_modules"
-//       ],
-//   }
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
+}
