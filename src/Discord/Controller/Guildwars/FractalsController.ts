@@ -45,12 +45,12 @@ export default class FractalsController implements DiscordControllerInterface {
             .setTimestamp();
 
         // const buttonToday = new MessageActionRow()
-        // .addComponents(
-        //     new MessageButton()
-        //         .setCustomId('today')
-        //         .setLabel('Switch to Today')
-        //         .setStyle('SUCCESS')
-        // );
+        //     .addComponents(
+        //         new MessageButton()
+        //             .setCustomId('today')
+        //             .setLabel('Switch to Today')
+        //             .setStyle('SUCCESS')
+        //     );
 
         // const buttonTomorrow = new MessageActionRow()
         //     .addComponents(
@@ -58,7 +58,7 @@ export default class FractalsController implements DiscordControllerInterface {
         //             .setCustomId('tomorrow')
         //             .setLabel('Switch to Tomorrow')
         //             .setStyle('PRIMARY')
-        // );
+        //     );
 
 
         // const collector = interaction.channel?.createMessageComponentCollector({ componentType: 'BUTTON' });
@@ -71,18 +71,6 @@ export default class FractalsController implements DiscordControllerInterface {
         //         await interaction.update({ embeds: [embedDaily], components: [buttonTomorrow] })
         //     }
 
-        // });
-
-        // collector?.on("collect", async interaction => {
-        //     try {
-        //         if (interaction.customId === "daily")
-        //             await interaction.update({ embeds: [embedDaily] });
-        //         else if (interaction.customId === "recs")
-        //             await interaction.update({ embeds: [embedRecs]});
-        //     }
-        //     catch (err) {
-
-        //     }
         // });
 
         await interaction.reply({ embeds: [embedDaily] });
