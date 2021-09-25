@@ -13,6 +13,8 @@ export default class FractalsController implements DiscordControllerInterface {
         this.fractalAPI = new FractalAPI();
     }
 
+    // anything
+
     public handleInteraction = async (interaction: CommandInteraction): Promise<void> => {
         const fractalsToday: Fractal[] = await this.fractalAPI.getDailyFractals(true);
         const fractalsTomorrow : Fractal[] = await this.fractalAPI.getDailyFractals(false);
