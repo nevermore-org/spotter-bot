@@ -62,7 +62,7 @@ export default class FractalsController implements DiscordControllerInterface {
             );
 
 
-        const collector = interaction.channel?.createMessageComponentCollector({ componentType: 'BUTTON'});
+        const collector = interaction.channel?.createMessageComponentCollector({ componentType: 'BUTTON', time: 30000});
 
         collector?.on("collect", async interaction => {
             try {
@@ -77,6 +77,18 @@ export default class FractalsController implements DiscordControllerInterface {
                 console.log("something's wrong");
             }
 
+        });
+
+        collector?.on("end", collected => {
+            const lastId = collected.last()?.customId.slice(0, 5);
+
+            buttonToday.components[0].setDisabled(true);
+            buttonTomorrow.components[0].setDisabled(true);
+
+            interaction.editReply({
+                embeds: [lastId === "today" ? embedDaily : embedTomorrow], 
+                components:[lastId == "today" ? buttonTomorrow : buttonToday]
+            }); 
         });
 
         await interaction.reply({ embeds: [embedDaily], components: [buttonTomorrow] });
