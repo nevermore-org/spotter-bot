@@ -8,6 +8,7 @@ loadDotenv();
 const client: Client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
 client.once('ready', () => {
+    client.user?.setActivity("Guild Wars 2");
     console.log(`Logged in as ${client?.user?.tag}`);
 });
 
