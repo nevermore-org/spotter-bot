@@ -18,11 +18,12 @@ export default class FractalsController implements DiscordControllerInterface {
     public handleInteraction = async (interaction: CommandInteraction): Promise<void> => {
         const fractalsToday: Fractal[] = await this.fractalAPI.getDailyFractals(true);
         const fractalsTomorrow: Fractal[] = await this.fractalAPI.getDailyFractals(false);
+        const seed = Math.random();
 
-        this.createView(interaction, fractalsToday, fractalsTomorrow);
+        this.createView(interaction, fractalsToday, fractalsTomorrow, seed);
     }
 
-    private createView = async (interaction: CommandInteraction, data: Fractal[], dataTomorrow: Fractal[]): Promise<void> => {
+    private createView = async (interaction: CommandInteraction, data: Fractal[], dataTomorrow: Fractal[], seed: number): Promise<void> => {
 
         const embedDaily = new MessageEmbed()
             .setColor('#BAD4A1')
@@ -44,35 +45,40 @@ export default class FractalsController implements DiscordControllerInterface {
             )
             .setTimestamp();
 
-        // const buttonToday = new MessageActionRow()
-        //     .addComponents(
-        //         new MessageButton()
-        //             .setCustomId('today')
-        //             .setLabel('Switch to Today')
-        //             .setStyle('SUCCESS')
-        //     );
+        const buttonToday = new MessageActionRow()
+            .addComponents(
+                new MessageButton()
+                    .setCustomId(`today${seed}`)
+                    .setLabel('Switch to Today')
+                    .setStyle('SUCCESS')
+            );
 
-        // const buttonTomorrow = new MessageActionRow()
-        //     .addComponents(
-        //         new MessageButton()
-        //             .setCustomId('tomorrow')
-        //             .setLabel('Switch to Tomorrow')
-        //             .setStyle('PRIMARY')
-        //     );
+        const buttonTomorrow = new MessageActionRow()
+            .addComponents(
+                new MessageButton()
+                    .setCustomId(`tomorrow${seed}`)
+                    .setLabel('Switch to Tomorrow')
+                    .setStyle('PRIMARY')
+            );
 
 
-        // const collector = interaction.channel?.createMessageComponentCollector({ componentType: 'BUTTON' });
+        const collector = interaction.channel?.createMessageComponentCollector({ componentType: 'BUTTON'});
 
-        // collector?.on("collect", async interaction => {
-        //     if (interaction.customId === "tomorrow") {
-        //         await interaction.update({ embeds: [embedTomorrow], components: [buttonToday] })
-        //     }
-        //     else if (interaction.customId === "today") {
-        //         await interaction.update({ embeds: [embedDaily], components: [buttonTomorrow] })
-        //     }
+        collector?.on("collect", async interaction => {
+            try {
+                if (interaction.customId === `tomorrow${seed}`){
+                    await interaction.update({embeds: [embedTomorrow], components:[buttonToday]})
+                }
+                else if (interaction.customId === `today${seed}`) {
+                    await interaction.update({embeds: [embedDaily], components:[buttonTomorrow]})                    
+                }
+            }
+            catch(err){
+                console.log("something's wrong");
+            }
 
-        // });
+        });
 
-        await interaction.reply({ embeds: [embedDaily] });
+        await interaction.reply({ embeds: [embedDaily], components: [buttonTomorrow] });
     }
 }
