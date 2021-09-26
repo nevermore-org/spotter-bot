@@ -3,6 +3,7 @@ import DiscordControllerInterface from "../../../Model/Discord/DiscordController
 import FractalAPI from "../../../Guildwars/Fractals/FractalAPI";
 import Fractal from "../../../Model/Guildwars/Fractal";
 import BaseFractal from "../../../Model/Guildwars/BaseFractal";
+import ViewInstabilities from "../../View/ViewInstabilities";
 
 export default class InstabilitiesController implements DiscordControllerInterface {
     private fractalAPI: FractalAPI;
@@ -20,18 +21,7 @@ export default class InstabilitiesController implements DiscordControllerInterfa
     }
 
     private createView = async (interaction: CommandInteraction, data: Fractal[], instabs: string[][][]): Promise<void> => {
-
-        const embedInstabilities = new MessageEmbed()
-            .setColor('#BAD4A1')
-            .setTitle("Instabilities")
-            .setThumbnail("https://wiki.guildwars2.com/images/6/6f/Mists_Convergence_Overhead.png") // might want to change this later
-
-            .addFields(
-                { name: `${data[6].name.slice(13)}`, value: this.fractalAPI.formatInstabilities(instabs, 0) },
-                { name: `${data[10].name.slice(13)}`, value: this.fractalAPI.formatInstabilities(instabs, 1) },
-                { name: `${data[14].name.slice(13)}`, value: this.fractalAPI.formatInstabilities(instabs, 2) }
-            )
-            .setTimestamp();
+        const embedInstabilities = new ViewInstabilities().createDefault().getEmbed(data, instabs);
 
         await interaction.reply({ embeds: [embedInstabilities] });
     }

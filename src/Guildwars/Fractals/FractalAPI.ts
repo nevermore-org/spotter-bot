@@ -83,17 +83,4 @@ export default class FractalAPI {
         return levels.map(fractalType => fractalType.map(level => getInstabilitiesForLevel(level.level)));
     }
 
-
-    /**
-     * Returns formatted string of instabilities
-     * @param instabs 
-     * @param index
-     */
-    public formatInstabilities(instabs: string[][][], index: number) {
-        var formattedInstabs: string = `${instabs[index][0][0]} - ${instabs[index][0][1]} - ${instabs[index][0][2]}`;
-        // return three instabilities if the fractal is unique; return 6 if two are possible
-        return `${instabs[index].length == 1 ? formattedInstabs :
-            `${formattedInstabs} __**OR**__\n ${instabs[index][1][0]} - ${instabs[index][1][1]} - ${instabs[index][1][2]}`}`
-    }
-
 }
