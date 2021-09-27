@@ -72,8 +72,8 @@ export default class FractalsController implements DiscordControllerInterface {
             buttonTomorrow.components[0].setDisabled(true);
 
             interaction.editReply({
-                embeds: [lastId === "today" ? embedToday : embedTomorrow], 
-                components:[lastId === "today" ? buttonTomorrow : buttonToday]
+                embeds: [lastId === "today" || collected.size === 0 ? embedToday : embedTomorrow], 
+                components:[lastId === "today" || collected.size === 0 ? buttonTomorrow : buttonToday]
             }); 
         });
 
