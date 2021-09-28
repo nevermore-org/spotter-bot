@@ -27,9 +27,9 @@ export default class ViewFractals extends View {
      * @returns 
      */
     public setEmbeds = async (fractalsToday: Fractal[], fractalsTomorrow: Fractal[]): Promise<ViewFractals> => {
-        //Notice the first argument. It's an id that is being set to a embed.
-        //Embeds in our context are basically the main "container" for all the properties. E. g. Buttons can't exist without a embed.
-        //If I want to add/access e. g. an action row from a specific embed, I use the embed ID (see line 59).
+        //Notice the first argument. It's an id that is being set to an embed.
+        //Embeds in our context are basically the main "container" for all the properties. E. g. Buttons can't exist without an embed.
+        //If I want to add/access e. g. an action row from a specific embed, I use the embed ID (see line 68).
         const fractalsTodayEmbed = this.createEmbed(EMBED_ID.FRACTAL_TODAY, "Fractal dailies - Today", this.thumbnail);
         const fractalsTomorrowEmbed = this.createEmbed(EMBED_ID.FRACTAL_TOMORROW, "Fractal dailies - Tomorrow", this.thumbnail);
 
