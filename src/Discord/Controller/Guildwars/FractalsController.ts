@@ -28,35 +28,25 @@ export default class FractalsController implements DiscordControllerInterface {
 
     private createView = async (interaction: CommandInteraction, dataToday: Fractal[], dataTomorrow: Fractal[], seed: number): Promise<void> => {
 
-        const embedToday = new ViewFractals(true).createDefault().getEmbed(dataToday);
-        const embedTomorrow = new ViewFractals(false).createDefault().getEmbed(dataTomorrow);
+        const viewToday = new ViewFractals(true).createDefault(seed)
+        const viewTomorrow = new ViewFractals(false).createDefault(seed)
 
-        const buttonToday = new MessageActionRow()
-            .addComponents(
-                new MessageButton()
-                    .setCustomId(`today${seed}`)
-                    .setLabel('Switch to Today')
-                    .setStyle('SUCCESS')
-            );
+        const embedToday = viewToday.getEmbed(dataToday);
+        const embedTomorrow = viewTomorrow.getEmbed(dataTomorrow);
 
-        const buttonTomorrow = new MessageActionRow()
-            .addComponents(
-                new MessageButton()
-                    .setCustomId(`tomorrow${seed}`)
-                    .setLabel('Switch to Tomorrow')
-                    .setStyle('PRIMARY')
-            );
+        const rowToday = viewToday.addButton(0, 'today', 'Switch to Today', 'SUCCESS').getRow(0);
+        const rowTomorrow = viewTomorrow.addButton(0, 'tomorrow', 'Switch to Tomorrow').getRow(0);
 
-
+        
         const collector = interaction.channel?.createMessageComponentCollector({ componentType: 'BUTTON', time: 30000});
 
         collector?.on("collect", async interaction => {
             try {
                 if (interaction.customId === `tomorrow${seed}`){
-                    await interaction.update({embeds: [embedTomorrow], components:[buttonToday]})
+                    await interaction.update({embeds: [embedTomorrow], components: [rowToday]})
                 }
                 else if (interaction.customId === `today${seed}`) {
-                    await interaction.update({embeds: [embedToday], components:[buttonTomorrow]})                    
+                    await interaction.update({embeds: [embedToday], components: [rowTomorrow]})                    
                 }
             }
             catch(err){
@@ -68,15 +58,15 @@ export default class FractalsController implements DiscordControllerInterface {
         collector?.on("end", collected => {
             const lastId = collected.last()?.customId.slice(0, 5);
 
-            buttonToday.components[0].setDisabled(true);
-            buttonTomorrow.components[0].setDisabled(true);
+            rowToday.components[0].setDisabled(true);
+            rowTomorrow.components[0].setDisabled(true);
 
             interaction.editReply({
                 embeds: [lastId === "today" || collected.size === 0 ? embedToday : embedTomorrow], 
-                components:[lastId === "today" || collected.size === 0 ? buttonTomorrow : buttonToday]
+                components:[lastId === "today" || collected.size === 0 ? rowTomorrow : rowToday]
             }); 
         });
 
-        await interaction.reply({ embeds: [embedToday], components: [buttonTomorrow] });
+        await interaction.reply({ embeds: [embedToday], components: [rowTomorrow]});
     }
 }
