@@ -7,9 +7,8 @@
     "deploy-commands": "tsc && cross-env NODE_ENV=local node dist/Discord/deployCommands.js",
     "deploy-commands-prod": "cross-env NODE_ENV=prod node dist/Discord/deployCommands.js",
     "build": "tsc",
-    "start-dev": "cross-env NODE_ENV=local ts-node-dev src/index.ts",
     "start-prod": "npm run build && npm run deploy-commands-prod && cross-env NODE_ENV=prod node dist/",
-    "start": "npm run build && npm run deploy-commands-prod && cross-env NODE_ENV=prod node dist/"
+    "start": "cross-env NODE_ENV=local ts-node-dev src/index.ts"
   },
   "repository": {
     "type": "git",
