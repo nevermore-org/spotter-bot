@@ -1,10 +1,31 @@
 import Fractal from "../../Model/Guildwars/Fractal";
-import { THUMBNAILS } from "./THUMBNAILS";
+import { THUMBNAILS } from "./enum/THUMBNAILS";
 import View from "./View";
+import { EMBED_ID } from "./enum/EMBED_ID";
+import { CommandInteraction, MessageEmbed } from "discord.js";
 
-export default class ViewInstabilities extends View{
-    thumbnail = THUMBNAILS.INSTABILITY;
-    title = "Instabilities";
+export default class ViewInstabilities extends View {
+    thumbnail: string = THUMBNAILS.INSTABILITY;
+
+    public constructor(fractals: Fractal[], instabilities: string[][][]) {
+        super();
+        this.setEmbeds(fractals, instabilities);
+    }
+
+    /**
+     * Sets embeds
+     * @param fractals 
+     * @param instabs 
+     */
+    public setEmbeds(fractals: Fractal[], instabs: string[][][]) {
+        const instabilitiesEmbed = this.createEmbed(EMBED_ID.FRACTAL_INSTABILITES, "Instabilities", this.thumbnail);
+
+        instabilitiesEmbed.addFields(
+            { name: `${fractals[6].name.slice(13)}`, value: this.formatInstabs(instabs, 0) },
+            { name: `${fractals[10].name.slice(13)}`, value: this.formatInstabs(instabs, 1) },
+            { name: `${fractals[14].name.slice(13)}`, value: this.formatInstabs(instabs, 2) }
+        )
+    }
 
     /**
      * Returns formatted string of instabilities
@@ -19,17 +40,11 @@ export default class ViewInstabilities extends View{
     }
 
     /**
-     * Adds the data to the embed
-     * @param fractals 
-     * @param instabs
+     * Returns first interaction response
+     * @param interaction 
      */
-    public getEmbed(fractals: Fractal[], instabs: string[][][]){
-        this.embed.addFields(
-            { name: `${fractals[6].name.slice(13)}`, value: this.formatInstabs(instabs, 0) },
-            { name: `${fractals[10].name.slice(13)}`, value: this.formatInstabs(instabs, 1) },
-            { name: `${fractals[14].name.slice(13)}`, value: this.formatInstabs(instabs, 2) }
-        )
-        return this.embed;
+    public sendFirstInteractionResponse(interaction: CommandInteraction) {
+        const instabilitiesEmbed: MessageEmbed = this.getEmbed(EMBED_ID.FRACTAL_INSTABILITES);
+        interaction.reply({ embeds: [instabilitiesEmbed] })
     }
-
 }
