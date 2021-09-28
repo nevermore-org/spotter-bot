@@ -70,11 +70,11 @@ export default class ViewFractals extends View {
 
         collector?.on("collect", async interaction => {
             try {
-                if (interaction.customId === `${EMBED_ID.FRACTAL_TOMORROW}${this.seed}`) {
-                    await interaction.update({ embeds: [tomorrowEmbed], components: [todayActionRow] })
+                if (interaction.customId === `${EMBED_ID.FRACTAL_TODAY}${this.seed}`) {
+                    await interaction.update({ embeds: [tomorrowEmbed], components: [tomorrowActionRow] })
                 }
-                else if (interaction.customId === `${EMBED_ID.FRACTAL_TODAY}${this.seed}`) {
-                    await interaction.update({ embeds: [todayEmbed], components: [tomorrowActionRow] })
+                else if (interaction.customId === `${EMBED_ID.FRACTAL_TOMORROW}${this.seed}`) {
+                    await interaction.update({ embeds: [todayEmbed], components: [todayActionRow] })
                 }
             }
             catch (err) {
