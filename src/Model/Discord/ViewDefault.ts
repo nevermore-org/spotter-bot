@@ -1,9 +1,10 @@
-import { MessageEmbed } from "discord.js";
+import { MessageEmbed, MessageActionRow } from "discord.js";
 
 export default interface ViewDefault {
-    embed: MessageEmbed,
-    color: number,
-    title: string,
-    thumbnail: string
-    
+    embeds: Map<string, MessageEmbed>;
+    defaultColor: number;
+    defaultTitle: string;
+    defaultThumbnail: string;
+    actionRows: Map<string, MessageActionRow[]>;
+    seed: number;
 }

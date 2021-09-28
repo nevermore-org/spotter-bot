@@ -27,23 +27,23 @@ export const GW_INSTABILITIES: Record<number, number[][]> = {
 }
 
 export const GW_INST_NAMES: string[] = [
-    "Adrenaline Rush",
-    "Afflicted",
-    "Boon Overload",
-    "Flux Bomb",
-    "Fractal Vindicators",
-    "Frailty",
-    "Hamstrung",
-    "Last Laugh",
-    "Mists Convergence",
-    "No Pain, No Gain",
-    "Outflanked",
-    "Social Awkwardness",
-    "Stick Together",
-    "Sugar Rush",
-    "Toxic Trail",
-    "Vengeance",
-    "We Bleed Fire",
-    "Toxic Sickness"
+    "<:adrenaline_rush:892486799467884648> Adrenaline Rush",
+    "<:afflicted:892522549316046878> Afflicted",
+    "<:boon_overload:892522549316050994> Boon Overload",
+    "<:flux_bomb:892522549085347861> Flux Bomb",
+    "<:fractal_vindicators:892527873167073330> Fractal Vindicators",
+    "<:frailty:892523764166836325> __Frailty__",
+    "<:hamstrung:892523764183609344> Hamstrung",
+    "<:last_laugh:892523764212965456> Last Laugh",
+    "<:mists_convergence:892523763843887125> Mists Convergence",
+    "<:no_pain_no_gain:892486938844606525> No Pain, No Gain",
+    "<:outflanked:892523763885826059> __Outflanked__",
+    "<:social_awkardness:892523764233953280> Social Awkwardness",
+    "<:stick_together:892523763969704099> Stick Together",
+    "<:sugar_rush:892523763961307148> __Sugar Rush__",
+    "<:toxic_trail:892523764187811840> Toxic Trail",
+    "<:vengeance:892483183843635200> Vengeance",
+    "<:we_bleed_fire:892523763948720170> __We Bleed Fire__",
+    "<:toxic_sickness:892523764208783380> Toxic Sickness"
 ]
 

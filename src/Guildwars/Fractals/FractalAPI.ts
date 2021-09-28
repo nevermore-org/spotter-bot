@@ -2,12 +2,10 @@ import axios from "axios"
 import { Achievement } from "../../Model/Guildwars/Achievement";
 import BaseFractal from "../../Model/Guildwars/BaseFractal";
 import Fractal from "../../Model/Guildwars/Fractal";
-import { GW_API_URL } from "./GW_API_URL";
-import GW_FRACTALS from "./GW_FRACTALS";
-import { GW_INSTABILITIES, GW_INST_NAMES } from "./GW_INSTABILITIES";
-
-// fuuuuu, daily reset happens at 2 AM, NOT at 0:00 (hence why - 2 * 3600 * 1000 aka 2 hours)
-const dayOfYear = (date: any) => Math.floor((date - 2 * 3600 * 1000 - new Date(date.getFullYear(), 0, 0).valueOf()) / 1000 / 60 / 60 / 24);
+import { dayOfYear } from "../../Util/util";
+import { GW_API_URL } from "./enum/GW_API_URL";
+import GW_FRACTALS from "./enum/GW_FRACTALS";
+import { GW_INSTABILITIES, GW_INST_NAMES } from "./enum/GW_INSTABILITIES";
 
 export default class FractalAPI {
     /**
@@ -22,7 +20,7 @@ export default class FractalAPI {
         const fractalResponse = await axios.get(`${GW_API_URL.ACHIEVEMENTS}?ids=${fractalIds}`);
 
         const fractals: Fractal[] = fractalResponse.data;
-        
+
         const parsedFractals = this.parseRecommendedFractals(fractals);
 
         return parsedFractals;
@@ -79,7 +77,7 @@ export default class FractalAPI {
 
         // replaces each level with list of instability indices; then replaces those with their names
         let getInstabilitiesForLevel = (level: number) => (GW_INSTABILITIES[level][today]).map(index => GW_INST_NAMES[index]);
-        
+
         return levels.map(fractalType => fractalType.map(level => getInstabilitiesForLevel(level.level)));
     }
 
