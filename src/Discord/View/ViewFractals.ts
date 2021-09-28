@@ -90,7 +90,7 @@ export default class ViewFractals extends View {
 
             interaction.editReply({
                 embeds: [lastId?.includes(EMBED_ID.FRACTAL_TODAY) || collected.size === 0 ? todayEmbed : tomorrowEmbed],
-                components: [lastId?.includes(EMBED_ID.FRACTAL_TODAY) || collected.size === 0 ? tomorrowActionRow : todayActionRow]
+                components: [lastId?.includes(EMBED_ID.FRACTAL_TODAY) || collected.size === 0 ? todayActionRow : tomorrowActionRow]
             });
         });
 
