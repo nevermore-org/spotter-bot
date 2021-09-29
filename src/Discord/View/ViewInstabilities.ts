@@ -30,7 +30,7 @@ export default class ViewInstabilities extends View {
 
         const index = this.findIndex(instabs);
 
-        if (index){
+        if (index !== null){
             this.insertField(instabilitiesEmbed, index, instabs);
         }
     }
