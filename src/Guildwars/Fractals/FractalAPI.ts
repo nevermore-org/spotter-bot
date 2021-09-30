@@ -3,7 +3,7 @@ import { Achievement } from "../../Model/Guildwars/Achievement";
 import BaseFractal from "../../Model/Guildwars/BaseFractal";
 import Fractal from "../../Model/Guildwars/Fractal";
 import { dayOfYear } from "../../Util/util";
-import { GW_API_URL } from "./enum/GW_API_URL";
+import { GW_API_URL } from "../General/enum/GW_API_URL";
 import GW_FRACTALS from "./enum/GW_FRACTALS";
 import { GW_INSTABILITIES, GW_INST_NAMES } from "./enum/GW_INSTABILITIES";
 
@@ -50,7 +50,7 @@ export default class FractalAPI {
     * @param fractalName
     */
     private getLevelsByName(fractalName: string) {
-        return GW_FRACTALS.filter(level => level.name === fractalName && level.level >= 75);
+        return GW_FRACTALS.filter(level => level.name === fractalName && level.level > 75);
     }
 
 
