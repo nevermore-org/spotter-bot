@@ -24,7 +24,7 @@ export default class ViewInstabilities extends View {
 
         instabilitiesEmbed.addFields(
             { name: `${fractals[6].name.slice(13)}`, value: this.formatInstabs(instabs, 0) },
-            { name: `${fractals[10].name.slice(13)}`, value: this.formatInstabs(instabs, 1)},
+            { name: `${fractals[10].name.slice(13)}`, value: this.formatInstabs(instabs, 1) },
             { name: `${fractals[14].name.slice(13)}`, value: this.formatInstabs(instabs, 2) }
         )
 
