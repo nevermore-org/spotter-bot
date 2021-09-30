@@ -4,5 +4,6 @@
 export enum EMBED_ID {
     FRACTAL_TODAY = "fractal-today",
     FRACTAL_TOMORROW = "fractal-tomorrow",
-    FRACTAL_INSTABILITES = "fractal-instabilites"
+    FRACTAL_INSTABILITES = "fractal-instabilites",
+    DAILIES = "dailies"
 }
