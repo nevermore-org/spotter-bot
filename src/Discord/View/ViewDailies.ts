@@ -11,6 +11,7 @@ import { GW_API_URL } from "../../Guildwars/General/enum/GW_API_URL";
 
 export default class ViewDailies extends View {
     thumbnail: string = THUMBNAILS.DAILY_PVE;
+    waypoints: string[] = [`${EMOJIS["Waypoint"]}`];
 
     public constructor(dailiesPve: string[]) {
         super();
@@ -27,8 +28,14 @@ export default class ViewDailies extends View {
 
         for (let index = 0; index < dailiesPve.length; index++){
             const dailyName = dailiesPve[index];
-            dailiesEmbed.addField(dailyName, this.getFieldValue(dailyName))
+            dailiesEmbed.addField(dailyName, this.getFieldValue(dailyName));
         }
+
+        if (this.waypoints.length === 0){
+            this.waypoints.push("No waypoints to show");
+        }
+
+        dailiesEmbed.addField("Copy&Paste All Waypoints", this.waypoints.join(" "));
 
         return this;
     }
@@ -36,7 +43,8 @@ export default class ViewDailies extends View {
     private getFieldValue(dailyName: string){
         const splitDailyName = dailyName.split(" ");
 
-        // it should be possible to always determine the type of a daily last word in the name 
+        // it should be possible to always determine the type of a daily last word in the name
+        // turns out it is possible for *most* types of dailies
         const dailyType = splitDailyName[splitDailyName.length - 1];
 
         // Gathering
@@ -46,6 +54,7 @@ export default class ViewDailies extends View {
             const regionName = splitDailyName.slice(1, dailyType === "Viewer" ? -2 : -1).join();
             const location = GW_GATHERING[regionName][dailyType];
 
+            this.waypoints.push(`${location.waypoint}`);
             return `${EMOJIS["Waypoint"]} ${location.waypoint}\n ${EMOJIS[dailyType]} *${location.description}*`;
         }
 
@@ -54,6 +63,7 @@ export default class ViewDailies extends View {
             const puzzleName = splitDailyName.slice(1, -2).join("_");
             const location = GW_PUZZLES[puzzleName];
 
+            this.waypoints.push(`${location.waypoint}`);
             // might want to split this line
             return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['JP']} ${location.description}*\n${EMOJIS['Guide']} [Wiki Guide](${GW_API_URL.WIKI}${puzzleName})`;
         }
