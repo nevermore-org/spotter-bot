@@ -270,3 +270,18 @@ export const GW_MINIDUNGEONS : Record<string, Location> = {
         description: "Head south and then make a right going west."
     },
 }
+
+
+export const GW_HEARTS: Record<string, Location> = {
+    "Elon_Riverlands": {
+        waypoint: "Olishar's Oasis Camp Waypoint — [&BCgKAAA=]",
+        description: "Help Ebele prepare the way north for defectors"
+    },
+    "Desolation": {
+        waypoint: "Bonestrand Waypoint — [&BNwKAAA=]",
+        description: "Help Kisha Odili keep the village running"
+    }
+}
+
+// each day has a preset activity
+export const GW_ACTIVITIES: string[] = ["Keg Brawl", "Crab Toss", "Sanctum Sprint", "Southsun Survival", "Crab Toss", "Sanctum Sprint", "Southsun Survival"];

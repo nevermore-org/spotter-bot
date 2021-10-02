@@ -5,7 +5,7 @@ import { CommandInteraction, EmbedFieldData, EmbedField, MessageEmbed } from "di
 import { getConstantValue, isVariableDeclaration } from "typescript";
 import { NONAME } from "dns";
 import { isGatherType, Gathering } from "../../Model/Guildwars/Gathering";
-import { GW_GATHERING, GW_MINIDUNGEONS, GW_PUZZLES } from "../../Guildwars/Dailies/enum/GW_LOCATIONS";
+import { GW_GATHERING, GW_MINIDUNGEONS, GW_PUZZLES, GW_HEARTS, GW_ACTIVITIES } from "../../Guildwars/Dailies/enum/GW_DAILIES";
 import EMOJIS from "./enum/EMOJIS";
 import { GW_API_URL } from "../../Guildwars/General/enum/GW_API_URL";
 
@@ -77,6 +77,37 @@ export default class ViewDailies extends View {
             this.waypoints.push(`${location.waypoint}`);
             return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['Dungeon']} ${location.description}*`;
         }
+        
+        // Renown hearts
+        else if(dailyType === "Taskmaster"){
+            const regionName = splitDailyName.slice(1, -1).join("_");
+            const location = GW_HEARTS[regionName];
+
+            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['Heart']} ${location.description}*`;            
+        }
+
+        // Bounties
+        else if(dailyType === "Hunter"){
+            return `${EMOJIS["Apple"]} Follow your local apple.`;
+        }
+        
+        // Events
+        else if(dailyType === "Completer"){
+            return `${EMOJIS["Event"]} You sure you really wanna do this daily?`;
+        }
+
+        // Activities
+        else if(dailyType === "Participation"){
+            const today: number = new Date().getDay();
+            return `${EMOJIS["Waypoint"]} Gate Hub Plaza Waypoint — [&BBEEAAA=]\n*${EMOJIS['Activity']} ${GW_ACTIVITIES[today]}*`; 
+
+        }
+
+        // Mystic forger
+        else if(dailyType === "Forger"){
+            return `${EMOJIS['MysticForge']} Easy-peasy.`;
+        }
+
 
         // default return if the Daily-type doesn't have anything going for it
         return `${EMOJIS['Guide']} No guide available`;

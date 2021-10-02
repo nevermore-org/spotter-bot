@@ -4,7 +4,7 @@ import { Daily } from "../../Model/Guildwars/Daily";
 import { dayOfYear } from "../../Util/util";
 import { GW_API_URL } from "../General/enum/GW_API_URL";
 import { GatherType, isGatherType } from "../../Model/Guildwars/Gathering";
-import { GW_GATHERING } from "./enum/GW_LOCATIONS";
+import { GW_GATHERING } from "./enum/GW_DAILIES";
 
 
 export default class DailiesAPI {
