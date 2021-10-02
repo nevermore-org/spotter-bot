@@ -82,7 +82,8 @@ export default class ViewDailies extends View {
         else if(dailyType === "Taskmaster"){
             const regionName = splitDailyName.slice(1, -1).join("_");
             const location = GW_HEARTS[regionName];
-
+            
+            this.waypoints.push(`${location.waypoint}`);
             return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['Heart']} ${location.description}*`;            
         }
 
@@ -99,7 +100,10 @@ export default class ViewDailies extends View {
         // Activities
         else if(dailyType === "Participation"){
             const today: number = new Date().getDay();
-            return `${EMOJIS["Waypoint"]} Gate Hub Plaza Waypoint — [&BBEEAAA=]\n*${EMOJIS['Activity']} ${GW_ACTIVITIES[today]}*`; 
+            const waypoint = "Gate Hub Plaza Waypoint — [&BBEEAAA=]";
+
+            this.waypoints.push(waypoint);
+            return `${EMOJIS["Waypoint"]} ${waypoint}\n*${EMOJIS['Activity']} ${GW_ACTIVITIES[today]}*`; 
 
         }
 
