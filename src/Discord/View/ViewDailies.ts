@@ -5,7 +5,7 @@ import { CommandInteraction, EmbedFieldData, EmbedField, MessageEmbed } from "di
 import { getConstantValue, isVariableDeclaration } from "typescript";
 import { NONAME } from "dns";
 import { isGatherType, Gathering } from "../../Model/Guildwars/Gathering";
-import { GW_GATHERING, GW_PUZZLES } from "../../Guildwars/Dailies/enum/GW_LOCATIONS";
+import { GW_GATHERING, GW_MINIDUNGEONS, GW_PUZZLES } from "../../Guildwars/Dailies/enum/GW_LOCATIONS";
 import EMOJIS from "./enum/EMOJIS";
 import { GW_API_URL } from "../../Guildwars/General/enum/GW_API_URL";
 
@@ -40,6 +40,7 @@ export default class ViewDailies extends View {
         return this;
     }
 
+    // there might be a way to make all the 'ifs' more modular
     private getFieldValue(dailyName: string){
         const splitDailyName = dailyName.split(" ");
 
@@ -66,6 +67,15 @@ export default class ViewDailies extends View {
             this.waypoints.push(`${location.waypoint}`);
             // might want to split this line
             return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['JP']} ${location.description}*\n${EMOJIS['Guide']} [Wiki Guide](${GW_API_URL.WIKI}${puzzleName})`;
+        }
+        
+        // Minidungeons
+        else if(dailyType === "Minidungeon"){
+            const miniName = splitDailyName.slice(1, -1).join("_");
+            const location = GW_MINIDUNGEONS[miniName];
+
+            this.waypoints.push(`${location.waypoint}`);
+            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['Dungeon']} ${location.description}*`;
         }
 
         // default return if the Daily-type doesn't have anything going for it
