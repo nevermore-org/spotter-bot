@@ -1,6 +1,148 @@
 import { StringMappingType } from "typescript";
 import EMOJIS from "../../../Discord/View/enum/EMOJIS";
+import { DailyFormat } from "../../../Model/Guildwars/Daily";
 import { Gathering, Location } from "../../../Model/Guildwars/Gathering";
+import { GW_API_URL } from "../../General/enum/GW_API_URL";
+
+const EMPTY_LOCATION: Location = {waypoint: " ", description: " "};
+
+export const NORMALIZE_DAILY: Record<string, string> = {
+    "Lumberer": "Lumberer",
+    "Miner" : "Miner",
+    "Forager": "Forager",
+    "Viewer": "Viewer",
+    "Puzzle": "Puzzle",
+    "Minidungeon": "Minidugeon",
+    "Taskmaster": "Taskmaster",
+    "Participation": "Participation",
+    "Completer": "Completer",
+    "Hunter": "Hunter",
+    "Forger": "Forger",
+    "Catacombs": "Dungeon",
+    "Manor": "Dungeon",
+    "Arbor": "Dungeon",
+    "Embrace": "Dungeon",
+    "Flame": "Dungeon",
+    "Waves": "Dungeon",
+    "Eternity": "Dungeon",
+    "Arah": "Dungeon",
+}
+
+
+export const GW_DAILY: Record<string, DailyFormat> = {
+    "Lumberer": {
+        endOfName: -1,
+        wantWaypoint: true,
+        location: (regionName) => {return GW_GATHERING[regionName]["Lumberer"]},
+        prettyFormat: (location) => {
+            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n ${EMOJIS['Lumberer']} *${location.description}*`
+        }
+    },
+
+    "Miner": {
+        endOfName: -1,
+        wantWaypoint: true,
+        location: (regionName) => {return GW_GATHERING[regionName]["Miner"]},
+        prettyFormat: (location) => {
+            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n ${EMOJIS['Miner']} *${location.description}*`
+        }
+    },
+
+    "Forager": {
+        endOfName: -1,
+        wantWaypoint: true,
+        location: (regionName) => {return GW_GATHERING[regionName]["Forager"]},
+        prettyFormat: (location) => {
+            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n ${EMOJIS['Forager']} *${location.description}*`
+        }
+    },
+
+    "Viewer": {
+        endOfName: -2,
+        wantWaypoint: true,
+        location: (regionName) => {return GW_GATHERING[regionName]["Viewer"]},
+        prettyFormat: (location) => {
+            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n ${EMOJIS['Viewer']} *${location.description}*`
+        }
+    },
+
+    "Puzzle": {
+        endOfName: -2,
+        wantWaypoint: true,
+        location: (puzzleName) => {return GW_PUZZLES[puzzleName]},
+        prettyFormat: (location, puzzleName) => {
+            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['JP']} ${location.description}*\n${EMOJIS['Guide']} [Wiki Guide](${GW_API_URL.WIKI}${puzzleName})`;
+        }  
+    },
+
+    "Dungeon": {
+        endOfName: 0,
+        wantWaypoint: true,
+        location: (name) => {return GW_DUNGEONS[name]},
+        prettyFormat: (location) => {
+            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['Dungeon']} Story or ${location.description}*`;
+        }
+
+    },
+
+    "Minidungeon": {
+        endOfName: -1,
+        wantWaypoint: true,
+        location: (miniName) => {return GW_MINIDUNGEONS[miniName]},
+        prettyFormat: (location) => {
+            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['Dungeon']} ${location.description}*`;
+        }
+    },
+
+    "Taskmaster": {
+        endOfName: -1,
+        wantWaypoint: true,
+        location: (regionName) => {return GW_HEARTS[regionName]},
+        prettyFormat: (location) => {
+            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['Heart']} ${location.description}*`;
+        }
+    },
+
+    "Participation": {
+        endOfName: -1,
+        wantWaypoint: true,
+        location: () => {return {waypoint:"Gate Hub Plaza Waypoint — [&BBEEAAA=]", description: " "}},
+        prettyFormat: (location) => {
+            // ! Need to fix this to correspond with server reset rather than actual day
+            const today: number = new Date().getDay();
+            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['Activity']} ${GW_ACTIVITIES[today]}*`;
+        }
+    },
+
+    // dailies with simple formatting
+    "Completer": {
+        endOfName: -1,
+        wantWaypoint: false,
+        location: () => {return EMPTY_LOCATION},
+        prettyFormat: () => {
+            return `${EMOJIS["Event"]} You sure you really wanna do this daily?`;
+        }
+    },
+
+    "Hunter": {
+        endOfName: -2,
+        wantWaypoint: false,
+        location: () => {return EMPTY_LOCATION},
+        prettyFormat: () => {
+            return `${EMOJIS["Apple"]} Follow your local apple.`;
+        }
+    },
+
+    "Forger": {
+        endOfName: -1,
+        wantWaypoint: false,
+        location: () => {return EMPTY_LOCATION},
+        prettyFormat: () => {
+            return `${EMOJIS['MysticForge']} Easy-peasy.`;
+        }
+    },
+}
+
 
 export const GW_GATHERING: Gathering = {
     'Ascalon': {
@@ -285,3 +427,38 @@ export const GW_HEARTS: Record<string, Location> = {
 
 // each day has a preset activity
 export const GW_ACTIVITIES: string[] = ["Keg Brawl", "Crab Toss", "Sanctum Sprint", "Southsun Survival", "Crab Toss", "Sanctum Sprint", "Southsun Survival"];
+
+export const GW_DUNGEONS: Record<string, Location> = {
+    "Ascalonian_Catacombs": {
+        waypoint: "Ascalonian Catacombs Waypoint — [&BIYBAAA=]",
+        description: "Path 1"
+    },
+    "Caudecus's_Manor": {
+        waypoint: "Beetletun Waypoint — [&BPoAAAA=]",
+        description: "?"
+    },
+    "Twilight_Arbor": {
+        waypoint: "Twilight Arbor Waypoint — [&BEEFAAA=]",
+        description: "?"
+    },
+    "Sorrow's_Embrace": {
+        waypoint: "Tribulation Waypoint — [&BFYCAAA=]",
+        description: "?"
+    },
+    "Citadel_of_Flame": {
+        waypoint: "The Citadel of Flame Waypoint — [&BEAFAAA=]",
+        description: "?"
+    },
+    "Honor_of_the_Waves": {
+        waypoint: "Honor of the Waves Waypoint — [&BEMFAAA=]",
+        description: "?"
+    },
+    "Crucible_of_Eternity": {
+        waypoint: "Crucible of Eternity Waypoint — [&BEIFAAA=]",
+        description: "?"
+    },
+    "The_Ruined_City_of_Arah": {
+        waypoint: "Arah Waypoint — [&BCADAAA=]",
+        description: "?"
+    }
+}

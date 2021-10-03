@@ -1,6 +1,6 @@
 import axios from "axios"
 import { Achievement } from "../../Model/Guildwars/Achievement";
-import { Daily } from "../../Model/Guildwars/Daily";
+import { DailyResponse } from "../../Model/Guildwars/Daily";
 import { dayOfYear } from "../../Util/util";
 import { GW_API_URL } from "../General/enum/GW_API_URL";
 import { GatherType, isGatherType } from "../../Model/Guildwars/Gathering";
@@ -25,7 +25,7 @@ export default class DailiesAPI {
         const dailyIds: number[] = filteredDailies.map((achiev: Achievement) => achiev.id);
         const dailyIdResponse = await axios.get(`${GW_API_URL.ACHIEVEMENTS}?ids=${dailyIds}`);
 
-        const dailyNames: string[] = dailyIdResponse.data.map((daily: Daily) => daily.name)
+        const dailyNames: string[] = dailyIdResponse.data.map((daily: DailyResponse) => daily.name)
 
         return dailyNames;
     }
