@@ -26,17 +26,6 @@ services:
           npm ci &&
           npm start
       "
-  mongo:
-    image: mongo
-    container_name: mongo
-    restart: unless-stopped
-    env_file: .env
-    networks:
-      - spotter-app-network
-    volumes:
-      - spotter:/data/db
-    ports:
-      - "27017:27017"
 
 networks:
   spotter-app-network:
@@ -45,4 +34,3 @@ networks:
 volumes:
   node-16:
     external: true
-  spotter:
