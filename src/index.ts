@@ -2,8 +2,16 @@ import { Intents, Interaction, Client } from 'discord.js';
 import loadDotenv from './Config/Config';
 import COMMANDS from './Discord/Command/Commands';
 import DiscordControllerInterface from './Model/Discord/DiscordControllerInterface';
+import express from "express";
 
 loadDotenv();
+
+/**
+ * Servers contents in the public folder
+ */
+const server = express();
+server.use(express.static(__dirname + '/public'));
+server.listen(80);
 
 const client: Client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
