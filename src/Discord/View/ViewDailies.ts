@@ -26,12 +26,12 @@ export default class ViewDailies extends View {
     public setEmbeds = async (dailiesPve: string[]): Promise<ViewDailies> => {
         const dailiesEmbed = this.createEmbed(EMBED_ID.DAILIES, "PvE Dailies", this.thumbnail);
 
-        for (let index = 0; index < dailiesPve.length; index++){
+        for (let index = 0; index < dailiesPve.length; index++) {
             const dailyName = dailiesPve[index];
             dailiesEmbed.addField(dailyName, this.getFieldValue(dailyName));
         }
 
-        if (this.waypoints.length === 0){
+        if (this.waypoints.length === 0) {
             this.waypoints.push("No waypoints to show");
         }
 
@@ -41,7 +41,7 @@ export default class ViewDailies extends View {
     }
 
     // there might be a way to make all the 'ifs' more modular
-    private getFieldValue(dailyName: string){
+    private getFieldValue(dailyName: string) {
         const splitDailyName = dailyName.split(" ");
 
         // it should be possible to always determine the type of a daily last word in the name
@@ -49,10 +49,10 @@ export default class ViewDailies extends View {
         const dailyType = splitDailyName[splitDailyName.length - 1];
 
         // Gathering
-        if (isGatherType(dailyType)){
+        if (isGatherType(dailyType)) {
             // just cause 'Vista Viewer' has to be special
             // region name is either the whole part between the first and the last word or the part between the first word and 'Vista Viewer'
-            const regionName = splitDailyName.slice(1, dailyType === "Viewer" ? -2 : -1).join();
+            const regionName = splitDailyName.slice(1, dailyType === "Viewer" ? -2 : -1).join("_");
             const location = GW_GATHERING[regionName][dailyType];
 
             this.waypoints.push(`${location.waypoint}`);
@@ -60,7 +60,7 @@ export default class ViewDailies extends View {
         }
 
         // Jumping Puzzles
-        else if (dailyType === "Puzzle"){
+        else if (dailyType === "Puzzle") {
             const puzzleName = splitDailyName.slice(1, -2).join("_");
             const location = GW_PUZZLES[puzzleName];
 
@@ -68,47 +68,47 @@ export default class ViewDailies extends View {
             // might want to split this line
             return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['JP']} ${location.description}*\n${EMOJIS['Guide']} [Wiki Guide](${GW_API_URL.WIKI}${puzzleName})`;
         }
-        
+
         // Minidungeons
-        else if(dailyType === "Minidungeon"){
+        else if (dailyType === "Minidungeon") {
             const miniName = splitDailyName.slice(1, -1).join("_");
             const location = GW_MINIDUNGEONS[miniName];
 
             this.waypoints.push(`${location.waypoint}`);
             return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['Dungeon']} ${location.description}*`;
         }
-        
+
         // Renown hearts
-        else if(dailyType === "Taskmaster"){
+        else if (dailyType === "Taskmaster") {
             const regionName = splitDailyName.slice(1, -1).join("_");
             const location = GW_HEARTS[regionName];
-            
+
             this.waypoints.push(`${location.waypoint}`);
-            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['Heart']} ${location.description}*`;            
+            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['Heart']} ${location.description}*`;
         }
 
         // Bounties
-        else if(dailyType === "Hunter"){
+        else if (dailyType === "Hunter") {
             return `${EMOJIS["Apple"]} Follow your local apple.`;
         }
-        
+
         // Events
-        else if(dailyType === "Completer"){
+        else if (dailyType === "Completer") {
             return `${EMOJIS["Event"]} You sure you really wanna do this daily?`;
         }
 
         // Activities
-        else if(dailyType === "Participation"){
+        else if (dailyType === "Participation") {
             const today: number = new Date().getDay();
             const waypoint = "Gate Hub Plaza Waypoint — [&BBEEAAA=]";
 
             this.waypoints.push(waypoint);
-            return `${EMOJIS["Waypoint"]} ${waypoint}\n*${EMOJIS['Activity']} ${GW_ACTIVITIES[today]}*`; 
+            return `${EMOJIS["Waypoint"]} ${waypoint}\n*${EMOJIS['Activity']} ${GW_ACTIVITIES[today]}*`;
 
         }
 
         // Mystic forger
-        else if(dailyType === "Forger"){
+        else if (dailyType === "Forger") {
             return `${EMOJIS['MysticForge']} Easy-peasy.`;
         }
 
