@@ -14,7 +14,7 @@ function start_docker_compose(){
     MY_GID=$4
 
     MY_UID="${MY_UID}" MY_GID="${MY_GID}" docker-compose down --remove-orphans
-    SERVICES="mongo"
+    SERVICES=""
     echo "Running docker-compose"
     docker image pull node:16
     if [ "$ONLY_ENV" -eq 1 ]; then
