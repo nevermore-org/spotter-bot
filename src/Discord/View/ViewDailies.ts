@@ -5,7 +5,7 @@ import { CommandInteraction, EmbedFieldData, EmbedField, MessageEmbed } from "di
 import { getConstantValue, isVariableDeclaration } from "typescript";
 import { NONAME } from "dns";
 import { isGatherType, Gathering } from "../../Model/Guildwars/Gathering";
-import { GW_GATHERING, GW_MINIDUNGEONS, GW_PUZZLES, GW_HEARTS, GW_ACTIVITIES } from "../../Guildwars/Dailies/enum/GW_DAILIES";
+import { GW_GATHERING, GW_MINIDUNGEONS, GW_PUZZLES, GW_HEARTS, GW_ACTIVITIES, GW_DAILY, NORMALIZE_DAILY } from "../../Guildwars/Dailies/enum/GW_DAILIES";
 import EMOJIS from "./enum/EMOJIS";
 import { GW_API_URL } from "../../Guildwars/General/enum/GW_API_URL";
 
@@ -41,81 +41,30 @@ export default class ViewDailies extends View {
     }
 
     // there might be a way to make all the 'ifs' more modular
-    private getFieldValue(dailyName: string) {
-        const splitDailyName = dailyName.split(" ");
+    private getFieldValue(fullName: string) {
+        const splitName = fullName.split(" ");
 
         // it should be possible to always determine the type of a daily last word in the name
         // turns out it is possible for *most* types of dailies
-        const dailyType = splitDailyName[splitDailyName.length - 1];
+        const dailyType = splitName[splitName.length - 1];
+        const daily = GW_DAILY[NORMALIZE_DAILY[dailyType]];
 
-        // Gathering
-        if (isGatherType(dailyType)) {
-            // just cause 'Vista Viewer' has to be special
-            // region name is either the whole part between the first and the last word or the part between the first word and 'Vista Viewer'
-            const regionName = splitDailyName.slice(1, dailyType === "Viewer" ? -2 : -1).join("_");
-            const location = GW_GATHERING[regionName][dailyType];
+        // temporary solution, before adventures and bosses are added
+        if (!daily){
+            return `${EMOJIS['Guide']} No guide available`;
+        }
 
+        // need this for all those daily types that dont have any special keyword at the end of their name
+        const slicedName = daily.endOfName === 0 ? splitName.slice(1) : splitName.slice(1, daily.endOfName);
+
+        const dailyName = slicedName.join("_");
+        const location = daily.location(dailyName, dailyType);
+
+        if (daily.wantWaypoint){
             this.waypoints.push(`${location.waypoint}`);
-            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n ${EMOJIS[dailyType]} *${location.description}*`;
         }
 
-        // Jumping Puzzles
-        else if (dailyType === "Puzzle") {
-            const puzzleName = splitDailyName.slice(1, -2).join("_");
-            const location = GW_PUZZLES[puzzleName];
-
-            this.waypoints.push(`${location.waypoint}`);
-            // might want to split this line
-            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['JP']} ${location.description}*\n${EMOJIS['Guide']} [Wiki Guide](${GW_API_URL.WIKI}${puzzleName})`;
-        }
-
-        // Minidungeons
-        else if (dailyType === "Minidungeon") {
-            const miniName = splitDailyName.slice(1, -1).join("_");
-            const location = GW_MINIDUNGEONS[miniName];
-
-            this.waypoints.push(`${location.waypoint}`);
-            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['Dungeon']} ${location.description}*`;
-        }
-
-        // Renown hearts
-        else if (dailyType === "Taskmaster") {
-            const regionName = splitDailyName.slice(1, -1).join("_");
-            const location = GW_HEARTS[regionName];
-
-            this.waypoints.push(`${location.waypoint}`);
-            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['Heart']} ${location.description}*`;
-        }
-
-        // Bounties
-        else if (dailyType === "Hunter") {
-            return `${EMOJIS["Apple"]} Follow your local apple.`;
-        }
-
-        // Events
-        else if (dailyType === "Completer") {
-            return `${EMOJIS["Event"]} You sure you really wanna do this daily?`;
-        }
-
-        // Activities
-        else if (dailyType === "Participation") {
-            const today: number = new Date().getDay();
-            const waypoint = "Gate Hub Plaza Waypoint — [&BBEEAAA=]";
-
-            this.waypoints.push(waypoint);
-            return `${EMOJIS["Waypoint"]} ${waypoint}\n*${EMOJIS['Activity']} ${GW_ACTIVITIES[today]}*`;
-
-        }
-
-        // Mystic forger
-        else if (dailyType === "Forger") {
-            return `${EMOJIS['MysticForge']} Easy-peasy.`;
-        }
-
-
-        // default return if the Daily-type doesn't have anything going for it
-        return `${EMOJIS['Guide']} No guide available`;
-
+        return daily.prettyFormat(location, dailyName);
     }
 
 
