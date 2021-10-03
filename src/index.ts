@@ -3,14 +3,17 @@ import loadDotenv from './Config/Config';
 import COMMANDS from './Discord/Command/Commands';
 import DiscordControllerInterface from './Model/Discord/DiscordControllerInterface';
 import express from "express";
+import path from 'path';
 
 loadDotenv();
 
 /**
- * Servers contents in the public folder
+ * Serves contents in the public folder
  */
 const server = express();
-server.use(express.static(__dirname + '/public'));
+
+server.use("/public", express.static(path.join(__dirname + '/../public')));
+
 server.listen(80);
 
 const client: Client = new Client({ intents: [Intents.FLAGS.GUILDS] });
