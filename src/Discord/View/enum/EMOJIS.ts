@@ -14,8 +14,8 @@ const EMOJIS: Record<string, string> = {
     'Event': "<:event_collect:893861586454868018>",
     'Activity': "<:activity:893865526751813724>",
     'MysticForge': "<:mystic_forge:893867160915562556>",
-    'T4Fractal': "<:t4_fractal:894268313239183371>",
-    'RecommendedFractal': "<:recommended_fractal:894269875139272755>"
+    'T4Fractal': "<:t4_fractal:894273333397446767> ",
+    'RecommendedFractal': "<:recommended_fractal:894273310941134878> "
 }
 
 export default EMOJIS;
