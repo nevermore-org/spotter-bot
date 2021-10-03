@@ -3,6 +3,7 @@ import Fractal from "../../Model/Guildwars/Fractal";
 import { THUMBNAILS } from "./enum/THUMBNAILS";
 import View from "./View";
 import { EMBED_ID } from "./enum/EMBED_ID";
+import EMOJIS from "./enum/EMOJIS";
 
 export default class ViewFractals extends View {
     thumbnail: string = THUMBNAILS.FRACTAL;
@@ -29,18 +30,17 @@ export default class ViewFractals extends View {
     public setEmbeds = async (fractalsToday: Fractal[], fractalsTomorrow: Fractal[]): Promise<ViewFractals> => {
         //Notice the first argument. It's an id that is being set to an embed.
         //Embeds in our context are basically the main "container" for all the properties. E. g. Buttons can't exist without an embed.
-        //If I want to add/access e. g. an action row from a specific embed, I use the embed ID (see line 68).
         const fractalsTodayEmbed = this.createEmbed(EMBED_ID.FRACTAL_TODAY, "Fractal dailies - Today", this.thumbnail);
         const fractalsTomorrowEmbed = this.createEmbed(EMBED_ID.FRACTAL_TOMORROW, "Fractal dailies - Tomorrow", this.thumbnail);
 
         fractalsTodayEmbed.addFields(
-            { name: "T4 Fractals", value: `${fractalsToday[6].name}\n${fractalsToday[10].name}\n${fractalsToday[14].name}` },
-            { name: "Recommended fractals", value: `${fractalsToday[2].name}\n${fractalsToday[1].name}\n${fractalsToday[0].name}` },
+            { name: `${EMOJIS["T4Fractal"]} T4 Fractals`, value: `${fractalsToday[6].name}\n${fractalsToday[10].name}\n${fractalsToday[14].name}` },
+            { name: `${EMOJIS["RecommendedFractal"]} Recommended fractals`, value: `${fractalsToday[2].name}\n${fractalsToday[1].name}\n${fractalsToday[0].name}` },
         )
 
         fractalsTomorrowEmbed.addFields(
-            { name: "T4 Fractals", value: `${fractalsTomorrow[6].name}\n${fractalsTomorrow[10].name}\n${fractalsTomorrow[14].name}` },
-            { name: "Recommended fractals", value: `${fractalsTomorrow[2].name}\n${fractalsTomorrow[1].name}\n${fractalsTomorrow[0].name}` },
+            { name: `${EMOJIS["T4Fractal"]} T4 Fractals`, value: `${fractalsTomorrow[6].name}\n${fractalsTomorrow[10].name}\n${fractalsTomorrow[14].name}` },
+            { name: `${EMOJIS["RecommendedFractal"]} Recommended fractals`, value: `${fractalsTomorrow[2].name}\n${fractalsTomorrow[1].name}\n${fractalsTomorrow[0].name}` },
         )
         return this
     }

@@ -1,6 +1,6 @@
-const EMOJIS: Record<string, string>= {
+const EMOJIS: Record<string, string> = {
     'Lumberer': "<:lumberer:893277145013575720>",
-    'Miner':  "<:miner:893277174763782174>",
+    'Miner': "<:miner:893277174763782174>",
     'Forager': "<:forager:893277116425179206>",
     'Viewer': "<:vista:893277569485537331>",
     'Waypoint': "<:waypoint:893273199901569095>",
@@ -13,7 +13,9 @@ const EMOJIS: Record<string, string>= {
     'Apple': "<:apple_badge:893860849314299954>",
     'Event': "<:event_collect:893861586454868018>",
     'Activity': "<:activity:893865526751813724>",
-    'MysticForge': "<:mystic_forge:893867160915562556>"
+    'MysticForge': "<:mystic_forge:893867160915562556>",
+    'T4Fractal': "<:t4_fractal:894268313239183371>",
+    'RecommendedFractal': "<:recommended_fractal:894269875139272755>"
 }
 
 export default EMOJIS;
