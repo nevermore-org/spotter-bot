@@ -14,7 +14,8 @@ const server = express();
 
 server.use("/public", express.static(path.join(__dirname + '/../public')));
 
-server.listen(80);
+const port = process.env.PORT || 80;
+server.listen(port);
 
 const client: Client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
