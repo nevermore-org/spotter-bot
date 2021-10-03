@@ -20,4 +20,4 @@ jobs:
           dontuseforce: true
           dontautocreate: true
           usedocker: true
-          docker_heroku_process_type: worker
+          docker_heroku_process_type: web
