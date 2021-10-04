@@ -455,6 +455,9 @@ export const GW_HEARTS: Record<string, Location> = {
 // each day has a preset activity
 export const GW_ACTIVITIES: string[] = ["Keg Brawl", "Crab Toss", "Sanctum Sprint", "Southsun Survival", "Crab Toss", "Sanctum Sprint", "Southsun Survival"];
 
+// Relevant links for path info
+// https://www.reddit.com/r/Guildwars2/comments/3lxcqn/fastest_dungeon_paths/
+// https://www.speedrun.com/gw2d
 export const GW_DUNGEONS: Record<string, Location> = {
     "Ascalonian_Catacombs": {
         waypoint: "Ascalonian Catacombs Waypoint — [&BIYBAAA=]",
@@ -491,8 +494,8 @@ export const GW_DUNGEONS: Record<string, Location> = {
 }
 
 // ffs, they really couldnt have done one single style of daily names...
-// why are some thing Daily NameOfMiniD Minidungeon, some are Daily NameOfTheDungeon
-// and adventures have to have special treatment of Daily Adventure: Name...
+// why are some things Daily NameOfMiniD Minidungeon, some are Daily NameOfTheDungeon
+// and adventures have to have the special treatment of Daily Adventure: Name...
 export const GW_ADVENTURES: Record<string, Location> = {
     "Adventure:_Tendril_Torchers": {
         waypoint: "Shipwreck Peak Waypoint — [&BN4HAAA=]",
