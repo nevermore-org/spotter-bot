@@ -26,6 +26,23 @@ export const NORMALIZE_DAILY: Record<string, string> = {
     "Waves": "Dungeon",
     "Eternity": "Dungeon",
     "Arah": "Dungeon",
+    "Name": "Adventure",
+    "Torchers": "Adventure",
+    "Branches": "Adventure",
+    "Circus": "Adventure",
+    "Gallery": "Adventure",
+    "Pit": "Adventure",
+    "Lava?": "Adventure",
+    "Gold": "Adventure",
+    "Scramble": "Adventure",
+    "Masks": "Adventure",
+    "Us": "Adventure",
+    "Run": "Adventure",
+    "Race": "Adventure",
+    "Feast": "Adventure",
+    "Battle": "Adventure",
+    "Test": "Adventure",
+    "Adventurer": "Adventure",
 }
 
 
@@ -75,12 +92,22 @@ export const GW_DAILY: Record<string, DailyFormat> = {
         }  
     },
 
+    "Adventure": {
+        endOfName: 0,
+        wantWaypoint: true,
+        location: (name) => {return GW_ADVENTURES[name]},
+        prettyFormat: (location) => {
+            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['Adventure']} ${location.description}*`
+        }
+
+    },
+
     "Dungeon": {
         endOfName: 0,
         wantWaypoint: true,
         location: (name) => {return GW_DUNGEONS[name]},
         prettyFormat: (location) => {
-            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['Dungeon']} Story or ${location.description}*`;
+            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['Dungeon']} ${location.description}*`;
         }
 
     },
@@ -431,34 +458,104 @@ export const GW_ACTIVITIES: string[] = ["Keg Brawl", "Crab Toss", "Sanctum Sprin
 export const GW_DUNGEONS: Record<string, Location> = {
     "Ascalonian_Catacombs": {
         waypoint: "Ascalonian Catacombs Waypoint — [&BIYBAAA=]",
-        description: "Path 1"
+        description: "Story or Path 1"
     },
     "Caudecus's_Manor": {
         waypoint: "Beetletun Waypoint — [&BPoAAAA=]",
-        description: "?"
+        description: "Path 2 or 3"
     },
     "Twilight_Arbor": {
         waypoint: "Twilight Arbor Waypoint — [&BEEFAAA=]",
-        description: "?"
+        description: "Story or Up (Path 1)"
     },
     "Sorrow's_Embrace": {
         waypoint: "Tribulation Waypoint — [&BFYCAAA=]",
-        description: "?"
+        description: "Path 1 or 3"
     },
     "Citadel_of_Flame": {
         waypoint: "The Citadel of Flame Waypoint — [&BEAFAAA=]",
-        description: "?"
+        description: "Path 1"
     },
     "Honor_of_the_Waves": {
         waypoint: "Honor of the Waves Waypoint — [&BEMFAAA=]",
-        description: "?"
+        description: "Path 1"
     },
     "Crucible_of_Eternity": {
         waypoint: "Crucible of Eternity Waypoint — [&BEIFAAA=]",
-        description: "?"
+        description: "¨Path 1"
     },
     "The_Ruined_City_of_Arah": {
         waypoint: "Arah Waypoint — [&BCADAAA=]",
-        description: "?"
+        description: "Path 1 or 2"
+    }
+}
+
+// ffs, they really couldnt have done one single style of daily names...
+// why are some thing Daily NameOfMiniD Minidungeon, some are Daily NameOfTheDungeon
+// and adventures have to have special treatment of Daily Adventure: Name...
+export const GW_ADVENTURES: Record<string, Location> = {
+    "Adventure:_Tendril_Torchers": {
+        waypoint: "Shipwreck Peak Waypoint — [&BN4HAAA=]",
+        description: "Burn tendrils and avoid unexploded shot before time runs out!"
+    },
+    "Adventure:_Bugs_in_the_Branches": {
+        waypoint: "Jaka Itzel Waypoint — [&BOAHAAA=]",
+        description: "Jump and glide to collect bugs before time runs out!"
+    },
+    "Adventure:_Flying_Circus": {
+        waypoint: "Mellaggan's Valor Waypoint — [&BNUHAAA=]",
+        description: "Glide through the glowing rings before time runs out!"
+    },
+    "Adventure:_Shooting_Gallery": {
+        waypoint: "Faren's Flyer Waypoint — [&BO8HAAA=]",
+        description: "Shoot as many target dummies as you can before time runs out!"
+    },
+    "Adventure:_Salvage_Pit": {
+        waypoint: "Shrouded Ruins Waypoint — [&BAEIAAA=]",
+        description: "Gather supplies and avoid tendrils before time runs out!"
+    },
+    "Adventure:_The_Floor_Is_Lava?": {
+        waypoint: "Wanderer's Waypoint — [&BNYHAAA=]",
+        description: "Kick rockvine fruit and retrieve as many spores as you can before time runs out!"
+    },
+    "Adventure:_On_Wings_of_Gold": {
+        waypoint: "Forgotten City Waypoint — [&BMYHAAA=]",
+        description: "Deliver collected shield anomalies by gliding near the collection device."
+    },
+    "Adventure:_Sanctum_Scramble": {
+        waypoint: "Forgotten City Waypoint — [&BMYHAAA=]",
+        description: "Jump, launch, and glide your way through the checkpoints and across the finish line!"
+    },
+    "Adventure:_Fallen_Masks": {
+        waypoint: "Forgotten City Waypoint — [&BMYHAAA=]",
+        description: "Soothe the tormented spirits of the fallen Exalted."
+    },
+    "Adventure:_A_Fungus_Among_Us": {
+        waypoint: "Southwatch Waypoint — [&BAIIAAA=]",
+        description: "Use mushroom skills to reach checkpoints."
+    },
+    "Adventure:_The_Ley-Line_Run": {
+        waypoint: "Dragon's Passage Waypoint — [&BIgIAAA=]",
+        description: "Race across a ley-line as a spark."
+    },
+    "Adventure:_Drone_Race": {
+        waypoint: "SCAR Camp Waypoint — [&BAAIAAA=]",
+        description: "Race your way through the checkpoints!"
+    },
+    "Adventure:_Beetle_Feast": {
+        waypoint: "Teku Nuhoch Waypoint — [&BAwIAAA=]",
+        description: "Collect mushrooms and use beetle skills to reach the end."
+    },
+    "Adventure:_Haywire_Punch-o-Matic_Battle": {
+        waypoint: "Rata Novus Waypoint — [&BAMIAAA=]",
+        description: "Kill as many chak as you can before the timer runs out."
+    },
+    "Adventure:_Scrap_Rifle_Field_Test": {
+        waypoint: "SCAR Camp Waypoint — [&BAAIAAA=]",
+        description: "Kill as many chaks as you can with scrap rifle!"
+    },
+    "Desert_Adventurer": {
+        waypoint: "to be filled in",
+        description: "some stuff"
     }
 }
