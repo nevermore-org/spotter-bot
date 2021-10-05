@@ -1,6 +1,7 @@
 import { ColorResolvable, MessageActionRow, MessageButton, MessageButtonStyleResolvable, MessageEmbed } from "discord.js";
 import ViewDefault from "../../Model/Discord/ViewDefault";
 import { THUMBNAILS } from "./enum/THUMBNAILS";
+import { v4 as uuidv4 } from 'uuid';
 
 /**
  * Acts as a base class for all views
@@ -13,12 +14,12 @@ export default class View implements ViewDefault {
     embeds: Map<string, MessageEmbed>;
     actionRows: Map<string, MessageActionRow[]>;
     //
-    seed: number;
+    seed: string;
 
     /**
-     * @param seed - might be good to upgrade to something like uuid
+     * @param seed - uses v4 uuid
      */
-    constructor(seed: number = Math.random()) {
+    constructor(seed: string = uuidv4()) {
         this.defaultColor = 0xBAD4A1;
         this.defaultTitle = "default title";
         this.defaultThumbnail = THUMBNAILS.DEFAULT;

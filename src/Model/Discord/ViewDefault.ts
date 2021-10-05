@@ -6,5 +6,5 @@ export default interface ViewDefault {
     defaultTitle: string;
     defaultThumbnail: string;
     actionRows: Map<string, MessageActionRow[]>;
-    seed: number;
+    seed: string;
 }

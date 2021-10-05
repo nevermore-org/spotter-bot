@@ -5,7 +5,7 @@ import ViewDailies from "../../View/ViewDailies";
 
 
 /**
- * Sends instabilites for todays T4s
+ * Sends today's dailies
  */
 export default class DailiesController implements DiscordControllerInterface {
     private dailiesAPI: DailiesAPI;
