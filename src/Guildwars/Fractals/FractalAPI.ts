@@ -3,7 +3,6 @@ import { DateTime } from "luxon";
 import { Achievement } from "../../Model/Guildwars/Achievement";
 import BaseFractal from "../../Model/Guildwars/BaseFractal";
 import Fractal from "../../Model/Guildwars/Fractal";
-import { dayOfYear } from "../../Util/util";
 import { GW_API_URL } from "../General/enum/GW_API_URL";
 import GW_FRACTALS from "./enum/GW_FRACTALS";
 import { GW_INSTABILITIES, GW_INST_NAMES } from "./enum/GW_INSTABILITIES";
