@@ -1,4 +1,5 @@
 import axios from "axios"
+import { DateTime } from "luxon";
 import { Achievement } from "../../Model/Guildwars/Achievement";
 import BaseFractal from "../../Model/Guildwars/BaseFractal";
 import Fractal from "../../Model/Guildwars/Fractal";
@@ -73,7 +74,7 @@ export default class FractalAPI {
      * @param levels
      */
     public getDailyInstabilities(levels: BaseFractal[][]) {
-        const today = dayOfYear(new Date());
+        const today = DateTime.utc().ordinal;
 
         // replaces each level with list of instability indices; then replaces those with their names
         let getInstabilitiesForLevel = (level: number) => (GW_INSTABILITIES[level][today]).map(index => GW_INST_NAMES[index]);

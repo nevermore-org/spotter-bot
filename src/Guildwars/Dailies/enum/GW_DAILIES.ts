@@ -1,3 +1,4 @@
+import { DateTime } from "luxon";
 import { StringMappingType } from "typescript";
 import EMOJIS from "../../../Discord/View/enum/EMOJIS";
 import { DailyFormat } from "../../../Model/Guildwars/Daily";
@@ -12,7 +13,7 @@ export const NORMALIZE_DAILY: Record<string, string> = {
     "Forager": "Forager",
     "Viewer": "Viewer",
     "Puzzle": "Puzzle",
-    "Minidungeon": "Minidugeon",
+    "Minidungeon": "Minidungeon",
     "Taskmaster": "Taskmaster",
     "Participation": "Participation",
     "Completer": "Completer",
@@ -135,8 +136,8 @@ export const GW_DAILY: Record<string, DailyFormat> = {
         wantWaypoint: true,
         location: () => {return {waypoint:"Gate Hub Plaza Waypoint — [&BBEEAAA=]", description: " "}},
         prettyFormat: (location) => {
-            // ! Need to fix this to correspond with server reset rather than actual day
-            const today: number = new Date().getDay();
+
+            const today: number = DateTime.utc().weekday - 1;
             return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['Activity']} ${GW_ACTIVITIES[today]}*`;
         }
     },
@@ -453,7 +454,7 @@ export const GW_HEARTS: Record<string, Location> = {
 }
 
 // each day has a preset activity
-export const GW_ACTIVITIES: string[] = ["Keg Brawl", "Crab Toss", "Sanctum Sprint", "Southsun Survival", "Crab Toss", "Sanctum Sprint", "Southsun Survival"];
+export const GW_ACTIVITIES: string[] = ["Crab Toss", "Sanctum Sprint", "Southsun Survival", "Crab Toss", "Sanctum Sprint", "Southsun Survival", "Keg Brawl"];
 
 // Relevant links for path info
 // https://www.reddit.com/r/Guildwars2/comments/3lxcqn/fastest_dungeon_paths/
