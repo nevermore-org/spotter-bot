@@ -1,7 +1,6 @@
 import axios from "axios"
 import { Achievement } from "../../Model/Guildwars/Achievement";
 import { DailyResponse } from "../../Model/Guildwars/Daily";
-import { dayOfYear } from "../../Util/util";
 import { GW_API_URL } from "../General/enum/GW_API_URL";
 import { GatherType, isGatherType } from "../../Model/Guildwars/Gathering";
 import { GW_GATHERING } from "./enum/GW_DAILIES";
@@ -21,7 +20,6 @@ export default class DailiesAPI {
         const filteredDailies = dailyAchievements.filter(daily => daily.level.max === 80 
             && (daily.required_access ? daily.required_access.condition === 'HasAccess' : true));
 
-            
         const dailyIds: number[] = filteredDailies.map((achiev: Achievement) => achiev.id);
         const dailyIdResponse = await axios.get(`${GW_API_URL.ACHIEVEMENTS}?ids=${dailyIds}`);
 

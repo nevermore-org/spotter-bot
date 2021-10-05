@@ -1,6 +1,7 @@
 export interface Location {
     waypoint: string,
-    description: string
+    description: string,
+    schedule?: string[]
 }
 
 export type Region = 'Ascalon' | 'Kryta' | 'Maguuma' | 'Orr' | 'Shiverpeaks' | 'Maguuma Wastes' | 'Heart of Maguuma' | 'Desert';
