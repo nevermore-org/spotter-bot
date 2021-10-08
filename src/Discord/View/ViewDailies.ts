@@ -1,13 +1,9 @@
 import { THUMBNAILS } from "./enum/THUMBNAILS";
 import View from "./View";
 import { EMBED_ID } from "./enum/EMBED_ID";
-import { CommandInteraction, EmbedFieldData, EmbedField, MessageEmbed } from "discord.js";
-import { getConstantValue, isVariableDeclaration } from "typescript";
-import { NONAME } from "dns";
-import { isGatherType, Gathering } from "../../Model/Guildwars/Gathering";
-import { GW_GATHERING, GW_MINIDUNGEONS, GW_PUZZLES, GW_HEARTS, GW_ACTIVITIES, GW_DAILY, NORMALIZE_DAILY } from "../../Guildwars/Dailies/enum/GW_DAILIES";
+import { CommandInteraction, MessageEmbed } from "discord.js";
+import { GW_DAILY, NORMALIZE_DAILY } from "../../Guildwars/Dailies/enum/GW_DAILIES";
 import EMOJIS from "./enum/EMOJIS";
-import { GW_API_URL } from "../../Guildwars/General/enum/GW_API_URL";
 
 export default class ViewDailies extends View {
     thumbnail: string = THUMBNAILS.DAILY_PVE;
@@ -49,7 +45,7 @@ export default class ViewDailies extends View {
         const dailyType = splitName[splitName.length - 1];
         const daily = GW_DAILY[NORMALIZE_DAILY[dailyType]];
 
-        // temporary solution, before adventures and bosses are added
+        // there should not be any type of daily that doesn't exist now, it's here just in case
         if (!daily){
             return `${EMOJIS['Guide']} No guide available`;
         }

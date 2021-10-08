@@ -7,6 +7,6 @@ import { DateTime } from "luxon";
  */
 export default class PingController implements DiscordControllerInterface {
     public handleInteraction = async (interaction: CommandInteraction): Promise<void> => {
-        interaction.reply(`${DateTime.now().setZone('UTC')}`);
+        interaction.reply('Pong');
     }
 }

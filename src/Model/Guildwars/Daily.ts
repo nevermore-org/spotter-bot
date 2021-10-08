@@ -1,9 +1,15 @@
-import { Location } from "./Gathering";
-
 export type DailyResponse = {
     id: number;
     name: string;
 }
+
+export interface Location {
+    waypoint: string,
+    description: string,
+    schedule?: string[]
+}
+
+export type DailyData = Record<string, Location>;
 
 export interface DailyFormat {
     endOfName: number,
