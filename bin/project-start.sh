@@ -4,7 +4,9 @@ function create_volumes(){
     MY_UID=$1
     MY_GID=$2
     docker volume create node-16
+    docker volume create spotter-mongo
     docker run --rm -it -v node-16:/node-16 busybox su -s /bin/sh -c "chown $MY_UID:$MY_GID /node-16"
+    docker run --rm -it -v spotter-mongo:/spotter-mongo busybox su -s /bin/sh -c "chown $MY_UID:$MY_GID /spotter-mongo"
 }
 
 function start_docker_compose(){
@@ -14,7 +16,7 @@ function start_docker_compose(){
     MY_GID=$4
 
     MY_UID="${MY_UID}" MY_GID="${MY_GID}" docker-compose down --remove-orphans
-    SERVICES=""
+    SERVICES="mongo"
     echo "Running docker-compose"
     docker image pull node:16
     if [ "$ONLY_ENV" -eq 1 ]; then

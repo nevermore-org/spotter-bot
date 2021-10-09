@@ -2,21 +2,11 @@ import { Intents, Interaction, Client } from 'discord.js';
 import loadDotenv from './Config/Config';
 import COMMANDS from './Discord/Command/Commands';
 import DiscordControllerInterface from './Model/Discord/DiscordControllerInterface';
-import express from "express";
-import path from 'path';
+import { setUpDB } from "./Mongo/Mongo";
 
 loadDotenv();
+setUpDB();
 
-/**
- * Serves contents in the public folder
- * With our current Heroku setup it's impossible to make this work (workers can't receive HTTP requests and web idles)
- */
-// const server = express();
-
-// server.use("/public", express.static(path.join(__dirname + '/../public')));
-
-// const port = process.env.PORT || 80;
-// server.listen(port);
 
 const client: Client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
