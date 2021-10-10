@@ -17,7 +17,8 @@ const EMOJIS: Record<string, string> = {
     'T4Fractal': "<:t4_fractal:894273333397446767>",
     'RecommendedFractal': "<:recommended_fractal:894273310941134878>",
     'Adventure': "<:adventure:894577528549830657>",
-    'Boss': "<:event_boss:894990815443714109>"
+    'Boss': "<:event_boss:894990815443714109>",
+    'Psna': "<:psna:896816322581774357>",
 }
 
 export default EMOJIS;

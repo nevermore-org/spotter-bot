@@ -1,5 +1,8 @@
 import { DateTime, Duration } from "luxon";
 
+// weekday is indexed from 1
+export const TODAY: number = DateTime.utc().weekday - 1; 
+
 
 /**
  * Returns closest boss timing from now as Duration object (of milisecs)
@@ -27,4 +30,15 @@ export function prettifyDuration(duration: Duration) {
     // dont want to show hours if there is less than hour remaining till the boss
     // there is a interesting bug which happens if the duration is longer than 2 hours - displays the time converted to minutes
     return duration.toFormat(`${duration.milliseconds > 3600000 ? "h 'hour(s) and '" : "" }m 'minute(s)'`);
+}
+
+// assumes both arrays are of the same length
+export function zipArraysAsMap(keyArray: string[], valueArray: string[]){
+    const map: Map<string, string> = new Map();
+
+    keyArray.forEach((key, index) => {
+        map.set(key, valueArray[index]);
+    });
+
+    return map;
 }

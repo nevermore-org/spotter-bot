@@ -2,7 +2,7 @@ import { DateTime, Duration } from "luxon";
 import EMOJIS from "../../../Discord/View/enum/EMOJIS";
 import { DailyFormat, Location } from "../../../Model/Guildwars/Daily";
 import { GW_API_URL } from "../../General/enum/GW_API_URL";
-import { calcBoss, prettifyDuration } from "../../../Util/util";
+import { calcBoss, prettifyDuration, TODAY } from "../../../Util/util";
 import GW_GATHERING from "./GW_GATHERING";
 import GW_PUZZLES from "./GW_PUZZLES";
 import GW_MINIDUNGEONS from "./GW_MINIDUNGEONS";
@@ -160,8 +160,8 @@ export const GW_DAILY: Record<string, DailyFormat> = {
         wantWaypoint: true,
         location: () => {return {waypoint:"Gate Hub Plaza Waypoint — [&BBEEAAA=]", description: " "}},
         prettyFormat: (location) => {
-            const today: number = DateTime.utc().weekday - 1; // weekday is indexed from 1
-            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['Activity']} ${GW_ACTIVITIES[today]}*`;
+            
+            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['Activity']} ${GW_ACTIVITIES[TODAY]}*`;
         }
     },
 
