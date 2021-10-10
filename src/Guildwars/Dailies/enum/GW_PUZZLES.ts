@@ -1,3 +1,4 @@
+import EMOJIS from "../../../Discord/View/enum/EMOJIS";
 import { DailyData } from "../../../Model/Guildwars/Daily";
 
 const GW_PUZZLES: DailyData = {
@@ -59,7 +60,7 @@ const GW_PUZZLES: DailyData = {
     },
     "Swashbuckler's_Cove": {
         waypoint: "Cornucopian Fields Waypoint — [&BOMAAAA=]",
-        description: "Roughly south of Stonefish Beach point of interest."
+        description: `Roughly south of ${EMOJIS['POI']}Stonefish Beach.`
     },
     "Not_So_Secret": {
         waypoint: "Broadhollow Waypoint — [&BOEAAAA=]",
@@ -95,7 +96,7 @@ const GW_PUZZLES: DailyData = {
     },
     "Spelunker's_Delve": {
         waypoint: "Astorea Waypoint — [&BDQBAAA=]",
-        description: "South of the point of interest Danador's Kennel. Follow the road south through the Jungle Trolls."
+        description: `South of ${EMOJIS['POI']}Danador's Kennel. Follow the road south through the Jungle Trolls.`
     },
     "Goemm's_Lab": {
         waypoint: "Cuatl Waypoint — [&BLIEAAA=]",
@@ -115,15 +116,15 @@ const GW_PUZZLES: DailyData = {
     },
     "Vizier's_Tower": {
         waypoint: "Lone Post Waypoint — [&BPcCAAA=]",
-        description: "On the island directly east of the waypoint. This ends with a hero challenge, a vista, and, if it's not on cooldown, an Orrian Chest that can be triggered to activate an event that spawns a Grand Chest."
+        description: "On the island directly east of the waypoint."
     },
     "Antre_of_Adjournment": {
         waypoint: "Valley of Lyss Waypoint — [&BKoCAAA=]",
-        description: "A tunnel in the water north of the bridge directly east of the Valley of Lyss Waypoint."
+        description: `A tunnel in the water north of the bridge directly east of the ${EMOJIS['Waypoint']}.`
     },
     "Scavenger's_Chasm": {
         waypoint: "Valley of Lyss Waypoint — [&BKoCAAA=]",
-        description: "South of the map near Hope Falls point of interest you can drop down to a Mithril Ore."
+        description: `South of the map near ${EMOJIS['POI']}Hope Falls, you can drop down to a Mithril Ore.`
     },
     "Buried_Archives": {
         waypoint: "Shipwreck Rock Waypoint — [&BOQGAAA=]",
@@ -151,7 +152,7 @@ const GW_PUZZLES: DailyData = {
     },
     "Coddler's_Cove": {
         waypoint: "Okarinoo Waypoint — [&BEYCAAA=]",
-        description: "Inside Mellagan's Grotto: the entrance starts directly south of the Okarinoo point of interest."
+        description: `Inside Mellagan's Grotto: the entrance starts directly south of the ${EMOJIS['POI']}Okarinoo`
     },
     "Only_Zuhl": {
         waypoint: "Foundation 86 Waypoint — [&BE4CAAA=]",
