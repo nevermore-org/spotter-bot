@@ -28,7 +28,7 @@ export default class ViewPactSupply extends View {
             let agentLocation = AGENT_LOCATIONS[index][TODAY];
             this.waypoints.push(agentLocation);
 
-            pactSupplyEmbed.addField(PACT_AGENTS[index], `${EMOJIS['Waypoint']} ${agentLocation}\n${EMOJIS['Psna']} ${item.name.slice(8)}`, true);
+            pactSupplyEmbed.addField(PACT_AGENTS[index], `${EMOJIS['Waypoint']} ${agentLocation}\n${EMOJIS['PSNA']} ${item.name.slice(8)}`, true);
         });
 
         pactSupplyEmbed.addField("Copy&Paste All Waypoints", this.waypoints.join(" "));
