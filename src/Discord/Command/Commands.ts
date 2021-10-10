@@ -3,6 +3,7 @@ import FractalsController from "../Controller/Guildwars/FractalsController";
 import InstabilitiesController from "../Controller/Guildwars/InstabilitiesController";
 import DailiesController from "../Controller/Guildwars/DailiesController"
 import PingController from "../Controller/PingController";
+import PactSupplyController from "../Controller/Guildwars/PactSupplyController";
 
 /**
  * # WIP #
@@ -18,7 +19,6 @@ const COMMANDS: Record<string, DiscordCommandInterface> = {
         description: "returns daily fractals",
         controller: new FractalsController()
     },
-    // deploying didnt work for some reason
     "instabilities": {
         description: "returns today's instabilities",
         controller: new InstabilitiesController()
@@ -26,6 +26,10 @@ const COMMANDS: Record<string, DiscordCommandInterface> = {
     "dailies": {
         description: "returns PvE, PvP and WvW dailies",
         controller: new DailiesController()
+    },
+    "psna": {
+        description: "returns Pact Supply Network Agents info",
+        controller: new PactSupplyController()
     }
 };
 
