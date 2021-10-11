@@ -6,6 +6,7 @@ import EMOJIS from "./enum/EMOJIS";
 import Item from "../../Model/Guildwars/BaseItem";
 import { AGENT_LOCATIONS, PACT_AGENTS } from "../../Guildwars/PactSupply/enum/GW_PSNA";
 import { TODAY } from "../../Util/util";
+import { DateTime } from "luxon";
 
 export default class ViewPactSupply extends View {
     thumbnail: string = THUMBNAILS.MERCHANT;
@@ -25,9 +26,12 @@ export default class ViewPactSupply extends View {
         const pactSupplyEmbed = this.createEmbed(EMBED_ID.PACT_SUPPLY, "Pact Supply Network Agents", this.thumbnail);
 
         items.forEach( (item, index) => {
-            let agentLocation = AGENT_LOCATIONS[index][TODAY];
+            // agent location reset daily at 8:00 AM UTC, while their recipes change at 0:00 UTC
+            // just so there is even less consistency
+            let agentLocation = AGENT_LOCATIONS[index][DateTime.utc().minus({hours: 8}).weekday - 1];
             this.waypoints.push(agentLocation);
 
+            // slice 8 cause we don't want/need the "Recipe:" part
             pactSupplyEmbed.addField(PACT_AGENTS[index], `${EMOJIS['Waypoint']} ${agentLocation}\n${EMOJIS['PSNA']} ${item.name.slice(8)}`, true);
         });
 
