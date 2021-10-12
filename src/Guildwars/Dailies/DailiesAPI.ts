@@ -10,8 +10,6 @@ export default class DailiesAPI {
      */
      public getDailies = async () => {
         const fullResponse = await axios.get(GW_API_URL.DAILY);
-        //console.log(fullResponse);
-
         const dailyAchievements: Achievement[] = fullResponse.data.pve;
 
         // want dailies for lvl 80s + access to all expansions        
@@ -23,6 +21,10 @@ export default class DailiesAPI {
 
         const dailyNames: string[] = dailyIdResponse.data.map((daily: DailyResponse) => daily.name)
 
-        return dailyNames;
+        // id 1852 == Big Spender
+        const dailyWvW = fullResponse.data.wvw;
+        const isBigSpenderToday: boolean = dailyWvW.some((daily:Achievement) => daily.id === 1852);
+
+        return dailyNames.concat(isBigSpenderToday ? ["Daily WvW Big Spender"] : []);
     }
 }

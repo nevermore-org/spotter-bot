@@ -4,6 +4,7 @@ import { EMBED_ID } from "./enum/EMBED_ID";
 import { CommandInteraction, MessageEmbed } from "discord.js";
 import { GW_DAILY, NORMALIZE_DAILY } from "../../Guildwars/Dailies/enum/GW_DAILIES";
 import EMOJIS from "./enum/EMOJIS";
+import { DateTime } from "luxon";
 
 export default class ViewDailies extends View {
     thumbnail: string = THUMBNAILS.DAILY_PVE;
@@ -19,13 +20,16 @@ export default class ViewDailies extends View {
      * @param fractals 
      * @param instabs 
      */
-    public setEmbeds = async (dailiesPve: string[]): Promise<ViewDailies> => {
-        const dailiesEmbed = this.createEmbed(EMBED_ID.DAILIES, "PvE Dailies", this.thumbnail);
+    public setEmbeds = async (dailiesToday: string[]): Promise<ViewDailies> => {
+        const dailiesEmbed = this.createEmbed(
+            EMBED_ID.DAILIES,
+            `Dailies for ${DateTime.utc().setLocale('fr').toLocaleString()}`,
+            this.thumbnail
+        );
 
-        for (let index = 0; index < dailiesPve.length; index++) {
-            const dailyName = dailiesPve[index];
-            dailiesEmbed.addField(dailyName, this.getFieldValue(dailyName));
-        }
+        dailiesToday.forEach( daily => {
+            dailiesEmbed.addField(daily, this.getFieldValue(daily));
+        })
 
         if (this.waypoints.length === 0) {
             this.waypoints.push("No waypoints to show");
