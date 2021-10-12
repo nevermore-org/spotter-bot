@@ -19,9 +19,9 @@ export default class DailiesController implements DiscordControllerInterface {
      * @param interaction 
      */
     public handleInteraction = async (interaction: CommandInteraction): Promise<void> => {
-        const dailiesPve: string[] = await this.dailiesAPI.getDailies();
+        const dailiesToday: string[] = await this.dailiesAPI.getDailies();
 
-        const view = new ViewDailies(dailiesPve);
+        const view = new ViewDailies(dailiesToday);
         view.sendFirstInteractionResponse(interaction);
     }
 }

@@ -58,7 +58,8 @@ export const NORMALIZE_DAILY: Record<string, string> = {
     "Master": "Boss",
     "Megadestroyer": "Boss",
     "Behemoth": "Boss",
-    "Shatterer": "Boss"
+    "Shatterer": "Boss",
+    "Spender": "Spender"
 }
 
 
@@ -190,6 +191,15 @@ export const GW_DAILY: Record<string, DailyFormat> = {
         location: () => {return EMPTY_LOCATION},
         prettyFormat: () => {
             return `${EMOJIS['MysticForge']} Easy-peasy.`;
+        }
+    },
+    // only WvW daily implemented so far, kinda the only one we really care for
+    "Spender": {
+        endOfName: 0,
+        wantWaypoint: false,
+        location: () => {return EMPTY_LOCATION},
+        prettyFormat: () => {
+            return `${EMOJIS['BadgeOfHonor']} Spend 25 Badges of Honor in World versus World.`;
         }
     },
 }

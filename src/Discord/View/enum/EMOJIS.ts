@@ -19,6 +19,7 @@ const EMOJIS: Record<string, string> = {
     'Adventure': "<:adventure:894577528549830657>",
     'Boss': "<:event_boss:894990815443714109>",
     'PSNA': "<:psna:896816322581774357>",
+    'BadgeOfHonor': "<:badge_of_honor:897531055303704587>",
 }
 
 export default EMOJIS;
