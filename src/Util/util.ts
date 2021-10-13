@@ -1,7 +1,9 @@
 import { DateTime, Duration } from "luxon";
 
 // weekday is indexed from 1
-export const TODAY: number = DateTime.utc().weekday - 1; 
+export const WEEKDAY: number = DateTime.utc().weekday - 1;
+/** e.g. "20/04/2017" */
+export const TODAY_STR: string = DateTime.utc().setLocale('en-gb').toLocaleString(); 
 
 
 /**

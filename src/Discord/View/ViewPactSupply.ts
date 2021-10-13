@@ -5,7 +5,6 @@ import { CommandInteraction, MessageEmbed } from "discord.js";
 import EMOJIS from "./enum/EMOJIS";
 import Item from "../../Model/Guildwars/BaseItem";
 import { AGENT_LOCATIONS, PACT_AGENTS } from "../../Guildwars/PactSupply/enum/GW_PSNA";
-import { TODAY } from "../../Util/util";
 import { DateTime } from "luxon";
 
 export default class ViewPactSupply extends View {

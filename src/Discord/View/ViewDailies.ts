@@ -4,7 +4,7 @@ import { EMBED_ID } from "./enum/EMBED_ID";
 import { CommandInteraction, MessageEmbed } from "discord.js";
 import { GW_DAILY, NORMALIZE_DAILY } from "../../Guildwars/Dailies/enum/GW_DAILIES";
 import EMOJIS from "./enum/EMOJIS";
-import { DateTime } from "luxon";
+import { TODAY_STR } from "../../Util/util";
 
 export default class ViewDailies extends View {
     thumbnail: string = THUMBNAILS.DAILY_PVE;
@@ -21,11 +21,7 @@ export default class ViewDailies extends View {
      * @param instabs 
      */
     public setEmbeds = async (dailiesToday: string[]): Promise<ViewDailies> => {
-        const dailiesEmbed = this.createEmbed(
-            EMBED_ID.DAILIES,
-            `Dailies for ${DateTime.utc().setLocale('fr').toLocaleString()}`,
-            this.thumbnail
-        );
+        const dailiesEmbed = this.createEmbed(EMBED_ID.DAILIES, `Dailies for ${TODAY_STR}`, this.thumbnail);
 
         dailiesToday.forEach( daily => {
             dailiesEmbed.addField(daily, this.getFieldValue(daily));

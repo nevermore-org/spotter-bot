@@ -1,24 +1,22 @@
-import { CommandInteraction, MessageActionRow, MessageEmbed } from "discord.js";
+import { CommandInteraction, EmbedField, MessageEmbed } from "discord.js";
 import Fractal from "../../Model/Guildwars/Fractal";
 import { THUMBNAILS } from "./enum/THUMBNAILS";
 import View from "./View";
 import { EMBED_ID } from "./enum/EMBED_ID";
-import EMOJIS from "./enum/EMOJIS";
+import { TODAY_STR } from "../../Util/util";
 
 export default class ViewFractals extends View {
     thumbnail: string = THUMBNAILS.FRACTAL;
+    dailyT4sIndices: number[] = [6, 10, 14];
 
     /**
      * Should set all properties that are displayable
-     * @param interaction 
-     * @param fractalsToday 
-     * @param fractalsTomorrow 
+     * @param fractals
+     * @param instabilities
      */
-    constructor(interaction: CommandInteraction, fractalsToday: Fractal[], fractalsTomorrow: Fractal[]) {
+    constructor(fractals: Fractal[], instabilities: string[][][]) {
         super();
-        this.setEmbeds(fractalsToday, fractalsTomorrow);
-        this.setButtons();
-        this.setButtonBehaviors(interaction);
+        this.setEmbeds(fractals, instabilities);
     }
 
     /**
@@ -27,74 +25,56 @@ export default class ViewFractals extends View {
      * @param fractalsTomorrow 
      * @returns 
      */
-    public setEmbeds = async (fractalsToday: Fractal[], fractalsTomorrow: Fractal[]): Promise<ViewFractals> => {
+    public setEmbeds = async (fractals: Fractal[], instabilities: string[][][]): Promise<ViewFractals> => {
         //Notice the first argument. It's an id that is being set to an embed.
         //Embeds in our context are basically the main "container" for all the properties. E. g. Buttons can't exist without an embed.
-        const fractalsTodayEmbed = this.createEmbed(EMBED_ID.FRACTAL_TODAY, "Fractal dailies - Today", this.thumbnail);
-        const fractalsTomorrowEmbed = this.createEmbed(EMBED_ID.FRACTAL_TOMORROW, "Fractal dailies - Tomorrow", this.thumbnail);
+        const fractalsEmbed = this.createEmbed(EMBED_ID.FRACTALS, `Fractals for ${TODAY_STR}`, this.thumbnail);
 
-        fractalsTodayEmbed.addFields(
-            { name: `${EMOJIS["T4Fractal"]} T4 Fractals`, value: `${fractalsToday[6].name}\n${fractalsToday[10].name}\n${fractalsToday[14].name}` },
-            { name: `${EMOJIS["RecommendedFractal"]} Recommended fractals`, value: `${fractalsToday[2].name}\n${fractalsToday[1].name}\n${fractalsToday[0].name}` },
-        )
+        instabilities.forEach((instability, loopIndex) => {
+            // 6, 10 and 14 are daily T4s Indices in fractals data array
+            let t4Index = [6, 10, 14][loopIndex];
+            fractalsEmbed.addField(`${fractals[t4Index].name.slice(13)}`, this.formatInstability(instability));
+        })
 
-        fractalsTomorrowEmbed.addFields(
-            { name: `${EMOJIS["T4Fractal"]} T4 Fractals`, value: `${fractalsTomorrow[6].name}\n${fractalsTomorrow[10].name}\n${fractalsTomorrow[14].name}` },
-            { name: `${EMOJIS["RecommendedFractal"]} Recommended fractals`, value: `${fractalsTomorrow[2].name}\n${fractalsTomorrow[1].name}\n${fractalsTomorrow[0].name}` },
-        )
+        // index of the fractal type which has two variants
+        // if there isn't any such type, returns -1
+        const index = instabilities.findIndex( instability => instability.length > 1);
+
+        if (index !== -1){
+            this.insertFieldAtIndex(fractalsEmbed, index, instabilities[index]);
+        }
+
+        // `${fractals[2].name}\n${fractals[1].name}\n${fractals[0].name}`
+        fractalsEmbed.addField(`Recommended fractals`, [2, 1, 0].map(index => fractals[index].name).join('\n'));
         return this
     }
-
+    
     /**
-     * Sets buttons for the whole view
+     * Returns formatted string of instabilities
+     * @param instability
+     * @param variantIndex - index of a variant for a given fractal
      */
-    public setButtons() {
-        this.addActionRowToEmbed(EMBED_ID.FRACTAL_TODAY).addButton(EMBED_ID.FRACTAL_TODAY, 0, "Switch to Tomorrow");
-        this.addActionRowToEmbed(EMBED_ID.FRACTAL_TOMORROW).addButton(EMBED_ID.FRACTAL_TOMORROW, 0, "Switch to Today", "SUCCESS");
+     public formatInstability(instab: string[][], variantIndex: number = 0) {
+        return [0, 1, 2].map(fractalIndex => instab[variantIndex][fractalIndex]).join('\n');
     }
-
+    
     /**
-     * Should define behavior for the buttons (only if any are present)
-     * Not sure if it should be split into two methods (active and inactive behavior). Time will tell.
-     * @param interaction 
-     * @returns 
-     */
-    public setButtonBehaviors = async (interaction: CommandInteraction): Promise<ViewFractals> => {
-        const collector = interaction.channel?.createMessageComponentCollector({ componentType: 'BUTTON', time: 30000 });
+     * Inserts two fields (one with padding, one with intab data) into the embed.fields array after the given index
+     * @param embed
+     * @param index
+     * @param instability
+     */    
+    private insertFieldAtIndex(embed: MessageEmbed, index: number, instability: string[][]){
+        const variantData = this.formatInstability(instability, 1);
+        const inlineField: EmbedField = {name:'\u180E', value: variantData, inline: true};
+        
+        // need one inline field of mongolianVowelSeparators for a proper formatting
+        const mongolianVowelSeparatorField: EmbedField = {name:'\u180E', value: '\u180E\n**OR**\n\u180E', inline: true}
 
-        const todayEmbed: MessageEmbed = this.getEmbed(EMBED_ID.FRACTAL_TODAY);
-        const tomorrowEmbed: MessageEmbed = this.getEmbed(EMBED_ID.FRACTAL_TOMORROW);
+        embed.fields.splice(index + 1, 0, inlineField);
+        embed.fields.splice(index + 1, 0, mongolianVowelSeparatorField);
 
-        const todayActionRow: MessageActionRow = this.getActionRow(EMBED_ID.FRACTAL_TODAY, 0);
-        const tomorrowActionRow: MessageActionRow = this.getActionRow(EMBED_ID.FRACTAL_TOMORROW, 0);
-
-        collector?.on("collect", async interaction => {
-            try {
-                if (interaction.customId === `${EMBED_ID.FRACTAL_TODAY}${this.seed}`) {
-                    await interaction.update({ embeds: [tomorrowEmbed], components: [tomorrowActionRow] })
-                }
-                else if (interaction.customId === `${EMBED_ID.FRACTAL_TOMORROW}${this.seed}`) {
-                    await interaction.update({ embeds: [todayEmbed], components: [todayActionRow] })
-                }
-            }
-            catch (err) {
-                console.log(err);
-            }
-        });
-
-        collector?.on("end", collected => {
-            const lastId = collected.last()?.customId;
-
-            todayActionRow.components[0].setDisabled(true);
-            tomorrowActionRow.components[0].setDisabled(true);
-
-            interaction.editReply({
-                embeds: [lastId?.includes(EMBED_ID.FRACTAL_TODAY) || collected.size === 0 ? todayEmbed : tomorrowEmbed],
-                components: [lastId?.includes(EMBED_ID.FRACTAL_TODAY) || collected.size === 0 ? todayActionRow : tomorrowActionRow]
-            });
-        });
-
-        return this;
+        embed.fields[index].inline = true;     
     }
 
     /**
@@ -103,8 +83,7 @@ export default class ViewFractals extends View {
      * @param interaction 
      */
     public sendFirstInteractionResponse(interaction: CommandInteraction) {
-        const todayEmbed: MessageEmbed = this.getEmbed(EMBED_ID.FRACTAL_TODAY);
-        const todayActionRow: MessageActionRow = this.getActionRow(EMBED_ID.FRACTAL_TODAY, 0);
-        interaction.reply({ embeds: [todayEmbed], components: [todayActionRow] })
+        const todayEmbed: MessageEmbed = this.getEmbed(EMBED_ID.FRACTALS);
+        interaction.reply({ embeds: [todayEmbed]})
     }
 }
