@@ -1,7 +1,5 @@
 import axios from "axios"
-import { Achievement } from "../../Model/Guildwars/Achievement";
 import Item from "../../Model/Guildwars/BaseItem";
-import { DailyResponse } from "../../Model/Guildwars/Daily";
 import { GW_API_URL } from "../General/enum/GW_API_URL";
 
 

@@ -11,8 +11,8 @@ export default class FractalAPI {
     /**
      * Returns daily fractals (t4 + recs) for either today or tomorrow
      */
-    public getDailyFractals = async (today: boolean) => {
-        const dailyResponse = await axios.get(today ? GW_API_URL.DAILY : GW_API_URL.TOMORROW);
+    public getDailyFractals = async () => {
+        const dailyResponse = await axios.get(GW_API_URL.DAILY);
         //GW2 API actually returns daily fractals ACHIEVEMENTS rather than fractals themselves
         const fractalAchievements: Achievement[] = dailyResponse.data.fractals;
 
@@ -61,6 +61,7 @@ export default class FractalAPI {
      */
     public getDailyT4Levels(fractals: Fractal[]) {
         // don't need the "Daily Tier 4" part
+        // hardcoded T4s' positions in array (6, 10, 14)
         const names: string[] = [fractals[6].name, fractals[10].name, fractals[14].name].map(name => name.slice(13));
         const levels = names.map(name => this.getLevelsByName(name));
 

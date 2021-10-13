@@ -1,6 +1,5 @@
 import DiscordCommandInterface from "../../Model/Discord/DiscordCommandInterface";
 import FractalsController from "../Controller/Guildwars/FractalsController";
-import InstabilitiesController from "../Controller/Guildwars/InstabilitiesController";
 import DailiesController from "../Controller/Guildwars/DailiesController"
 import PingController from "../Controller/PingController";
 import PactSupplyController from "../Controller/Guildwars/PactSupplyController";
@@ -18,10 +17,6 @@ const COMMANDS: Record<string, DiscordCommandInterface> = {
     "fractals": {
         description: "returns daily fractals",
         controller: new FractalsController()
-    },
-    "instabilities": {
-        description: "returns today's instabilities",
-        controller: new InstabilitiesController()
     },
     "dailies": {
         description: "returns PvE, PvP and WvW dailies",
