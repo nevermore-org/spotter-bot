@@ -13,7 +13,7 @@ const GW_GATHERING: Gathering = {
         'Miner': { waypoint: "Cereboth Waypoint — [&BBIAAAA=]", description: "Rich node, either Iron or Silver, in the cave at the bottom of the waterfall to the north" },
         'Viewer': { waypoint: "Beetletun Waypoint — [&BPoAAAA=]", description: "To the southeast" },
     },
-    'Maguuma': {
+    'Maguuma_Jungle': {
         'Forager': { waypoint: "Akk Wilds Waypoint — [&BEIAAAA=]", description: "To the North is a platform with a farm" },
         'Lumberer': { waypoint: "Broken Arrow Waypoint — [&BNACAAA=]", description: "Usually a fair bunch of trees between this waypoint and Ashen Waypoint — [&BM4CAAA=]." },
         'Miner': { waypoint: "Gallowfields Waypoint — [&BGMAAAA=]", description: "Rich Iron to the west, halfway down the canyon" },
