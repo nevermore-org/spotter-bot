@@ -24,8 +24,8 @@ import { RecurrenceRule, scheduleJob } from "node-schedule";
         // problem with cron is it doesn't take timezones into account
         this.cronRule = new RecurrenceRule();
         this.cronRule.tz = 'Etc/UTC';
-        this.cronRule.hour = 17;
-        this.cronRule.minute = 38;
+        this.cronRule.hour = 0;
+        this.cronRule.minute = 10;
         
         return this;        
     }
