@@ -30,22 +30,26 @@ export default class ViewFractals extends View {
         //Notice the first argument. It's an id that is being set to an embed.
         //Embeds in our context are basically the main "container" for all the properties. E. g. Buttons can't exist without an embed.
         const fractalsEmbed = this.createEmbed(EMBED_ID.FRACTALS, `Fractals for ${todayStr}`, this.thumbnail);
+        let offset = 0;
 
         instabilities.forEach((instability, loopIndex) => {
             // 6, 10 and 14 are daily T4s Indices in fractals data array
             let t4Index = [6, 10, 14][loopIndex];
             fractalsEmbed.addField(`${fractals[t4Index].name.slice(13)}`, this.formatInstability(instability));
+
+            // if the fractal type has two variants, insert one padding field and one with the second variant
+            if (instability.length > 1){
+                fractalsEmbed.addField('\u180E', '\u180E\n**OR**\n\u180E', true);
+                fractalsEmbed.addField('\u180E', this.formatInstability(instability, 1), true);
+                
+                fractalsEmbed.fields[offset].inline = true;
+            }
+            
+            // number of fields for each row we have - 3 if there are two data fields and one padding
+            offset += instability.length > 1 ? 3 : 1;
         })
 
-        // index of the fractal type which has two variants
-        // if there isn't any such type, returns -1
-        const index = instabilities.findIndex( instability => instability.length > 1);
-
-        if (index !== -1){
-            this.insertFieldAtIndex(fractalsEmbed, index, instabilities[index]);
-        }
-
-        // `${fractals[2].name}\n${fractals[1].name}\n${fractals[0].name}`
+        // [2, 1, 0] are indices for rec. fractals in fractals data array
         fractalsEmbed.addField(`Recommended fractals`, [2, 1, 0].map(index => fractals[index].name).join('\n'));
         return this
     }
@@ -57,25 +61,6 @@ export default class ViewFractals extends View {
      */
      public formatInstability(instab: string[][], variantIndex: number = 0) {
         return [0, 1, 2].map(fractalIndex => instab[variantIndex][fractalIndex]).join('\n');
-    }
-    
-    /**
-     * Inserts two fields (one with padding, one with intab data) into the embed.fields array after the given index
-     * @param embed
-     * @param index
-     * @param instability
-     */    
-    private insertFieldAtIndex(embed: MessageEmbed, index: number, instability: string[][]){
-        const variantData = this.formatInstability(instability, 1);
-        const inlineField: EmbedField = {name:'\u180E', value: variantData, inline: true};
-        
-        // need one inline field of mongolianVowelSeparators for a proper formatting
-        const mongolianVowelSeparatorField: EmbedField = {name:'\u180E', value: '\u180E\n**OR**\n\u180E', inline: true}
-
-        embed.fields.splice(index + 1, 0, inlineField);
-        embed.fields.splice(index + 1, 0, mongolianVowelSeparatorField);
-
-        embed.fields[index].inline = true;     
     }
 
     /**
