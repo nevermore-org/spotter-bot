@@ -3,7 +3,7 @@ import Fractal from "../../Model/Guildwars/Fractal";
 import { THUMBNAILS } from "./enum/THUMBNAILS";
 import View from "./View";
 import { EMBED_ID } from "./enum/EMBED_ID";
-import { TODAY_STR } from "../../Util/util";
+import { DateTime } from "luxon";
 
 export default class ViewFractals extends View {
     thumbnail: string = THUMBNAILS.FRACTAL;
@@ -26,9 +26,10 @@ export default class ViewFractals extends View {
      * @returns 
      */
     public setEmbeds = async (fractals: Fractal[], instabilities: string[][][]): Promise<ViewFractals> => {
+        const todayStr = DateTime.utc().setLocale('en-gb').toLocaleString();
         //Notice the first argument. It's an id that is being set to an embed.
         //Embeds in our context are basically the main "container" for all the properties. E. g. Buttons can't exist without an embed.
-        const fractalsEmbed = this.createEmbed(EMBED_ID.FRACTALS, `Fractals for ${TODAY_STR}`, this.thumbnail);
+        const fractalsEmbed = this.createEmbed(EMBED_ID.FRACTALS, `Fractals for ${todayStr}`, this.thumbnail);
 
         instabilities.forEach((instability, loopIndex) => {
             // 6, 10 and 14 are daily T4s Indices in fractals data array
