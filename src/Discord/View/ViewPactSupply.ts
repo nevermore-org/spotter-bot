@@ -22,7 +22,8 @@ export default class ViewPactSupply extends View {
      * @param instabs 
      */
     public setEmbeds = async (items: Item[]): Promise<ViewPactSupply> => {
-        const pactSupplyEmbed = this.createEmbed(EMBED_ID.PACT_SUPPLY, "Pact Supply Network Agents", this.thumbnail);
+        const todayStr = DateTime.utc().setLocale('en-gb').toLocaleString();
+        const pactSupplyEmbed = this.createEmbed(EMBED_ID.PACT_SUPPLY, `Pact Supply Network Agents ${todayStr}`, this.thumbnail);
 
         items.forEach( (item, index) => {
             // agent location reset daily at 8:00 AM UTC, while their recipes change at 0:00 UTC
