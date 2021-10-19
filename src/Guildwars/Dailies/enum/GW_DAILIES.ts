@@ -9,6 +9,7 @@ import GW_MINIDUNGEONS from "./GW_MINIDUNGEONS";
 import GW_DUNGEONS from "./GW_DUNGEONS";
 import GW_ADVENTURES from "./GW_ADVENTURES";
 import GW_BOSSES from "./GW_BOSSES";
+import GW_VISTAS from "./GW_VISTAS";
 
 const EMPTY_LOCATION: Location = {waypoint: " ", description: " "};
 
@@ -94,7 +95,7 @@ export const GW_DAILY: Record<string, DailyFormat> = {
     "Viewer": {
         endOfName: -2,
         wantWaypoint: true,
-        location: (regionName) => {return GW_GATHERING[regionName]["Viewer"]},
+        location: (regionName) => {return GW_VISTAS[regionName]},
         prettyFormat: (location) => {
             return `${EMOJIS["Waypoint"]} ${location.waypoint}\n ${EMOJIS['Viewer']} *${location.description}*`
         }
