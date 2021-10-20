@@ -1,6 +1,7 @@
+import DiscordCommandData from "./DiscordCommandData";
 import DiscordControllerInterface from "./DiscordControllerInterface";
 
 export default interface DiscordCommandInterface {
-    readonly description: string;
+    readonly data: DiscordCommandData,
     readonly controller: DiscordControllerInterface;
 }
