@@ -2,7 +2,7 @@ import { Intents, Interaction, Client, Guild } from 'discord.js';
 import loadDotenv from './Config/Config';
 import COMMANDS from './Discord/Command/Commands';
 import DailiesWebhook from './Discord/Webhook/DailiesWebhook';
-import DiscordControllerInterface from './Model/Discord/DiscordControllerInterface';
+import DiscordCommandInterface from './Model/Discord/DiscordCommandInterface';
 import { setUpDB } from "./Mongo/Mongo";
 
 loadDotenv();
@@ -27,10 +27,10 @@ client.on("interactionCreate", async (interaction: Interaction) => {
 
     const { commandName } = interaction;
 
-    const controller: DiscordControllerInterface = COMMANDS[commandName].controller;
+    const command: DiscordCommandInterface | undefined = COMMANDS.find( cmd => cmd.data.name === commandName);
 
-    if (controller) {
-        await controller.handleInteraction(interaction);
+    if (command) {
+        await command.controller.handleInteraction(interaction);
     }
     else {
         await interaction.reply("No such command exists");

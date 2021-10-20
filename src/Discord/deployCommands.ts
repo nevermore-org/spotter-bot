@@ -17,7 +17,7 @@ async function deployCommands(token: string, clientId: string, guildId: string =
     try {
         console.log('Started refreshing application (/) commands.');
 
-        const arrayOfCommands = getArrayOfCommandsForSlashDeploy();
+        const arrayOfCommands = COMMANDS.map(command => command.data);
 
         if (guildId)
             await rest.put(
@@ -35,18 +35,6 @@ async function deployCommands(token: string, clientId: string, guildId: string =
     } catch (error) {
         console.error(error);
     }
-}
-
-/**
- * Basically omits unnecessary properties from COMMANDS array
- */
-function getArrayOfCommandsForSlashDeploy() {
-    const arrayOfCommands = [];
-    for (let key in COMMANDS) {
-        arrayOfCommands.push({ name: key, description: COMMANDS[key].description });
-    }
-
-    return arrayOfCommands;
 }
 
 loadDotenv();
