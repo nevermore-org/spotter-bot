@@ -22,7 +22,17 @@ export const COMMANDS: DiscordCommandInterface[] = [
         data: {
             name: 'fractals',
             description: "returns daily fractals",
-            options: []
+            options: [
+            {
+                name:'category', 
+                description: "What view do you want?", 
+                type: 3, required: true, 
+                choices: [
+                    {name: 'T4s + Recs', value:'daily'}, 
+                    {name: 'Only CMs', value: 'cm'}
+                ]
+            }
+            ]
         },
         controller: new FractalsController(),
     },

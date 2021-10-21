@@ -18,8 +18,7 @@ export default class ViewPactSupply extends View {
 
     /**
      * Sets embeds
-     * @param fractals 
-     * @param instabs 
+     * @param items
      */
     public setEmbeds = async (items: Item[]): Promise<ViewPactSupply> => {
         const todayStr = DateTime.utc().setLocale('en-gb').toLocaleString();
