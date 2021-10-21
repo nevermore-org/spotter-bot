@@ -1,7 +1,7 @@
 import { Intents, Interaction, Client, Guild } from 'discord.js';
 import loadDotenv from './Config/Config';
 import COMMANDS from './Discord/Command/Commands';
-import DailiesWebhook from './Discord/Webhook/DailiesWebhook';
+import { WEBHOOKS } from './Discord/Webhook/enum/WEBHOOKS';
 import DiscordCommandInterface from './Model/Discord/DiscordCommandInterface';
 import { setUpDB } from "./Mongo/Mongo";
 
@@ -15,8 +15,12 @@ client.once('ready', () => {
     client.user?.setActivity("Guild Wars 2");
     console.log(`Logged in as ${client?.user?.tag}`);
 
-    if (!process.env.WEBHOOK_URL) return;
-    new DailiesWebhook(process.env.WEBHOOK_URL).cronSchedule();
+    // schedule all webhooks
+    WEBHOOKS.forEach( webhook => {
+        if (webhook.url) {
+            new webhook.manager(webhook.url).cronSchedule();
+        }
+    });
 });
 
 /**
