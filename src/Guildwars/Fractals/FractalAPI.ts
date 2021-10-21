@@ -73,7 +73,7 @@ export default class FractalAPI {
      * Converts array of daily fractals to their matching array of instabilities
      * @param levels
      */
-    public getDailyInstabilities(levels: BaseFractal[][]) {
+    public getInstabilities(levels: BaseFractal[][]) {
         const today = DateTime.utc().ordinal;
 
         // replaces each level with list of instability indices; then replaces those with their names
