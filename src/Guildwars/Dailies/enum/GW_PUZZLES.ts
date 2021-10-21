@@ -40,7 +40,7 @@ const GW_PUZZLES: DailyData = {
     },
     "Troll's_Revenge": {
         waypoint: "Fort Marriner Waypoint — [&BDAEAAA=]",
-        description: "Start off at the Fort Marriner Waypoint, run along the bridge until you reach the last archway on the right side. The jumping puzzle starts after jumping over the barrels to the wooden planks on the left."
+        description: "Run along the bridge until you reach the last archway on the right side. Jump over the barrels to the wooden planks on the left."
     },
     "Urmaug's_Secret": {
         waypoint: "Guild Bluff Waypoint — [&BA0EAAA=]",
@@ -152,7 +152,7 @@ const GW_PUZZLES: DailyData = {
     },
     "Coddler's_Cove": {
         waypoint: "Okarinoo Waypoint — [&BEYCAAA=]",
-        description: `Inside Mellagan's Grotto: the entrance starts directly south of the ${EMOJIS['POI']}Okarinoo`
+        description: `Inside Mellagan's Grotto: the entrance starts directly south of the ${EMOJIS['POI']}Okarinoo.`
     },
     "Only_Zuhl": {
         waypoint: "Foundation 86 Waypoint — [&BE4CAAA=]",
@@ -162,6 +162,10 @@ const GW_PUZZLES: DailyData = {
         waypoint: "Ice Floe Waypoint — [&BH4CAAA=]",
         description: "East of the waypoint, starting underwater."
     },
+    "Crash_Site":{
+        waypoint: "Dry Top Entry Waypoint — [&BIAHAAA=]",
+        description: `Directly west of ${EMOJIS['POI']}Ship's Fall.`
+    }
 }
 
 export default GW_PUZZLES;
