@@ -3,5 +3,6 @@ export enum THUMBNAILS {
     FRACTAL = "https://render.guildwars2.com/file/4A5834E40CDC6A0C44085B1F697565002D71CD47/1228226.png",
     INSTABILITY = "https://wiki.guildwars2.com/images/6/6f/Mists_Convergence_Overhead.png",
     DAILY_PVE = "https://wiki.guildwars2.com/images/1/14/Daily_Achievement.png",
-    MERCHANT = "https://i.ibb.co/SNtQs79/Merchant.png"
+    MERCHANT = "https://i.ibb.co/SNtQs79/Merchant.png",
+    GUILD_EMBLEM = "https://emblem.werdes.net/emblem/9EED60FC-9707-EC11-81B7-C3B1C0E42B51"
 }

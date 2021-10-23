@@ -3,6 +3,7 @@ import DailiesController from "../Controller/Guildwars/DailiesController"
 import PingController from "../Controller/PingController";
 import PactSupplyController from "../Controller/Guildwars/PactSupplyController";
 import DiscordCommandInterface from "../../Model/Discord/DiscordCommandInterface";
+import GuildStashController from "../Controller/Guildwars/GuildStashController";
 
 /*
 Made like this, so discord api can chomp happily on the whole data object.
@@ -51,7 +52,22 @@ export const COMMANDS: DiscordCommandInterface[] = [
             options: []
         },
         controller: new PactSupplyController(),
-    }
+    },
+    {
+        data: {
+            name: 'stash',
+            description: "returns Guild Stash for Daddy Dhuum Squad",
+            options: [
+                {
+                    name: 'dyes',
+                    description: 'Barvičkyyyy',
+                    type: 1
+                }
+            ]
+        },
+        controller: new GuildStashController(),
+    },
+
 ]
 
 // example of contents of options array - gives the person who invoked the cmd a required choice
