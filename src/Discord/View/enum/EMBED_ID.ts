@@ -4,5 +4,6 @@
 export enum EMBED_ID {
     FRACTALS = "fractals",
     DAILIES = "dailies",
-    PACT_SUPPLY = "pact-supply"
+    PACT_SUPPLY = "pact-supply",
+    GUILD_STASH = "guild-stash"
 }

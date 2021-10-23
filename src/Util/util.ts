@@ -1,4 +1,5 @@
 import { DateTime, Duration } from "luxon";
+import Item from "../Model/Guildwars/Item";
 
 // weekday is indexed from 1
 export const WEEKDAY: number = DateTime.utc().weekday - 1;
@@ -41,4 +42,31 @@ export function zipArraysAsMap(keyArray: string[], valueArray: string[]){
     });
 
     return map;
+}
+
+/**
+ * Returns argument string in title case
+ * e.g. random words => Random Words
+ */
+export const titleCase = (str: string) => {
+    return str
+        .toLowerCase()
+        .split(' ')
+        .map(word => word[0].toUpperCase() + word.slice(1))
+        .join(' ');
+};
+
+/**
+ * Sort items based on their rarities
+ * Returns a map with rarity-names as keys and matching items as elements of the value/array
+ */
+export function createRarityItemMap(items: Item[], rarities: string[]){
+    var itemMap: Map<string, Item[]> = new Map();
+    rarities.forEach( rarity => itemMap.set(rarity, []));
+
+    items.forEach( item => {
+        itemMap.get(item.rarity)?.push(item);
+    })
+
+    return itemMap;
 }

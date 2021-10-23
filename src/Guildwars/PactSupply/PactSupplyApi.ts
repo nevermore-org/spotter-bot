@@ -1,5 +1,5 @@
 import axios from "axios"
-import Item from "../../Model/Guildwars/BaseItem";
+import BaseItem from "../../Model/Guildwars/BaseItem";
 import { GW_API_URL } from "../General/enum/GW_API_URL";
 
 
@@ -16,7 +16,7 @@ export default class PactSupplyAPI {
         // itemsReg contains the capturing groups in an array - slice(1, 7) are our groups we care about
         const itemsResponse = await axios.get(`${GW_API_URL.ITEMS}?ids=${itemsReg?.slice(1, 7)}`);
 
-        const itemsData: Item[] = itemsResponse.data;
+        const itemsData: BaseItem[] = itemsResponse.data;
 
         return itemsData;
     }
