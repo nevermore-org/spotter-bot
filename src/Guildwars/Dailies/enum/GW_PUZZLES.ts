@@ -54,7 +54,7 @@ const GW_PUZZLES: DailyData = {
         waypoint: "Godslost Waypoint — [&BPwAAAA=]",
         description: "In the southeast."
     },
-    "The_Collapsed_Observatory": {
+    "Collapsed_Observatory": {
         waypoint: "Cereboth Waypoint — [&BBIAAAA=]",
         description: "In the southeast."
     },
@@ -162,7 +162,7 @@ const GW_PUZZLES: DailyData = {
         waypoint: "Ice Floe Waypoint — [&BH4CAAA=]",
         description: "East of the waypoint, starting underwater."
     },
-    "Crash_Site":{
+    "Crash_Site": {
         waypoint: "Dry Top Entry Waypoint — [&BIAHAAA=]",
         description: `Directly west of ${EMOJIS['POI']}Ship's Fall.`
     }

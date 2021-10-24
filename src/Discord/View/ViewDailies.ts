@@ -24,7 +24,7 @@ export default class ViewDailies extends View {
         const todayStr = DateTime.utc().setLocale('en-gb').toLocaleString();
         const dailiesEmbed = this.createEmbed(EMBED_ID.DAILIES, `Dailies for ${todayStr}`, this.thumbnail);
 
-        dailiesToday.forEach( daily => {
+        dailiesToday.forEach(daily => {
             dailiesEmbed.addField(daily, this.getFieldValue(daily));
         })
 
@@ -43,11 +43,14 @@ export default class ViewDailies extends View {
 
         // it should be possible to always determine the type of a daily last word in the name
         // turns out it is possible for *most* types of dailies
+
         const dailyType = splitName[splitName.length - 1];
         const daily = GW_DAILY[NORMALIZE_DAILY[dailyType]];
 
+
+
         // there should not be any type of daily that doesn't exist now, it's here just in case
-        if (!daily){
+        if (!daily) {
             return `${EMOJIS['Guide']} No guide available`;
         }
 
@@ -57,7 +60,7 @@ export default class ViewDailies extends View {
         const dailyName = slicedName.join("_");
         const location = daily.location(dailyName, dailyType);
 
-        if (daily.wantWaypoint){
+        if (daily.wantWaypoint) {
             this.waypoints.push(`${location.waypoint}`);
         }
 
