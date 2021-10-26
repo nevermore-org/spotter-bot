@@ -1,0 +1,4018 @@
+[
+	{
+		"id": 500,
+		"name": "Daily Mystic Forger",
+		"description": "Zommoros is pleased.",
+		"requirement": "Use the Mystic Forge in the Mystic Plaza in Lion's Arch to create new items.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68129,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1837,
+		"name": "Daily Ascalon Lumberer",
+		"description": "Fueling the engines of the economy.",
+		"requirement": "Gathering raw materials by harvesting trees in the following Ascalon maps: Plains of Ashford, Diessa Plateau, Fields of Ruin, Blazeridge Steppes, Iron Marches, and Fireheart Rise.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 10,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68135,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1838,
+		"name": "Daily Ascalon Forager",
+		"description": "Fueling the engines of the economy.",
+		"requirement": "Gather raw materials by foraging plants in the following Ascalon maps: Plains of Ashford, Diessa Plateau, Fields of Ruin, Blazeridge Steppes, Iron Marches, and Fireheart Rise.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68138,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1839,
+		"name": "Daily Kryta Vista Viewer",
+		"description": "Always on the lookout for a good view.",
+		"requirement": "View a vista in one of the following Kryta maps: Queensdale, Kessex Hills, Gendarran Fields, Harathi Hinterlands, Bloodtide Coast, and Southsun Cove.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68115,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1872,
+		"name": "Daily The Long Way Around Minidungeon",
+		"description": "",
+		"requirement": "Complete the The Long Way Around minidungeon in Straits of Devastation.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68164,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1873,
+		"name": "Daily Forgotten Stream Minidungeon",
+		"description": "",
+		"requirement": "Complete the Forgotten Stream minidungeon in Cursed Shore.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68164,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1874,
+		"name": "Daily Goff's Loot Minidungeon",
+		"description": "",
+		"requirement": "Complete the Goff's Loot minidungeon in Kessex Hills.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68164,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1875,
+		"name": "Daily Tears of Itlaocol Minidungeon",
+		"description": "",
+		"requirement": "Complete the Tears of Itlaocol minidungeon in Caledon Forest.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68164,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1876,
+		"name": "Daily Rebel's Seclusion Minidungeon",
+		"description": "",
+		"requirement": "Complete the Rebel's Seclusion minidungeon in Fireheart Rise.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68164,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1877,
+		"name": "Daily Windy Cave Treasure Minidungeon",
+		"description": "",
+		"requirement": "Complete the Windy Cave Treasure minidungeon in Lornar's Pass.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68164,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1878,
+		"name": "Daily Magellan's Memento Minidungeon",
+		"description": "",
+		"requirement": "Complete the Magellan's Memento minidungeon in Frostgorge Sound.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68164,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1879,
+		"name": "Daily Ship of Sorrows Minidungeon",
+		"description": "",
+		"requirement": "Complete the Ship of Sorrows minidungeon in Straits of Devastation.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68164,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1880,
+		"name": "Daily Grounded Minidungeon",
+		"description": "",
+		"requirement": "Complete the Grounded minidungeon in Cursed Shore.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68164,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1881,
+		"name": "Daily Don't Touch the Shiny Minidungeon",
+		"description": "",
+		"requirement": "Complete the Don't Touch the Shiny minidungeon in Caledon Forest.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68164,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1882,
+		"name": "Daily Bad Neighborhood Minidungeon",
+		"description": "",
+		"requirement": "Complete the Bad Neighborhood minidungeon in Queensdale.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68164,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1883,
+		"name": "Daily Forsaken Fortune Minidungeon",
+		"description": "",
+		"requirement": "Complete the Forsaken Fortune minidungeon in Dredgehaunt Cliffs.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68164,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1884,
+		"name": "Daily Vexa's Lab Minidungeon",
+		"description": "",
+		"requirement": "Complete the Vexa's Lab minidungeon in Fireheart Rise.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68164,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1885,
+		"name": "Daily Craze's Folly Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Craze's Folly jumping puzzle in Blazeridge Steppes.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1886,
+		"name": "Daily Chaos Crystal Cavern Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Chaos Crystal Cavern jumping puzzle in Iron Marches.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1887,
+		"name": "Daily Portmatt's Lab Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Professor Portmatt's Lab jumping puzzle in Bloodtide Coast.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1888,
+		"name": "Daily Goemm's Lab Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Goemm's Lab jumping puzzle in Metrica Province.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1889,
+		"name": "Daily Urmaug's Secret Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Urmaug's Secret jumping puzzle in Lion's Arch.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1890,
+		"name": "Daily Branded Mine Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Branded Mine jumping puzzle in Fields of Ruin.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1891,
+		"name": "Daily Behem Gauntlet Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Behem Gauntlet jumping puzzle in Blazeridge Steppes.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1892,
+		"name": "Daily Collapsed Observatory Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Collapsed Observatory jumping puzzle in Kessex Hills.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1893,
+		"name": "Daily Antre of Adjournment Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Antre of Adjournment jumping puzzle in Malchor's Leap.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1894,
+		"name": "Daily Skipping Stones Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Skipping Stones jumping puzzle in Southsun Cove.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1895,
+		"name": "Daily Shaman's Rookery Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Shaman's Rookery jumping puzzle in Wayfarer Foothills.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1896,
+		"name": "Daily Shattered Ice Ruins Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Shattered Ice Ruins jumping puzzle in Frostgorge Sound.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1897,
+		"name": "Daily Scavenger's Chasm Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Scavenger's Chasm jumping puzzle in Malchor's Leap.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1898,
+		"name": "Daily Spelunker's Delve Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Spelunker's Delve jumping puzzle in Caledon Forest.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1899,
+		"name": "Daily Swashbuckler's Cove Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Swashbuckler's Cove jumping puzzle in Gendarran Fields.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1900,
+		"name": "Daily Only Zuhl Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Only Zuhl jumping puzzle in Timberline Falls.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1901,
+		"name": "Daily Hidden Garden Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Hidden Garden jumping puzzle in Mount Maelstrom.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1902,
+		"name": "Daily Loreclaw Expanse Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Loreclaw Expanse jumping puzzle in Plains of Ashford.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1904,
+		"name": "Daily King Jalis's Refuge Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the King Jalis's Refuge jumping puzzle in Snowden Drifts.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1905,
+		"name": "Daily Griffonrook Run Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Griffonrook Run jumping puzzle in Lornar's Pass.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1906,
+		"name": "Daily Grendich Gamble Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Grendich Gamble jumping puzzle in Diessa Plateau.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1907,
+		"name": "Daily Conundrum Cubed Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Conundrum Cubed jumping puzzle in Mount Maelstrom.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1908,
+		"name": "Daily Coddler's Cove Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Coddler's Cove jumping puzzle in Timberline Falls.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1909,
+		"name": "Daily Hexfoundry Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Hexfoundry Unhinged jumping puzzle in Sparkfly Fen.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1910,
+		"name": "Daily Fawcett's Bounty Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Fawcett's Bounty jumping puzzle in Harathi Hinterlands.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1912,
+		"name": "Daily Spekks's Lab Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Spekks's Laboratory jumping puzzle in Caledon Forest.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1913,
+		"name": "Daily Dark Reverie Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Dark Reverie jumping puzzle in Caledon Forest.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1914,
+		"name": "Daily Crimson Plateau Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Crimson Plateau jumping puzzle in Diessa Plateau.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1915,
+		"name": "Daily Tribulation Caverns Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Tribulation Caverns jumping puzzle in Dredgehaunt Cliffs.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1916,
+		"name": "Daily Tribulation Rift Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Tribulation Rift Scaffolding jumping puzzle in Dredgehaunt Cliffs.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1917,
+		"name": "Daily Under New Management Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Under New Management jumping puzzle in Southsun Cove.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1918,
+		"name": "Daily Vizier's Tower Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Vizier's Tower jumping puzzle in Straits of Devastation.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1919,
+		"name": "Daily Buried Archives Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Buried Archives jumping puzzle in Cursed Shore.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1920,
+		"name": "Daily Wall Breach Blitz Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Wall Breach Blitz jumping puzzle in Diessa Plateau.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1923,
+		"name": "Daily Weyandt's Revenge Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Weyandt's Revenge jumping puzzle in Lion's Arch.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1924,
+		"name": "Daily Crash Site Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Prospect Valley Crash Site jumping puzzle in Dry Top.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1926,
+		"name": "Daily Demongrub Pits Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Demongrub Pits jumping puzzle in Queensdale.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1927,
+		"name": "Daily Pig Iron Quarry Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Pig Iron Quarry jumping puzzle in Fireheart Rise.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1929,
+		"name": "Daily Morgan's Leap Jumping Puzzle",
+		"description": "",
+		"requirement": "Complete the Morgan's Leap jumping puzzle in Caledon Forest.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68162,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1930,
+		"name": "Daily Fire Elemental",
+		"description": "",
+		"requirement": "Defeat the Fire Elemental of the Thaumanova Reactor in Metrica Province.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68160,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1931,
+		"name": "Daily Maguuma Vista Viewer",
+		"description": "Always on the lookout for a good view.",
+		"requirement": "View a vista in one of the following Maguuma Jungle maps: Caledon Forest, Metrica Province, Brisban Wildlands, Sparkfly Fen, and Mount Maelstrom.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68115,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1932,
+		"name": "Daily Orr Vista Viewer",
+		"description": "Always on the lookout for a good view.",
+		"requirement": "View a vista in one of the following Orr maps: Straits of Devastation, Malchor's Leap, and Cursed Shore.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68115,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1933,
+		"name": "Daily Great Jungle Wurm",
+		"description": "",
+		"requirement": "Defeat the Great Jungle Wurm in Wychmire Swamp of Caledon Forest.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68160,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1934,
+		"name": "Daily Inquest Golem Mark II",
+		"description": "",
+		"requirement": "Defeat the Inquest Golem Mark II on the Whitland Flats in Mount Maelstrom.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68160,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1935,
+		"name": "Daily Megadestroyer",
+		"description": "",
+		"requirement": "Defeat the Megadestroyer in the heart of the volcano in Mount Maelstrom.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68160,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1936,
+		"name": "Daily Shiverpeaks Vista Viewer",
+		"description": "Always on the lookout for a good view.",
+		"requirement": "View a vista in one of the following Shiverpeak Mountains maps: Wayfarer Foothills, Snowden Drifts, Lornar's Pass, Dredgehaunt Cliffs, Timberline Falls, and Frostgorge Sound.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68115,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1937,
+		"name": "Daily Maguuma Wastes Vista Viewer",
+		"description": "Always on the lookout for a good view.",
+		"requirement": "View a vista in one of the following Maguuma Wastes maps: Dry Top and the Silverwastes.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68115,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1938,
+		"name": "Daily Ascalon Vista Viewer",
+		"description": "Always on the lookout for a good view.",
+		"requirement": "View a vista in one of the following Ascalon maps: Plains of Ashford, Diessa Plateau, Fields of Ruin, Blazeridge Steppes, Iron Marches, and Fireheart Rise.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68115,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1939,
+		"name": "Daily Activity Participation",
+		"description": "Get those bodies moving.",
+		"requirement": "Participate in an activity.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68118,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1940,
+		"name": "Daily Caledon Forest Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in Caledon Forest in the Maguuma Jungle.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1941,
+		"name": "Daily Cursed Shore Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in Cursed Shore in Orr.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1942,
+		"name": "Daily Straits of Devastation Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in the Straits of Devastation in Orr.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1943,
+		"name": "Daily Gendarran Fields Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in Gendarran Fields in Kryta.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1944,
+		"name": "Daily Frostgorge Sound Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in Frostgorge Sound in the Shiverpeak Mountains.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1945,
+		"name": "Daily Brisban Wildlands Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in Brisban Wildlands in the Maguuma Jungle.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1946,
+		"name": "Daily Blazeridge Steppes Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in the Blazeridge Steppes in Ascalon.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1947,
+		"name": "Daily Sparkfly Fen Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in Sparkfly Fen in the Maguuma Jungle.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1948,
+		"name": "Daily Bloodtide Coast Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in Bloodtide Coast in Kryta.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1949,
+		"name": "Daily Southsun Cove Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in Southsun Cove in Kryta.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1950,
+		"name": "Daily Mount Maelstrom Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in Mount Maelstrom in the Maguuma Jungle.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1951,
+		"name": "Daily Metrica Province Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in Metrica Province in the Maguuma Jungle.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1952,
+		"name": "Daily Fields of Ruin Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in the Fields of Ruin in Ascalon.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1953,
+		"name": "Daily Wayfarer Foothills Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in the Wayfarer Foothills in the Shiverpeak Mountains.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1954,
+		"name": "Daily Timberline Falls Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in Timberline Falls in the Shiverpeak Mountains.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1955,
+		"name": "Daily Dry Top Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in Dry Top in the Maguuma Wastes.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1956,
+		"name": "Daily Snowden Drifts Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in Snowden Drifts in the Shiverpeak Mountains.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1957,
+		"name": "Daily Lornar's Pass Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in Lornar's Pass in the Shiverpeak Mountains.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1958,
+		"name": "Daily Dredgehaunt Cliffs Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in Dredgehaunt Cliffs in the Shiverpeak Mountains.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1959,
+		"name": "Daily Silverwastes Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in the Silverwastes in the Maguuma Wastes.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1960,
+		"name": "Daily Harathi Hinterlands Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in the Harathi Hinterlands in Kryta.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1961,
+		"name": "Daily Malchor's Leap Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in Malchor's Leap in Orr.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1962,
+		"name": "Daily Iron Marches Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in the Iron Marches in Ascalon.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1963,
+		"name": "Daily Queensdale Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in Queensdale in Kryta.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1964,
+		"name": "Daily Plains of Ashford Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in the Plains of Ashford in Ascalon.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1965,
+		"name": "Daily Kessex Hills Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in Kessex Hills in Kryta.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1966,
+		"name": "Daily Fireheart Rise Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in Fireheart Rise in Ascalon.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1967,
+		"name": "Daily Diessa Plateau Event Completer",
+		"description": "Scour the mountains.",
+		"requirement": "Complete events in Diessa Plateau in Ascalon.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68149,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1968,
+		"name": "Daily Shiverpeaks Lumberer",
+		"description": "Fueling the engines of the economy.",
+		"requirement": "Gather raw materials by harvesting trees in the following Shiverpeak Mountains maps: Wayfarer Foothills, Snowden Drifts, Lornar's Pass, Dredgehaunt Cliffs, Timberline Falls, and Frostgorge Sound.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 10,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68135,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1969,
+		"name": "Daily Maguuma Jungle Miner",
+		"description": "Fueling the engines of the economy.",
+		"requirement": "Gather raw materials by mining ore in the following Maguuma Jungle maps: Caledon Forest, Metrica Province, Brisban Wildlands, Sparkfly Fen, and Mount Maelstrom.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 10,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68137,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1970,
+		"name": "Daily Maguuma Jungle Lumberer",
+		"description": "Fueling the engines of the economy.",
+		"requirement": "Gather raw materials by harvesting trees in the following Maguuma Jungle maps: Caledon Forest, Metrica Province, Brisban Wildlands, Sparkfly Fen, and Mount Maelstrom.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 10,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68135,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1971,
+		"name": "Daily Kryta Miner",
+		"description": "Fueling the engines of the economy.",
+		"requirement": "Gather raw materials by mining ore in the following Kryta maps: Queensdale, Kessex Hills, Gendarran Fields, Harathi Hinterlands, Bloodtide Coast, and Southsun Cove.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 10,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68137,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1972,
+		"name": "Daily Kryta Lumberer",
+		"description": "Fueling the engines of the economy.",
+		"requirement": "Gather raw materials by harvesting trees in the following Kryta maps: Queensdale, Kessex Hills, Gendarran Fields, Harathi Hinterlands, Bloodtide Coast, and Southsun Cove.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 10,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68135,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1973,
+		"name": "Daily Maguuma Jungle Forager",
+		"description": "Fueling the engines of the economy.",
+		"requirement": "Gather raw materials by foraging plants in the following Maguuma Jungle maps: Caledon Forest, Metrica Province, Brisban Wildlands, Sparkfly Fen, and Mount Maelstrom.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68138,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1974,
+		"name": "Daily Orr Forager",
+		"description": "Fueling the engines of the economy.",
+		"requirement": "Gather raw materials by foraging plants in the following Orr maps: Straits of Devastation, Malchor's Leap, and Cursed Shore.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68138,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1975,
+		"name": "Daily Kryta Forager",
+		"description": "Fueling the engines of the economy.",
+		"requirement": "Gather raw materials by foraging plants in the following Kryta maps: Queensdale, Kessex Hills, Gendarran Fields, Harathi Hinterlands, Bloodtide Coast, and Southsun Cove.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68138,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1976,
+		"name": "Daily Orr Lumberer",
+		"description": "Fueling the engines of the economy.",
+		"requirement": "Gather raw materials by harvesting trees in the following Orr maps: Straits of Devastation, Malchor's Leap, and Cursed Shore.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 10,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68135,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1977,
+		"name": "Daily Orr Miner",
+		"description": "Fueling the engines of the economy.",
+		"requirement": "Gather raw materials by mining ore in the following Orr maps: Straits of Devastation, Malchor's Leap, and Cursed Shore.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 10,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68137,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1978,
+		"name": "Daily Maguuma Wastes Miner",
+		"description": "Fueling the engines of the economy.",
+		"requirement": "Gather raw materials by mining ore in the following Maguuma Wastes maps: Dry Top and the Silverwastes.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 10,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68137,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1979,
+		"name": "Daily Maguuma Wastes Lumberer",
+		"description": "Fueling the engines of the economy.",
+		"requirement": "Gather raw materials by harvesting trees in the following Maguuma Wastes maps: Dry Top and the Silverwastes.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 10,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68135,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1980,
+		"name": "Daily Maguuma Wastes Forager",
+		"description": "Fueling the engines of the economy.",
+		"requirement": "Gather raw materials by foraging plants in the following Maguuma Wastes maps: Dry Top and the Silverwastes.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68138,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1981,
+		"name": "Daily Ascalon Miner",
+		"description": "Fueling the engines of the economy.",
+		"requirement": "Gather raw materials by mining ore in the following Ascalon maps: Plains of Ashford, Diessa Plateau, Fields of Ruin, Blazeridge Steppes, Iron Marches, and Fireheart Rise.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 10,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68137,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1983,
+		"name": "Daily Shatterer",
+		"description": "",
+		"requirement": "Defeat the Shatterer in Lowland Burns of the Blazeridge Steppes.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68160,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1984,
+		"name": "Daily Shiverpeaks Miner",
+		"description": "Fueling the engines of the economy.",
+		"requirement": "Gather raw materials by mining ore in the following Shiverpeak Mountains maps: Wayfarer Foothills, Snowden Drifts, Lornar's Pass, Dredgehaunt Cliffs, Timberline Falls, and Frostgorge Sound.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 10,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68137,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1985,
+		"name": "Daily Shiverpeaks Forager",
+		"description": "Fueling the engines of the economy.",
+		"requirement": "Gather raw materials by foraging plants in the following Shiverpeak Mountains maps: Wayfarer Foothills, Snowden Drifts, Lornar's Pass, Dredgehaunt Cliffs, Timberline Falls, and Frostgorge Sound.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68138,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 1989,
+		"name": "Daily Fractal",
+		"description": "",
+		"requirement": "Complete  fractal in the Fractals of the Mists through the portal in Lion's Arch.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 76273,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2022,
+		"name": "Daily Frozen Maw",
+		"description": "",
+		"requirement": "Defeat the Champion Svanir Shaman Chief and break his control over the Ice Elemental in Frusenfell Creek in Wayfarer's Foothills.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68160,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2025,
+		"name": "Daily Shadow Behemoth",
+		"description": "",
+		"requirement": "Defeat the Shadow Behemoth in Godslost Swamp in Queensdale.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68160,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2026,
+		"name": "Daily Claw of Jormag",
+		"description": "",
+		"requirement": "Defeat the Claw of Jormag on the Frostwalk Tundra in Frostgorge Sound.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68160,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2891,
+		"name": "Daily Adventure: Flying Circus",
+		"description": "",
+		"requirement": "Open the bronze daily reward chest from this adventure!",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 78561,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2893,
+		"name": "Daily Ascalonian Catacombs",
+		"description": "",
+		"requirement": "Complete any path in the Ascalonian Catacombs explorable dungeon.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68141,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2901,
+		"name": "Daily Citadel of Flame",
+		"description": "",
+		"requirement": "Complete any path in the Citadel of Flame explorable dungeon.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68151,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2905,
+		"name": "Daily Adventure: Drone Race",
+		"description": "",
+		"requirement": "Open the bronze daily reward chest from this adventure!",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 78561,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2910,
+		"name": "Daily Auric Basin Event Completer",
+		"description": "Looking for a lost city of gold.",
+		"requirement": "Complete events in Auric Basin in the Heart of Maguuma.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 78573,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2912,
+		"name": "Daily Heart of Maguuma Forager",
+		"description": "Fueling the engines of the economy.",
+		"requirement": "Gather raw materials by foraging plants in the following Heart of Maguuma maps: Verdant Brink, Auric Basin, Tangled Depths, and Dragon's Stand.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 78363,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2914,
+		"name": "Daily Caudecus's Manor",
+		"description": "",
+		"requirement": "Complete any path in the Caudecus's Manor explorable dungeon.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68128,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2915,
+		"name": "Daily Adventure: Fallen Masks",
+		"description": "",
+		"requirement": "Open the bronze daily reward chest from this adventure!",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 78561,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2917,
+		"name": "Daily Sorrow's Embrace",
+		"description": "",
+		"requirement": "Complete any path in the Sorrow's Embrace explorable dungeon.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68121,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2919,
+		"name": "Daily Adventure: Salvage Pit",
+		"description": "",
+		"requirement": "Open the bronze daily reward chest from this adventure!",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 78561,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2922,
+		"name": "Daily Adventure: Haywire Punch-o-Matic Battle",
+		"description": "",
+		"requirement": "Open the bronze daily reward chest from this adventure!",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 78561,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2924,
+		"name": "Daily Dragon's Stand Event Completer",
+		"description": "Hunting all the dragon minions.",
+		"requirement": "Complete events in Dragon's Stand in the Heart of Maguuma.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 78121,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2931,
+		"name": "Daily Honor of the Waves",
+		"description": "",
+		"requirement": "Complete any path in the Honor of the Waves explorable dungeon.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68143,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2936,
+		"name": "Daily Adventure: Tendril Torchers",
+		"description": "",
+		"requirement": "Open the bronze daily reward chest from this adventure!",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 78561,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2937,
+		"name": "Daily Heart of Maguuma Lumberer",
+		"description": "Fueling the engines of the economy.",
+		"requirement": "Gather raw materials by harvesting trees in the following Heart of Maguuma maps: Verdant Brink, Auric Basin, Tangled Depths, and Dragon's Stand.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 10,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 78681,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2938,
+		"name": "Daily Ruined City of Arah",
+		"description": "",
+		"requirement": "Complete any path in the Ruined City of Arah explorable dungeon.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68123,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2942,
+		"name": "Daily Adventure: The Floor Is Lava?",
+		"description": "",
+		"requirement": "Open the bronze daily reward chest from this adventure!",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 78561,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2945,
+		"name": "Daily Verdant Brink Event Completer",
+		"description": "Scour the tree tops.",
+		"requirement": "Complete events in Verdant Brink in the Heart of Maguuma.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 78375,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2953,
+		"name": "Daily Crucible of Eternity",
+		"description": "",
+		"requirement": "Complete any path in the Crucible of Eternity explorable dungeon.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68153,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2957,
+		"name": "Daily Heart of Maguuma Miner",
+		"description": "Fueling the engines of the economy.",
+		"requirement": "Gather raw materials by mining ore in the following Heart of Maguuma maps: Verdant Brink, Auric Basin, Tangled Depths, and Dragon's Stand.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 10,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 78603,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2959,
+		"name": "Daily Twilight Arbor",
+		"description": "",
+		"requirement": "Complete any path in the Twilight Arbor explorable dungeon.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68134,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2960,
+		"name": "Daily Adventure: The Ley-Line Run",
+		"description": "",
+		"requirement": "Open the bronze daily reward chest from this adventure!",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 78561,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2968,
+		"name": "Daily Tangled Depths Event Completer",
+		"description": "Untangling the depths.",
+		"requirement": "Complete events in Tangled Depths in the Heart of Maguuma.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 78158,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2969,
+		"name": "Daily Adventure: Sanctum Scramble",
+		"description": "",
+		"requirement": "Open the bronze daily reward chest from this adventure!",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 78561,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2973,
+		"name": "Daily Adventure: Beetle Feast",
+		"description": "",
+		"requirement": "Open the bronze daily reward chest from this adventure!",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 78561,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2975,
+		"name": "Daily Adventure: Bugs in the Branches",
+		"description": "",
+		"requirement": "Open the bronze daily reward chest from this adventure!",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 78561,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2980,
+		"name": "Daily Adventure: A Fungus Among Us",
+		"description": "",
+		"requirement": "Open the bronze daily reward chest from this adventure!",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 78561,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2983,
+		"name": "Daily Heart of Maguuma Vista Viewer",
+		"description": "Always on the lookout for a good view.",
+		"requirement": "View a vista in one of the following Heart of Maguuma maps: Verdant Brink, Auric Basin, Tangled Depths, and Dragon's Stand.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 78561,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2984,
+		"name": "Daily Adventure: On Wings of Gold",
+		"description": "",
+		"requirement": "Open the bronze daily reward chest from this adventure!",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 78561,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2987,
+		"name": "Daily Adventure: Shooting Gallery",
+		"description": "",
+		"requirement": "Open the bronze daily reward chest from this adventure!",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 78561,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 2988,
+		"name": "Daily Adventure: Scrap Rifle Field Test",
+		"description": "",
+		"requirement": "Open the bronze daily reward chest from this adventure!",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Pvp",
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 78561,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 3554,
+		"name": "Daily Vabbi Event Completer",
+		"description": "May Joko guide your sword!",
+		"requirement": "Complete events in the Domain of Vabbi.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 83679,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 3562,
+		"name": "Daily Vabbian Bounty Hunter",
+		"description": "Just a matter of time...",
+		"requirement": "Complete a bounty in the Domain of Vabbi.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 83524,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 3589,
+		"name": "Daily Hound Master",
+		"description": "",
+		"requirement": "Defeat the forged hounds in the Vabbi Foundry.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68160,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 3607,
+		"name": "Daily Demolisher",
+		"description": "",
+		"requirement": "Defeat the Forged Demolisher near the Mouth of Torment.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68160,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 3626,
+		"name": "Daily Crystal Oasis Bounty Hunter",
+		"description": "Hot on the trail...",
+		"requirement": "Complete a bounty in Crystal Oasis.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 83524,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 3661,
+		"name": "Daily Elon Riverlands Event Completer",
+		"description": "Go with the flow.",
+		"requirement": "Complete events in Elon Riverlands.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 84520,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 3721,
+		"name": "Daily Desert Vista Viewer",
+		"description": "Always on the lookout for a good view.",
+		"requirement": "View a vista in one of the following locations: Crystal Oasis, the Desert Highlands, Elon Riverlands, the Desolation, or the Domain of Vabbi.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 83524,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 3722,
+		"name": "Daily Elon Riverlands Bounty Hunter",
+		"description": "Gonna getcha!",
+		"requirement": "Complete a bounty in the Elon Riverlands.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 83524,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 3749,
+		"name": "Daily Desert Adventurer",
+		"description": "Mount up!",
+		"requirement": "Complete one adventure in one of the following locations: Crystal Oasis, Desert Highlands, Elon Riverlands, the Desolation, or the Domain of Vabbi.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 68115,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 3760,
+		"name": "Daily Desert Forager",
+		"description": "Fueling the engines of the economy.",
+		"requirement": "Gather raw materials by foraging plants in the following locations: Crystal Oasis, the Desert Highlands, Elon Riverlands, the Desolation, or the Domain of Vabbi.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 83467,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 3779,
+		"name": "Daily Desolation Bounty Hunter",
+		"description": "Here I come.",
+		"requirement": "Complete a bounty in the Desolation.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 83524,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 3784,
+		"name": "Daily Desert Highlands Bounty Hunter",
+		"description": "Target locked.",
+		"requirement": "Complete a bounty in Desert Highlands.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 83524,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 3791,
+		"name": "Daily Desolation Taskmaster",
+		"description": "Always happy to lend a hand.",
+		"requirement": "Complete a task region in the Desolation.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 83524,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 3792,
+		"name": "Daily Elon Riverlands Taskmaster",
+		"description": "Always happy to lend a hand.",
+		"requirement": "Complete a task region in Elon Riverlands.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 1,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 83524,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 3793,
+		"name": "Daily Crystal Oasis Event Completer",
+		"description": "Sift the sands.",
+		"requirement": "Complete events in Crystal Oasis.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 82203,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 3814,
+		"name": "Daily Desert Highlands Event Completer",
+		"description": "Hop to it.",
+		"requirement": "Complete events in Desert Highlands.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 82097,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 3866,
+		"name": "Daily Desolation Event Completer",
+		"description": "What a waste...",
+		"requirement": "Complete events in the Desolation.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 4,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 84251,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 3880,
+		"name": "Daily Desert Lumberer",
+		"description": "Fueling the engines of the economy.",
+		"requirement": "Gather raw materials by harvesting trees in the following locations: Crystal Oasis, the Desert Highlands, Elon Riverlands, the Desolation, or the Domain of Vabbi.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 10,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 84144,
+				"count": 1
+			}
+		]
+	},
+	{
+		"id": 3888,
+		"name": "Daily Desert Miner",
+		"description": "Fueling the engines of the economy.",
+		"requirement": "Gather raw materials by mining ore in the following locations: Crystal Oasis, the Desert Highlands, Elon Riverlands, the Desolation, or the Domain of Vabbi.",
+		"locked_text": "",
+		"type": "Default",
+		"flags": [
+			"Daily"
+		],
+		"tiers": [
+			{
+				"count": 10,
+				"points": 0
+			}
+		],
+		"rewards": [
+			{
+				"type": "Item",
+				"id": 84149,
+				"count": 1
+			}
+		]
+	}
+]

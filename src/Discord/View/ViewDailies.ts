@@ -47,8 +47,6 @@ export default class ViewDailies extends View {
         const dailyType = splitName[splitName.length - 1];
         const daily = GW_DAILY[NORMALIZE_DAILY[dailyType]];
 
-
-
         // there should not be any type of daily that doesn't exist now, it's here just in case
         if (!daily) {
             return `${EMOJIS['Guide']} No guide available`;
@@ -59,6 +57,11 @@ export default class ViewDailies extends View {
 
         const dailyName = slicedName.join("_");
         const location = daily.location(dailyName, dailyType);
+
+        // useful for debugging
+        if (!location){
+            console.error(`location = ${location}, fullName = ${fullName}, slicedName = ${slicedName}, dailyName = ${dailyName}`)
+        }
 
         if (daily.wantWaypoint) {
             this.waypoints.push(`${location.waypoint}`);

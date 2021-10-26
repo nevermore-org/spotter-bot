@@ -1,6 +1,6 @@
 import axios from "axios"
 import { DateTime } from "luxon";
-import { Achievement } from "../../Model/Guildwars/Achievement";
+import { AchievementResponse } from "../../Model/Guildwars/Achievement";
 import BaseFractal from "../../Model/Guildwars/BaseFractal";
 import Fractal from "../../Model/Guildwars/Fractal";
 import { GW_API_URL } from "../General/enum/GW_API_URL";
@@ -14,9 +14,9 @@ export default class FractalAPI {
     public getDailyFractals = async () => {
         const dailyResponse = await axios.get(GW_API_URL.DAILY);
         //GW2 API actually returns daily fractals ACHIEVEMENTS rather than fractals themselves
-        const fractalAchievements: Achievement[] = dailyResponse.data.fractals;
+        const fractalAchievements: AchievementResponse[] = dailyResponse.data.fractals;
 
-        const fractalIds: number[] = fractalAchievements.map((achiev: Achievement) => achiev.id);
+        const fractalIds: number[] = fractalAchievements.map((achiev: AchievementResponse) => achiev.id);
         const fractalResponse = await axios.get(`${GW_API_URL.ACHIEVEMENTS}?ids=${fractalIds}`);
 
         const fractals: Fractal[] = fractalResponse.data;
