@@ -4,10 +4,12 @@ import COMMANDS from './Discord/Command/Commands';
 import { WEBHOOKS } from './Discord/Webhook/enum/WEBHOOKS';
 import DiscordCommandInterface from './Model/Discord/DiscordCommandInterface';
 import { setUpDB } from "./Mongo/Mongo";
+import { testDailies } from './Tests/testDailies';
 
 loadDotenv();
 setUpDB();
 
+// testDailies();
 
 const client: Client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 

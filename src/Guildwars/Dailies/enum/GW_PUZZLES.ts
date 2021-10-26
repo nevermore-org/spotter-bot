@@ -70,7 +70,7 @@ const GW_PUZZLES: DailyData = {
         waypoint: "Arcallion Waypoint — [&BMMAAAA=]",
         description: "North of Arca Lake. If you fall into a pit near the start, you will earn the Fawcett's Revenge achievement."
     },
-    "Professor_Portmatt's_Lab": {
+    "Portmatt's_Lab": {
         waypoint: "Sorrowful Waypoint — [&BKQBAAA=]",
         description: "West of the waypoint. The whole puzzle is underwater."
     },
@@ -90,7 +90,7 @@ const GW_PUZZLES: DailyData = {
         waypoint: "Spiral Waypoint — [&BDUBAAA=]",
         description: "At the Morgan's Spiral hero point."
     },
-    "Spekks's_Laboratory": {
+    "Spekks's_Lab": {
         waypoint: "Gleaner's Cove Waypoint — [&BDcBAAA=]",
         description: "In Sandycove Beach, follow the river west from Bay Haven to its source."
     },
@@ -110,7 +110,7 @@ const GW_PUZZLES: DailyData = {
         waypoint: "Criterion Waypoint — [&BMkCAAA=] Avernan Waypoint — [&BM8CAAA=] Oxbow Isle Waypoint — [&BNECAAA=] Irwin Isle Waypoint — [&BNICAAA=]",
         description: "Accessed through the Mysterious Portal, after killing one of four Keepers."
     },
-    "Hexfoundry_Unhinged": {
+    "Hexfoundry": {
         waypoint: "Darkweather Waypoint — [&BM0BAAA=]",
         description: "In the southeast."
     },
@@ -144,9 +144,9 @@ const GW_PUZZLES: DailyData = {
     },
     "Tribulation_Caverns": {
         waypoint: "Sorrow's Embrace Waypoint — [&BD8FAAA=]",
-        description: "Immediately after the Tribulation Rift Scaffolding jumping puzzle, a cleft west of the vista."
+        description: "Immediately after the Tribulation Rift jumping puzzle, a cleft west of the vista."
     },
-    "Tribulation_Rift_Scaffolding": {
+    "Tribulation_Rift": {
         waypoint: "Sorrow's Embrace Waypoint — [&BD8FAAA=]",
         description: "Southwest corner at the vista."
     },

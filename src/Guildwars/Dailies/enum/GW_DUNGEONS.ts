@@ -32,7 +32,7 @@ const GW_DUNGEONS: DailyData = {
         waypoint: "Crucible of Eternity Waypoint — [&BEIFAAA=]",
         description: "Path 2 - fastest, Path 3 - most fun"
     },
-    "The_Ruined_City_of_Arah": {
+    "Ruined_City_of_Arah": {
         waypoint: "Arah Waypoint — [&BCADAAA=]",
         description: "Path 1 or 2"
     }
