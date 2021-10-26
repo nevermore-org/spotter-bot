@@ -13,6 +13,7 @@ import { EMBED_ID } from "../Discord/View/enum/EMBED_ID";
 export const testDailies = async() => {
     // saveAchievementsToJSON('allAchievements.json');
     // filterSaveDailies('allAchievements.json', 'dailyAchievements.json');
+    console.log(`=== Testing all dailies ===`);
 
     const dailiesFile = fs.readFileSync(toAbsPath('../Util/enum/dailyAchievements.json'), "utf-8");
     const allDailies: Achievement[] = JSON.parse(dailiesFile);
@@ -21,8 +22,11 @@ export const testDailies = async() => {
     const webhook = new WebhookClient({url: process.env.WEBHOOK_URL_DAILIES ?? ''});
 
     for (let i = 0; i < chunkedDailies.length; i++) {
-        console.log(`Working on chunk at index ${i}.`)
-        const dailiesTest = chunkedDailies[i].map( daily => daily.name);
+        console.log(`\n=== Working on chunk at index ${i} ===\n`);
+        const dailiesTest = chunkedDailies[i].map( daily => {
+            console.log(`${daily.name}`);
+            return daily.name;
+        });
         const view = new ViewDailies(dailiesTest);
 
         const dailiesEmbed = view.getEmbed(EMBED_ID.DAILIES);
