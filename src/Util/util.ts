@@ -1,9 +1,6 @@
 import { DateTime, Duration } from "luxon";
 import Item from "../Model/Guildwars/Item";
 
-// weekday is indexed from 1
-export const WEEKDAY: number = DateTime.utc().weekday - 1;
-
 
 /**
  * Returns closest boss timing from now as Duration object (of milisecs)
