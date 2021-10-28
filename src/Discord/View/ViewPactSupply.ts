@@ -23,11 +23,12 @@ export default class ViewPactSupply extends View {
     public setEmbeds = async (items: Item[]): Promise<ViewPactSupply> => {
         const todayStr = DateTime.utc().setLocale('en-gb').toLocaleString();
         const pactSupplyEmbed = this.createEmbed(EMBED_ID.PACT_SUPPLY, `Pact Supply Network Agents ${todayStr}`, this.thumbnail);
+        const weekday = DateTime.utc().minus({hours: 8}).weekday - 1;
 
         items.forEach( (item, index) => {
             // agent location reset daily at 8:00 AM UTC, while their recipes change at 0:00 UTC
             // just so there is even less consistency
-            let agentLocation = AGENT_LOCATIONS[index][DateTime.utc().minus({hours: 8}).weekday - 1];
+            let agentLocation = AGENT_LOCATIONS[index][weekday];
             this.waypoints.push(agentLocation);
 
             // slice 8 cause we don't want/need the "Recipe:" part
