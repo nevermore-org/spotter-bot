@@ -79,3 +79,9 @@ export function chunk <T>(items: T[], chunkSize: number) {
   
     return chunks;
 }
+
+
+export const objectWithoutKey = <T>(object:Record<string, T>, key:string) => {
+    const {[key]: _, ...otherKeys} = object;
+    return otherKeys;
+}

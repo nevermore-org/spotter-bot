@@ -2,9 +2,10 @@ import axios from "axios";
 import path from "path/posix";
 import GW_ACHIEV_IDS from "../Guildwars/General/enum/GW_ACHIEV_IDS";
 import { GW_API_URL } from "../Guildwars/General/enum/GW_API_URL";
-import { chunk } from "./util";
+import { chunk, objectWithoutKey } from "./util";
 import * as fs from 'fs';
 import { Achievement } from "../Model/Guildwars/Achievement";
+import { collectionExists, getDb, insertMany } from "../Mongo/Mongo";
 
 export const toAbsPath = (relativePath: string) => {
     return path.join(__dirname, relativePath);
@@ -70,4 +71,24 @@ export const filterSaveDailies = (inputJSONPath: string, outputRelPath: string) 
         appendToJSONFile(outputRelPath, [dailyAchievements[i]]);
     }
     console.log(`Succesfully added ${dailyAchievements.length} daily achievements to ${outputRelPath}.`);
+}
+
+// changes id -> _id to fit MongoDB and adds special_flag property
+export const createModifiedAchievementsJSON = (relativeOutputPath: string = "enum/achievements.json") => {
+    const dailiesFile = fs.readFileSync(toAbsPath('enum/dailyAchievements.json'), "utf-8");
+    const achievFile = fs.readFileSync(toAbsPath('enum/allAchievements.json'), "utf-8");
+
+    const dailies: Achievement[] = JSON.parse(dailiesFile);
+    const achievs: Achievement[] = JSON.parse(achievFile);
+
+    const dailyIds: number[] = dailies.map( daily => daily.id);
+
+    for (let i = 0; i < achievs.length; i++) {
+        const specialFlag = dailyIds.includes(achievs[i].id) ? 'Completionist' : '';
+        let modifiedAchiev = {_id: achievs[i].id, special_flag: specialFlag, ...objectWithoutKey(achievs[i], 'id')};      
+        appendToJSONFile(relativeOutputPath, [modifiedAchiev]);
+
+        console.log(`Added ${achievs[i].name} to JSON file`);
+    }
+
 }
