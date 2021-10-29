@@ -1,6 +1,7 @@
 import axios from "axios"
 import { Achievement, AchievementResponse } from "../../Model/Guildwars/Achievement";
 import { DailyResponse } from "../../Model/Guildwars/Daily";
+import { collectionExists, getDb, getIdsFromCollection } from "../../Mongo/Mongo";
 import { GW_API_URL } from "../General/enum/GW_API_URL";
 
 
@@ -17,14 +18,18 @@ export default class DailiesAPI {
             && (daily.required_access ? daily.required_access.condition === 'HasAccess' : true));
 
         const dailyIds: number[] = filteredDailies.map((achiev: AchievementResponse) => achiev.id);
-        const dailyIdResponse = await axios.get(`${GW_API_URL.ACHIEVEMENTS}?ids=${dailyIds}`);
+        //const dailyIdResponse = await axios.get(`${GW_API_URL.ACHIEVEMENTS}?ids=${dailyIds}`);
+        //const dailyNames: string[] = dailyIdResponse.data.map((daily: DailyResponse) => daily.name);
 
-        const dailyNames: string[] = dailyIdResponse.data.map((daily: DailyResponse) => daily.name)
+        const dailiesDB = await getIdsFromCollection(dailyIds, 'achievements');        
+        const dailyNames: string[] | undefined = dailiesDB?.map(daily => daily.name);
 
         // id 1852 == Big Spender
         const dailyWvW = fullResponse.data.wvw;
         const isBigSpenderToday: boolean = dailyWvW.some((daily: Achievement) => daily.id === 1852);
 
-        return dailyNames.concat(isBigSpenderToday ? ["Daily WvW Big Spender"] : []);
+        return dailyNames ? dailyNames.concat(isBigSpenderToday ? ["Daily WvW Big Spender"] : []) : [];
     }
+
+
 }

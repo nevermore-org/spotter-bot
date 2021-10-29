@@ -1,4 +1,7 @@
-import { Collection, Db, MongoClient } from "mongodb";
+import { Collection, Db, IndexSpecification, MongoClient } from "mongodb";
+import { toAbsPath } from "../Util/scrapers";
+import * as fs from 'fs';
+import { AchievementMod } from "../Model/Guildwars/Achievement";
 
 let _client: MongoClient;
 
@@ -33,7 +36,7 @@ export async function collectionExists(collectionName: string, db: Db): Promise<
     return collections != null;
 }
 
-export async function createCollectionIfNotExists(collectionName: string, database: Db, indexSpec: Record<string, number> | null = null): Promise<void> {
+export async function createCollectionIfNotExists(collectionName: string, database: Db, indexSpec: IndexSpecification | null = null): Promise<void> {
     const exists: boolean = await collectionExists(collectionName, database);
     if (!exists) {
         await database.createCollection(collectionName);
@@ -48,7 +51,7 @@ export async function dropCollectionIfExists(collectionName: string, database: D
     }
 }
 
-export async function insertMany(documents: any[], targetCollection: Collection): Promise<number> {
+export async function insertMany<T>(documents: T[], targetCollection: Collection): Promise<number> {
     const insertManyRes = await targetCollection.insertMany(documents);
     const inserted = insertManyRes.insertedCount;
     console.assert(inserted == documents.length);
@@ -59,8 +62,40 @@ function printDatabase(database: Db) {
     return `${database.databaseName}`;
 }
 
+const insertAchievementsToDB = async () => {
+    const achievFile = fs.readFileSync(toAbsPath('enum/achievements.json'), "utf-8");
+    const achievs: AchievementMod[] = JSON.parse(achievFile);
+
+    const db = await getDb(process.env.MONGO_INITDB_DATABASE);
+
+    if (await collectionExists('achievements', db)){
+        const achievementCollection = db.collection('achievements');
+        insertMany(achievs, achievementCollection);
+    }
+}
+
+/**
+ * returns an array of objects which have an id that is included in ids arg
+ * @param ids 
+ * @param collectionName 
+ * @returns 
+*/
+export const getIdsFromCollection = async (ids: number[], collectionName: string) => {
+    const db = await getDb(process.env.MONGO_INITDB_DATABASE);
+    
+    if (await collectionExists(collectionName, db)){
+        const collection = db.collection(collectionName);
+
+        return collection.find({_id: {$in : ids}}).toArray();
+    };
+}
+
+
 export async function setUpDB() {
     await initConnection(<string>process.env.MONGO_URL);
     const db = await getDb(process.env.MONGO_INITDB_DATABASE);
     await createCollectionIfNotExists("items", db);
+    await createCollectionIfNotExists("achievements", db, {name: 1, special_flag: 1});
+
+    //await insertAchievementsToDB();
 }
