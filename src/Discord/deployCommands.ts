@@ -19,19 +19,24 @@ async function deployCommands(token: string, clientId: string, guildId: string =
 
         const arrayOfCommands = COMMANDS.map(command => command.data);
 
-        if (guildId)
+        if (guildId) {
             await rest.put(
                 Routes.applicationGuildCommands(clientId, guildId),
                 { body: arrayOfCommands },
             );
-        else
-            //here it deploys commands to all guilds that bot is in
-            //should be run only on production server (updates only once per hour)
+            console.log('Successfully reloaded application (/) commands for development environment.');
+        }
+        else {
             await rest.put(
                 Routes.applicationCommands(clientId),
                 { body: arrayOfCommands },
             );
-        console.log('Successfully reloaded application (/) commands.');
+            console.log('Successfully reloaded application (/) commands for production environment.');
+        }
+        //here it deploys commands to all guilds that bot is in
+        //should be run only on production server (updates only once per hour)
+
+
     } catch (error) {
         console.error(error);
     }
