@@ -19,7 +19,7 @@ async function deployCommands(token: string, clientId: string, guildId: string =
 
         const arrayOfCommands = COMMANDS.map(command => command.data);
 
-        if (process.env.NODE_ENV === "prod") {
+        if (process.env.NODE_ENV === "local") {
             await rest.put(
                 Routes.applicationGuildCommands(clientId, guildId),
                 { body: arrayOfCommands },
