@@ -1,10 +1,12 @@
-import { Intents, Interaction, Client, Guild } from 'discord.js';
+import { Intents, Interaction, Client } from 'discord.js';
 import loadDotenv from './Config/Config';
 import COMMANDS from './Discord/Command/Commands';
 import { WEBHOOKS } from './Discord/Webhook/enum/WEBHOOKS';
 import DiscordCommandInterface from './Model/Discord/DiscordCommandInterface';
 import { setUpDB } from "./Mongo/Mongo";
 import { testDailies } from './Tests/testDailies';
+import winston from 'winston';
+import DiscordTransport from "./Discord/Webhook/DiscordTransport";
 
 loadDotenv();
 setUpDB();
@@ -15,14 +17,17 @@ const client: Client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
 client.once('ready', () => {
     client.user?.setActivity("Guild Wars 2");
+
     console.log(`Logged in as ${client?.user?.tag}`);
 
     // schedule all webhooks
-    WEBHOOKS.forEach( webhook => {
+    console.log(WEBHOOKS);
+    WEBHOOKS.forEach(webhook => {
         if (webhook.url) {
             new webhook.manager(webhook.url).cronSchedule();
         }
     });
+
 });
 
 /**
@@ -33,7 +38,7 @@ client.on("interactionCreate", async (interaction: Interaction) => {
 
     const { commandName } = interaction;
 
-    const command: DiscordCommandInterface | undefined = COMMANDS.find( cmd => cmd.data.name === commandName);
+    const command: DiscordCommandInterface | undefined = COMMANDS.find(cmd => cmd.data.name === commandName);
 
     if (command) {
         await command.controller.handleInteraction(interaction);
@@ -44,3 +49,17 @@ client.on("interactionCreate", async (interaction: Interaction) => {
 });
 
 client.login(process.env.CLIENT_TOKEN);
+
+if (process.env.NODE_ENV === "prod") {
+    const logger = winston.createLogger({
+        transports: [
+            new DiscordTransport({
+                webhook: <string>process.env.WEBHOOK_ERRORS,
+                defaultMeta: { service: "SpotterBot" },
+                level: 'error',
+                handleExceptions: true
+            })
+        ],
+        exitOnError: false
+    });
+}
