@@ -21,7 +21,6 @@ client.once('ready', () => {
     console.log(`Logged in as ${client?.user?.tag}`);
 
     // schedule all webhooks
-    console.log(WEBHOOKS);
     WEBHOOKS.forEach(webhook => {
         if (webhook.url) {
             new webhook.manager(webhook.url).cronSchedule();
