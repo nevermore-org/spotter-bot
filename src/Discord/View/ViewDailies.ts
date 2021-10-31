@@ -47,10 +47,10 @@ export default class ViewDailies extends View {
         const dailyType = splitName[splitName.length - 1];
         const daily = GW_DAILY[NORMALIZE_DAILY[dailyType]];
 
-        // // there should not be any type of daily that doesn't exist now, it's here just in case
-        // if (!daily) {
-        //     return `${EMOJIS['Guide']} No guide available`;
-        // }
+        // there should not be any type of daily that doesn't exist now, it's here just in case
+        if (!daily) {
+            return `${EMOJIS['Guide']} No guide available`;
+        }
 
         // need this for all those daily types that dont have any special keyword at the end of their name
         const slicedName = daily.endOfName === 0 ? splitName.slice(1) : splitName.slice(1, daily.endOfName);
