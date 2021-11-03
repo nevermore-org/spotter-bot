@@ -16,7 +16,12 @@ export interface AchievementMod {
     tiers: [
         count: number,
         points: number
-    ]
+    ];
+    fractal_info?: {
+        type: string;
+        name: string;
+        levels: number[];
+    }
 }
 
 export type Achievement = {

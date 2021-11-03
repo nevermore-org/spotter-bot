@@ -5,7 +5,6 @@ import { GW_API_URL } from "../Guildwars/General/enum/GW_API_URL";
 import { chunk, objectWithoutKey } from "./util";
 import * as fs from 'fs';
 import { Achievement } from "../Model/Guildwars/Achievement";
-import { collectionExists, getDb, insertMany } from "../Mongo/Mongo";
 
 export const toAbsPath = (relativePath: string) => {
     return path.join(__dirname, relativePath);
@@ -90,5 +89,4 @@ export const createModifiedAchievementsJSON = (relativeOutputPath: string = "enu
 
         console.log(`Added ${achievs[i].name} to JSON file`);
     }
-
 }

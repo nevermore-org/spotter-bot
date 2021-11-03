@@ -21,14 +21,14 @@ export default class DailiesAPI {
         //const dailyIdResponse = await axios.get(`${GW_API_URL.ACHIEVEMENTS}?ids=${dailyIds}`);
         //const dailyNames: string[] = dailyIdResponse.data.map((daily: DailyResponse) => daily.name);
 
-        const dailiesDB = await getIdsFromCollection(dailyIds, 'achievements');        
-        const dailyNames: string[] | undefined = dailiesDB?.map(daily => daily.name);
+        const dailiesDB = await getIdsFromCollection(dailyIds, 'achievements', {projection: {name: 1, _id: 0}});      
+        const dailyNames: string[] = dailiesDB ? dailiesDB.map(daily => daily.name) : [];
 
         // id 1852 == Big Spender
         const dailyWvW = fullResponse.data.wvw;
         const isBigSpenderToday: boolean = dailyWvW.some((daily: Achievement) => daily.id === 1852);
 
-        return dailyNames ? dailyNames.concat(isBigSpenderToday ? ["Daily WvW Big Spender"] : []) : [];
+        return dailyNames.concat(isBigSpenderToday ? ["Daily WvW Big Spender"] : []);
     }
 
 
