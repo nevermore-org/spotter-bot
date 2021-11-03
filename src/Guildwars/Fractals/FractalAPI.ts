@@ -3,6 +3,7 @@ import { DateTime } from "luxon";
 import { AchievementResponse } from "../../Model/Guildwars/Achievement";
 import BaseFractal from "../../Model/Guildwars/BaseFractal";
 import Fractal from "../../Model/Guildwars/Fractal";
+import { getIdsFromCollection } from "../../Mongo/Mongo";
 import { GW_API_URL } from "../General/enum/GW_API_URL";
 import GW_FRACTALS from "./enum/GW_FRACTALS";
 import { GW_INSTABILITIES, GW_INST_NAMES } from "./enum/GW_INSTABILITIES";
@@ -18,8 +19,11 @@ export default class FractalAPI {
 
         const fractalIds: number[] = fractalAchievements.map((achiev: AchievementResponse) => achiev.id);
         const fractalResponse = await axios.get(`${GW_API_URL.ACHIEVEMENTS}?ids=${fractalIds}`);
-
         const fractals: Fractal[] = fractalResponse.data;
+
+        //const fractalsDB = await getIdsFromCollection(fractalIds, 'achievements');
+        //const fractalsDaily = fractalsDB?.filter( fractal => ["DailyT4", "Recommended"].includes(fractal.fractal_info.type));
+        //console.log(fractalsDaily);
 
         const parsedFractals = this.parseRecommendedFractals(fractals);
 

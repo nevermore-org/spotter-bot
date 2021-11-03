@@ -1,4 +1,4 @@
-import { Collection, Db, IndexSpecification, MongoClient } from "mongodb";
+import { Collection, Db, FindCursor, FindOptions, IndexSpecification, MongoClient } from "mongodb";
 import { toAbsPath } from "../Util/scrapers";
 import * as fs from 'fs';
 import { AchievementMod } from "../Model/Guildwars/Achievement";
@@ -62,31 +62,19 @@ function printDatabase(database: Db) {
     return `${database.databaseName}`;
 }
 
-const insertAchievementsToDB = async () => {
-    const achievFile = fs.readFileSync(toAbsPath('enum/achievements.json'), "utf-8");
-    const achievs: AchievementMod[] = JSON.parse(achievFile);
-
-    const db = await getDb(process.env.MONGO_INITDB_DATABASE);
-
-    if (await collectionExists('achievements', db)){
-        const achievementCollection = db.collection('achievements');
-        insertMany(achievs, achievementCollection);
-    }
-}
-
 /**
  * returns an array of objects which have an id that is included in ids arg
  * @param ids 
- * @param collectionName 
+ * @param collectionName
+ * @param options - e.g. projection
  * @returns 
 */
-export const getIdsFromCollection = async (ids: number[], collectionName: string) => {
+export const getIdsFromCollection = async (ids: number[], collectionName: string, options: FindOptions | undefined = undefined) => {
     const db = await getDb(process.env.MONGO_INITDB_DATABASE);
     
     if (await collectionExists(collectionName, db)){
         const collection = db.collection(collectionName);
-
-        return collection.find({_id: {$in : ids}}).toArray();
+        return collection.find({_id: {$in : ids}}, options).toArray();
     };
 }
 
@@ -95,7 +83,7 @@ export async function setUpDB() {
     await initConnection(<string>process.env.MONGO_URL);
     const db = await getDb(process.env.MONGO_INITDB_DATABASE);
     await createCollectionIfNotExists("items", db);
-    await createCollectionIfNotExists("achievements", db, {name: 1, special_flag: 1});
+    await createCollectionIfNotExists("achievements", db, {name: 1});
 
     //await insertAchievementsToDB();
 }
