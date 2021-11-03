@@ -1,3 +1,5 @@
+import { FractalInfo } from "./FractalInfo"
+
 export type AchievementResponse = {
     id: number;
     level: {min: number, max: number},
@@ -17,11 +19,7 @@ export interface AchievementMod {
         count: number,
         points: number
     ];
-    fractal_info?: {
-        type: string;
-        name: string;
-        levels: number[];
-    }
+    fractal_info?: FractalInfo;
 }
 
 export type Achievement = {

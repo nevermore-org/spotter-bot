@@ -5,6 +5,8 @@ import Fractal from "../../../Model/Guildwars/Fractal";
 import ViewFractals from "../../View/ViewFractals";
 import BaseFractal from "../../../Model/Guildwars/BaseFractal";
 import GW_FRACTALS from "../../../Guildwars/Fractals/enum/GW_FRACTALS";
+import { AchievementMod } from "../../../Model/Guildwars/Achievement";
+import { FractalInfo, InstabFractalInfo } from "../../../Model/Guildwars/FractalInfo";
 
 /**
  * Sends daily fractals for today or tomorrow
@@ -21,30 +23,27 @@ export default class FractalsController implements DiscordControllerInterface {
      * @param interaction 
      */
     public handleInteraction = async (interaction: CommandInteraction): Promise<void> => {
-        const viewType = interaction.options.data[0].value;
+        const commandOption = interaction.options.data[0].value;
         const view = new ViewFractals()
 
         // it is split just so we dont always use GW_API
         // especially in cases when its not really needed (like CMs for example)
-        // it's not as pretty as it used to be, and won't really be reasonable if we decide to expand fractals "somehow" tho
+        
+        if (commandOption === 'daily'){
+            const dailyFractals: FractalInfo[] = await this.fractalAPI.getDailyFractals();
 
-        if (viewType === 'daily'){
-            const fractals: Fractal[] = await this.fractalAPI.getDailyFractals();
+            const recs = dailyFractals.filter(fractal_info => fractal_info.type === "Recommended");
+            const t4Fractals: FractalInfo[] = dailyFractals.filter(fractal_info => fractal_info && fractal_info.type === "DailyT4");
+            const instabs: InstabFractalInfo[] = this.fractalAPI.getInstabilities(t4Fractals);
 
-            const recs: string[] = fractals.filter(fractal => fractal.recommended).map(fractal => fractal.name);
-            const levels: BaseFractal[][] = this.fractalAPI.getDailyT4Levels(fractals);
-            const instabs: string[][][] = this.fractalAPI.getInstabilities(levels);
-            
-            view.setEmbedToDaily(levels, instabs, recs);
+            view.setEmbeds('daily', instabs, recs);
         }
 
-        else if(viewType === 'cm'){
-            const CMs = GW_FRACTALS.slice(-3);
-            // honestly wouldn't work if this wasn't here; ain't happy about that
-            const levelsCMs: BaseFractal[][] = CMs.map(CM => [CM]); //// but you gotta do what you gotta do
-            const instabsCMs: string[][][] = this.fractalAPI.getInstabilities(levelsCMs);
+        else if(commandOption === 'cm'){
+            const CMs: FractalInfo[] = GW_FRACTALS.slice(-3).map(CM => {return {name: CM.name, levels: [CM.level], type: 'DailyCM'}});
+            const instabsCMs: InstabFractalInfo[] = this.fractalAPI.getInstabilities(CMs);
             
-            view.setEmbedToCMs(levelsCMs, instabsCMs);
+            view.setEmbeds('cm', instabsCMs);
         }
         else{throw "Dunno how you got here, but welcome!"}
 
