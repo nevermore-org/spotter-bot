@@ -4,6 +4,7 @@ import PingController from "../Controller/PingController";
 import PactSupplyController from "../Controller/Guildwars/PactSupplyController";
 import DiscordCommandInterface from "../../Model/Discord/DiscordCommandInterface";
 import GuildStashController from "../Controller/Guildwars/GuildStashController";
+import { OPTION_TYPES } from "./enum/OPTION_TYPES";
 
 /*
 Made like this, so discord api can chomp happily on the whole data object.
@@ -27,10 +28,18 @@ export const COMMANDS: DiscordCommandInterface[] = [
             {
                 name:'category', 
                 description: "What view do you want?", 
-                type: 3, required: true, 
+                type: OPTION_TYPES.STRING, required: true, 
                 choices: [
                     {name: 'T4s + Recs', value:'daily'}, 
                     {name: 'Only CMs', value: 'cm'}
+                ]
+            },
+            {
+                name:'tomorrow',
+                description: "Shows fractals for tomorrow",
+                type: OPTION_TYPES.STRING,
+                choices: [
+                    {name: 'Gimme fractals for tomorrow, please!', value:'tomorrow'}
                 ]
             }
             ]
@@ -61,7 +70,7 @@ export const COMMANDS: DiscordCommandInterface[] = [
                 {
                     name: 'dyes',
                     description: 'Barvičkyyyy',
-                    type: 1
+                    type: OPTION_TYPES.SUB_COMMAND
                 }
             ]
         },

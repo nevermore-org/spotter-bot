@@ -1,21 +1,23 @@
 import { CommandInteraction, EmbedField, MessageEmbed } from "discord.js";
-import Fractal from "../../Model/Guildwars/Fractal";
 import { THUMBNAILS } from "./enum/THUMBNAILS";
 import View from "./View";
 import { EMBED_ID } from "./enum/EMBED_ID";
 import { DateTime } from "luxon";
-import BaseFractal from "../../Model/Guildwars/BaseFractal";
 import { FractalInfo, InstabFractalInfo } from "../../Model/Guildwars/FractalInfo";
 
 export default class ViewFractals extends View {
     thumbnail: string = THUMBNAILS.FRACTAL;
+    todayStr: string;
     titlesMap: Record<string, string> = {'daily': `Daily T4s + Recs`, 'cm': `Daily CMs`};
 
     /**
      *
      */
-    constructor() {
+    constructor(wantTomorrow: boolean = false) {
         super();
+        // DateTime.utc().plus({days: wantTomorrow ? 1 : 0}).setLocale('en-gb').toLocaleString();
+        this.todayStr = wantTomorrow ? "(Tomorrow)" : "";
+        
     }
 
     /**
@@ -26,7 +28,7 @@ export default class ViewFractals extends View {
      * @returns 
      */
     public setEmbeds = (commandOption: string, fractals: InstabFractalInfo[], recs: FractalInfo[] = []): ViewFractals => {
-        const fractalsEmbed = this.createEmbed(EMBED_ID.FRACTALS, this.titlesMap[commandOption], this.thumbnail);
+        const fractalsEmbed = this.createEmbed(EMBED_ID.FRACTALS, `${this.titlesMap[commandOption]} ${this.todayStr}`, this.thumbnail);
         let offset = 0;
 
         fractals.forEach(fractal => {
@@ -47,7 +49,8 @@ export default class ViewFractals extends View {
 
         // basically if you want to show recommended fractals or not
         if(recs.length > 0) {
-            fractalsEmbed.addField(`Recommended fractals`, `${recs.map(rec => [rec.levels[0], rec.name].join(" ")).sort().reverse().join("\n")}`);
+            const sortedRecs = recs.sort((a, b) => b.levels[0] - a.levels[0]); // DESC order
+            fractalsEmbed.addField(`Recommended fractals`, `${sortedRecs.map(rec => [rec.levels[0], rec.name].join(" ")).join("\n")}`);
         }
 
         return this;

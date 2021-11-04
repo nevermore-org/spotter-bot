@@ -10,8 +10,8 @@ export default class FractalAPI {
     /**
      * Returns daily fractals (t4 + recs) for either today or tomorrow
      */
-    public getDailyFractals = async () => {
-        const dailyResponse = await axios.get(GW_API_URL.DAILY);
+    public getDailyFractals = async (wantTomorrow: boolean = false) => {
+        const dailyResponse = await axios.get(wantTomorrow ? GW_API_URL.TOMORROW : GW_API_URL.DAILY);
         //GW2 API actually returns daily fractals ACHIEVEMENTS rather than fractals themselves
         const fractalAchievements: AchievementResponse[] = dailyResponse.data.fractals;
 
@@ -28,8 +28,8 @@ export default class FractalAPI {
      * Converts array of daily fractals to their matching array of instabilities
      * @param levels
      */
-    public getInstabilities(fractals: FractalInfo[]) {
-        const today = DateTime.utc().ordinal;
+    public getInstabilities(fractals: FractalInfo[], wantTomorrow: boolean = false) {
+        const today = DateTime.utc().plus({days: wantTomorrow ? 1 : 0}).ordinal;
 
         // replaces each level with list of instability indices; then replaces those with their names
         let getInstabilitiesForLevel = (level: number) => (GW_INSTABILITIES[level][today]).map(index => GW_INST_NAMES[index]);
