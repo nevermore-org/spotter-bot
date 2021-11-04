@@ -2,6 +2,7 @@ import { REST } from '@discordjs/rest';
 import { Routes } from 'discord-api-types/v9';
 import loadDotenv from '../Config/Config';
 import COMMANDS from "./Command/Commands";
+import { deleteGuildCommands } from './deleteGuildCommands';
 
 
 /**
@@ -27,6 +28,8 @@ async function deployCommands(token: string, clientId: string, guildId: string =
             console.log('Successfully reloaded application (/) commands for development environment.');
         }
         else {
+            await deleteGuildCommands(rest, clientId, guildId);
+            
             await rest.put(
                 Routes.applicationCommands(clientId),
                 { body: arrayOfCommands },
