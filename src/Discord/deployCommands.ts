@@ -1,8 +1,8 @@
 import { REST } from '@discordjs/rest';
 import { Routes } from 'discord-api-types/v9';
 import loadDotenv from '../Config/Config';
+import DiscordCommandREST from '../Model/Discord/DiscordCommandREST';
 import COMMANDS from "./Command/Commands";
-import { deleteGuildCommands } from './deleteGuildCommands';
 
 
 /**
@@ -28,8 +28,7 @@ async function deployCommands(token: string, clientId: string, guildId: string =
             console.log('Successfully reloaded application (/) commands for development environment.');
         }
         else {
-            await deleteGuildCommands(rest, clientId, guildId);
-            
+            // await deleteGuildCommands(rest, clientId, guildId);
             await rest.put(
                 Routes.applicationCommands(clientId),
                 { body: arrayOfCommands },
@@ -44,6 +43,23 @@ async function deployCommands(token: string, clientId: string, guildId: string =
         console.error(error);
     }
 }
+
+export async function deleteGuildCommands(rest: REST, clientId: string, guildId: string) {
+    const guildCommands = <DiscordCommandREST[]>await rest.get(Routes.applicationGuildCommands(clientId, guildId));
+    
+    for (let i = 0; i < guildCommands.length; i++){
+        const cmd = guildCommands[i];
+        try {
+            await rest.delete(`/applications/${clientId}/guilds/${guildId}/commands/${cmd.id}`);
+            console.log(`Successfully deleted guild command "${cmd.name}" from guild ${guildId}`);
+        }
+        catch (err) {
+            console.error(err);
+        }
+    }
+    console.log(`Successfully deleted all guild commands in ${guildId}`);
+}
+
 
 loadDotenv();
 deployCommands(String(process.env.CLIENT_TOKEN), String(process.env.APPLICATION_ID), String(process.env.GUILD_ID))
