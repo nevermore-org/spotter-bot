@@ -5,6 +5,7 @@ export type DailyResponse = {
 
 export interface Location {
     waypoint: string,
+    chatcode: string,
     description: string,
     schedule?: string[]
 }

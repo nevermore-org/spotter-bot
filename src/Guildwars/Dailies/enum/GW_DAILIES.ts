@@ -11,20 +11,20 @@ import GW_ADVENTURES from "./GW_ADVENTURES";
 import GW_BOSSES from "./GW_BOSSES";
 import GW_VISTAS from "./GW_VISTAS";
 
-const EMPTY_LOCATION: Location = {waypoint: " ", description: " "};
+const EMPTY_LOCATION: Location = {waypoint: " ", chatcode: " ", description: " "};
 
 export const NORMALIZE_DAILY: Record<string, string> = {
     "Lumberer": "Lumberer",
     "Miner" : "Miner",
     "Forager": "Forager",
-    "Viewer": "Viewer",
+    "Viewer": "Vista",
     "Puzzle": "Puzzle",
     "Minidungeon": "Minidungeon",
     "Taskmaster": "Taskmaster",
-    "Participation": "Participation",
-    "Completer": "Completer",
-    "Hunter": "Hunter",
-    "Forger": "Forger",
+    "Participation": "Activity",
+    "Completer": "Event Completer",
+    "Hunter": "Bounty Hunter",
+    "Forger": "Mystic Forger",
     "Catacombs": "Dungeon",
     "Manor": "Dungeon",
     "Arbor": "Dungeon",
@@ -60,17 +60,17 @@ export const NORMALIZE_DAILY: Record<string, string> = {
     "Megadestroyer": "Boss",
     "Behemoth": "Boss",
     "Shatterer": "Boss",
-    "Spender": "Spender"
+    "Spender": "Big Spender"
 }
 
-
+// TODO - fix GATHERING !
 export const GW_DAILY: Record<string, DailyFormat> = {
     "Lumberer": {
         endOfName: -1,
         wantWaypoint: true,
         location: (regionName) => {return GW_GATHERING[regionName]["Lumberer"]},
         prettyFormat: (location) => {
-            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n ${EMOJIS['Lumberer']} *${location.description}*`
+            return `${EMOJIS["Waypoint"]} ${location.waypoint} - ${location.chatcode}\n ${EMOJIS['Lumberer']} *${location.description}*`
         }
     },
 
@@ -79,7 +79,7 @@ export const GW_DAILY: Record<string, DailyFormat> = {
         wantWaypoint: true,
         location: (regionName) => {return GW_GATHERING[regionName]["Miner"]},
         prettyFormat: (location) => {
-            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n ${EMOJIS['Miner']} *${location.description}*`
+            return `${EMOJIS["Waypoint"]} ${location.waypoint} - ${location.chatcode}\n ${EMOJIS['Miner']} *${location.description}*`
         }
     },
 
@@ -88,16 +88,16 @@ export const GW_DAILY: Record<string, DailyFormat> = {
         wantWaypoint: true,
         location: (regionName) => {return GW_GATHERING[regionName]["Forager"]},
         prettyFormat: (location) => {
-            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n ${EMOJIS['Forager']} *${location.description}*`
+            return `${EMOJIS["Waypoint"]} ${location.waypoint} - ${location.chatcode}\n ${EMOJIS['Forager']} *${location.description}*`
         }
     },
 
-    "Viewer": {
+    "Vista": {
         endOfName: -2,
         wantWaypoint: true,
         location: (regionName) => {return GW_VISTAS[regionName]},
         prettyFormat: (location) => {
-            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n ${EMOJIS['Viewer']} *${location.description}*`
+            return `${EMOJIS["Waypoint"]} ${location.waypoint} - ${location.chatcode}\n ${EMOJIS['Viewer']} *${location.description}*`
         }
     },
 
@@ -106,7 +106,7 @@ export const GW_DAILY: Record<string, DailyFormat> = {
         wantWaypoint: true,
         location: (puzzleName) => {return GW_PUZZLES[puzzleName]},
         prettyFormat: (location, puzzleName) => {
-            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['JP']} ${location.description}*\n${EMOJIS['Guide']} [Wiki Guide](${GW_API_URL.WIKI}${puzzleName})`;
+            return `${EMOJIS["Waypoint"]} ${location.waypoint} - ${location.chatcode}\n*${EMOJIS['JP']} ${location.description}*\n${EMOJIS['Guide']} [Wiki Guide](${GW_API_URL.WIKI}${puzzleName})`;
         }  
     },
 
@@ -115,7 +115,7 @@ export const GW_DAILY: Record<string, DailyFormat> = {
         wantWaypoint: true,
         location: (name) => {return GW_ADVENTURES[name]},
         prettyFormat: (location) => {
-            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['Adventure']} ${location.description}*`
+            return `${EMOJIS["Waypoint"]} ${location.waypoint} - ${location.chatcode}\n*${EMOJIS['Adventure']} ${location.description}*`
         }
 
     },
@@ -125,7 +125,7 @@ export const GW_DAILY: Record<string, DailyFormat> = {
         wantWaypoint: true,
         location: (name) => {return GW_BOSSES[name]},
         prettyFormat: (location) => {
-            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['Boss']} Will be up in ${prettifyDuration(calcBoss(location.schedule))}*`;
+            return `${EMOJIS["Waypoint"]} ${location.waypoint} - ${location.chatcode}\n*${EMOJIS['Boss']} Will be up in ${prettifyDuration(calcBoss(location.schedule))}*`;
         }
     },
 
@@ -134,7 +134,7 @@ export const GW_DAILY: Record<string, DailyFormat> = {
         wantWaypoint: true,
         location: (name) => {return GW_DUNGEONS[name]},
         prettyFormat: (location) => {
-            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['Dungeon']} ${location.description}*`;
+            return `${EMOJIS["Waypoint"]} ${location.waypoint} - ${location.chatcode}\n*${EMOJIS['Dungeon']} ${location.description}*`;
         }
 
     },
@@ -144,7 +144,7 @@ export const GW_DAILY: Record<string, DailyFormat> = {
         wantWaypoint: true,
         location: (miniName) => {return GW_MINIDUNGEONS[miniName]},
         prettyFormat: (location) => {
-            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['Dungeon']} ${location.description}*`;
+            return `${EMOJIS["Waypoint"]} ${location.waypoint} - ${location.chatcode}\n*${EMOJIS['Dungeon']} ${location.description}*`;
         }
     },
 
@@ -153,23 +153,23 @@ export const GW_DAILY: Record<string, DailyFormat> = {
         wantWaypoint: true,
         location: (regionName) => {return GW_HEARTS[regionName]},
         prettyFormat: (location) => {
-            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['Heart']} ${location.description}*`;
+            return `${EMOJIS["Waypoint"]} ${location.waypoint} - ${location.chatcode}\n*${EMOJIS['Heart']} ${location.description}*`;
         }
     },
 
-    "Participation": {
+    "Activity": {
         endOfName: -1,
         wantWaypoint: true,
-        location: () => {return {waypoint:"Gate Hub Plaza Waypoint — [&BBEEAAA=]", description: " "}},
+        location: () => {return {waypoint:"Gate Hub Plaza Waypoint",chatcode: "[&BBEEAAA=]", description: " "}},
         prettyFormat: (location) => {
             // weekday is indexed from 1
             const weekday: number = DateTime.utc().weekday - 1;
-            return `${EMOJIS["Waypoint"]} ${location.waypoint}\n*${EMOJIS['Activity']} ${GW_ACTIVITIES[weekday]}*`;
+            return `${EMOJIS["Waypoint"]} ${location.waypoint} - ${location.chatcode}\n*${EMOJIS['Activity']} ${GW_ACTIVITIES[weekday]}*`;
         }
     },
 
     // dailies with simple formatting
-    "Completer": {
+    "Event Completer": {
         endOfName: -1,
         wantWaypoint: false,
         location: () => {return EMPTY_LOCATION},
@@ -178,7 +178,7 @@ export const GW_DAILY: Record<string, DailyFormat> = {
         }
     },
 
-    "Hunter": {
+    "Bounty Hunter": {
         endOfName: -2,
         wantWaypoint: false,
         location: () => {return EMPTY_LOCATION},
@@ -187,7 +187,7 @@ export const GW_DAILY: Record<string, DailyFormat> = {
         }
     },
 
-    "Forger": {
+    "Mystic Forger": {
         endOfName: -1,
         wantWaypoint: false,
         location: () => {return EMPTY_LOCATION},
@@ -196,7 +196,7 @@ export const GW_DAILY: Record<string, DailyFormat> = {
         }
     },
     // only WvW daily implemented so far, kinda the only one we really care for
-    "Spender": {
+    "Big Spender": {
         endOfName: 0,
         wantWaypoint: false,
         location: () => {return EMPTY_LOCATION},
@@ -209,11 +209,13 @@ export const GW_DAILY: Record<string, DailyFormat> = {
 
 export const GW_HEARTS: Record<string, Location> = {
     "Elon_Riverlands": {
-        waypoint: "Olishar's Oasis Camp Waypoint — [&BCgKAAA=]",
+        waypoint: "Olishar's Oasis Camp Waypoint",
+        chatcode: "[&BCgKAAA=]",
         description: "Help Ebele prepare the way north for defectors"
     },
     "Desolation": {
-        waypoint: "Bonestrand Waypoint — [&BNwKAAA=]",
+        waypoint: "Bonestrand Waypoint",
+        chatcode: "[&BNwKAAA=]",
         description: "Help Kisha Odili keep the village running"
     }
 }

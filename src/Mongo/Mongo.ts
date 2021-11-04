@@ -1,7 +1,4 @@
 import { Collection, Db, FindCursor, FindOptions, IndexSpecification, MongoClient } from "mongodb";
-import { toAbsPath } from "../Util/scrapers";
-import * as fs from 'fs';
-import { AchievementMod } from "../Model/Guildwars/Achievement";
 
 let _client: MongoClient;
 
