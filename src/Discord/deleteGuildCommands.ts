@@ -1,5 +1,5 @@
 import { REST } from "@discordjs/rest";
-import { Routes } from "discord-api-types";
+import { Routes } from "discord-api-types/v9";
 import DiscordCommandREST from "../Model/Discord/DiscordCommandREST";
 
 
