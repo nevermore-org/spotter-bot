@@ -24,24 +24,27 @@ export default class FractalsController implements DiscordControllerInterface {
      */
     public handleInteraction = async (interaction: CommandInteraction): Promise<void> => {
         const commandOption = interaction.options.data[0].value;
-        const view = new ViewFractals()
+        const secondOption = interaction.options.data[1];
+        const wantTomorrow = secondOption !== undefined && secondOption.value === "tomorrow";
+
+        const view = new ViewFractals(wantTomorrow);
 
         // it is split just so we dont always use GW_API
         // especially in cases when its not really needed (like CMs for example)
         
         if (commandOption === 'daily'){
-            const dailyFractals: FractalInfo[] = await this.fractalAPI.getDailyFractals();
+            const dailyFractals: FractalInfo[] = await this.fractalAPI.getDailyFractals(wantTomorrow);
 
             const recs = dailyFractals.filter(fractal_info => fractal_info.type === "Recommended");
             const t4Fractals: FractalInfo[] = dailyFractals.filter(fractal_info => fractal_info && fractal_info.type === "DailyT4");
-            const instabs: InstabFractalInfo[] = this.fractalAPI.getInstabilities(t4Fractals);
+            const instabs: InstabFractalInfo[] = this.fractalAPI.getInstabilities(t4Fractals, wantTomorrow);
 
             view.setEmbeds('daily', instabs, recs);
         }
 
         else if(commandOption === 'cm'){
             const CMs: FractalInfo[] = GW_FRACTALS.slice(-3).map(CM => {return {name: CM.name, levels: [CM.level], type: 'DailyCM'}});
-            const instabsCMs: InstabFractalInfo[] = this.fractalAPI.getInstabilities(CMs);
+            const instabsCMs: InstabFractalInfo[] = this.fractalAPI.getInstabilities(CMs, wantTomorrow);
             
             view.setEmbeds('cm', instabsCMs);
         }
