@@ -4,11 +4,51 @@ import GW_ACHIEV_IDS from "../Guildwars/General/enum/GW_ACHIEV_IDS";
 import { GW_API_URL } from "../Guildwars/General/enum/GW_API_URL";
 import { chunk, objectWithoutKey } from "./util";
 import * as fs from 'fs';
-import { Achievement } from "../Model/Guildwars/Achievement";
+import { Achievement, AchievementMod } from "../Model/Guildwars/Achievement";
+import { DailyData, Location } from "../Model/Guildwars/Daily";
+import { collectionExists, getDb, insertMany } from "../Mongo/Mongo";
 
 export const toAbsPath = (relativePath: string) => {
     return path.join(__dirname, relativePath);
 }
+
+/**
+ * Get all the stuff from a specified dailyData record, then splits the waypoint field into two separate ones
+ * Finally writes all of it to a file
+ * @param recordTitle 
+ * @param dailyData
+ * @param outputFile - relative path!
+ */
+export const splitWaypointField = (dailyData: DailyData, recordTitle: string = 'DEFAULT_TITLE', outputFile: string = 'splitStuff.txt') => {
+    var stream = fs.createWriteStream(toAbsPath(outputFile), {flags:'a'});
+
+    stream.write('const ' + recordTitle + ': DailyData = {\n');
+
+    for (const k in dailyData){
+        const origLocation = dailyData[k];
+        const fullWP = origLocation.waypoint.split(" — ");
+        // done this way cause i want to change the visual ordering of the keys
+        let location: Location = {waypoint: "", chatcode: "", description: ""};
+        
+        location.chatcode = fullWP[1];
+        location.waypoint = fullWP[0];
+        location.description = origLocation.description;
+        if(origLocation.schedule) {location.schedule = origLocation.schedule};
+
+        const locationJSON = JSON.stringify(location, null, '\t');
+        // dont want quotes around properties (JSON doesn't do that natively - would have to use JSON5)
+        const locationStr = `"${k}": ${locationJSON
+            .replace(/"([^"]+)":/g, '$1:')
+            .replaceAll('<:poi:893849389234266152>',"${EMOJIS['POI']}")
+            .replaceAll('<:waypoint:893273199901569095>', "${EMOJIS['Waypoint']}")},`;
+        
+        stream.write(locationStr + "\n");
+    }
+    
+    stream.write('}\n\nexport default ' + recordTitle + ';');
+    stream.end();
+}
+
 
 export function appendToJSONFile <T>(outputRelPath: string, dataChunk: T[], silent:boolean=true) {
     const absPath = toAbsPath(outputRelPath);
@@ -88,5 +128,17 @@ export const createModifiedAchievementsJSON = (relativeOutputPath: string = "enu
         appendToJSONFile(relativeOutputPath, [modifiedAchiev]);
 
         console.log(`Added ${achievs[i].name} to JSON file`);
+    }
+}
+
+const insertAchievementsToDB = async () => {
+    const achievFile = fs.readFileSync(toAbsPath('enum/achievements.json'), "utf-8");
+    const achievs: AchievementMod[] = JSON.parse(achievFile);
+
+    const db = await getDb(process.env.MONGO_INITDB_DATABASE);
+
+    if (await collectionExists('achievements', db)){
+        const achievementCollection = db.collection('achievements');
+        insertMany(achievs, achievementCollection);
     }
 }

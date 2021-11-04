@@ -32,7 +32,7 @@ export default class ViewDailies extends View {
             this.waypoints.push("No waypoints to show");
         }
 
-        dailiesEmbed.addField("Copy&Paste All Waypoints", this.waypoints.join(" "));
+        dailiesEmbed.addField("Copy&Paste All Waypoints", this.waypoints.join(" ").slice(0, -1));
 
         return this;
     }
@@ -64,7 +64,7 @@ export default class ViewDailies extends View {
         }
 
         if (daily.wantWaypoint) {
-            this.waypoints.push(`${location.waypoint}`);
+            this.waypoints.push(`${NORMALIZE_DAILY[dailyType]} - ${location.chatcode},`);
         }
 
         return daily.prettyFormat(location, dailyName);

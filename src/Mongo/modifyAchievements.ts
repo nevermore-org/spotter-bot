@@ -1,21 +1,7 @@
 import { Achievement, AchievementMod } from "../Model/Guildwars/Achievement";
-import { toAbsPath } from "../Util/scrapers";
 import { collectionExists, getDb, insertMany } from "./Mongo";
-import * as fs from 'fs';
 import GW_FRACTALS from "../Guildwars/Fractals/enum/GW_FRACTALS";
 import { Collection, Db, Document } from "mongodb";
-
-const insertAchievementsToDB = async () => {
-    const achievFile = fs.readFileSync(toAbsPath('enum/achievements.json'), "utf-8");
-    const achievs: AchievementMod[] = JSON.parse(achievFile);
-
-    const db = await getDb(process.env.MONGO_INITDB_DATABASE);
-
-    if (await collectionExists('achievements', db)){
-        const achievementCollection = db.collection('achievements');
-        insertMany(achievs, achievementCollection);
-    }
-}
 
 /**
  * Updates all daily recomended achievements inside the achievements collection

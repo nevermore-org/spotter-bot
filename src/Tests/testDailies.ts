@@ -1,4 +1,4 @@
-import { filterSaveDailies, saveAchievementsToJSON, toAbsPath } from "../Util/scrapers";
+import { filterSaveDailies, saveAchievementsToJSON, toAbsPath } from "../Util/fileManipulators";
 import * as fs from 'fs';
 import { Achievement } from "../Model/Guildwars/Achievement";
 import { chunk } from "../Util/util";
@@ -32,6 +32,7 @@ export const testDailies = async() => {
         const dailiesEmbed = view.getEmbed(EMBED_ID.DAILIES);
         await webhook.send({embeds:[dailiesEmbed]});
     }
+    console.log(`=== Testing ended succesfully ===`);
 }
 
 
