@@ -51,6 +51,7 @@ client.login(process.env.CLIENT_TOKEN);
 
 if (process.env.NODE_ENV === "prod") {
     const logger = winston.createLogger({
+        format: winston.format.simple(),
         transports: [
             new DiscordTransport({
                 webhook: <string>process.env.WEBHOOK_ERRORS,

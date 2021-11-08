@@ -1,6 +1,9 @@
 import Transport, { TransportStreamOptions } from 'winston-transport';
 import os from 'os';
 import axios from 'axios';
+import { MessageEmbed, MessageOptions } from 'discord.js';
+import WinstonBaseInfo from '../../Model/Discord/WinstonBaseInfo';
+import { THUMBNAILS } from '../View/enum/THUMBNAILS';
 
 // https://github.com/sidhantpanda/winston-discord-transport/blob/master/src/index.ts
 
@@ -37,10 +40,10 @@ export default class DiscordTransport extends Transport {
         silly: 2210373, // #21ba45
     };
 
-    constructor(opts: DiscordTransportOptions) {
-        super(opts);
-        this.webhook = opts.webhook;
-        this.defaultMeta = opts.defaultMeta;
+    constructor(options: DiscordTransportOptions) {
+        super(options);
+        this.webhook = options.webhook;
+        this.defaultMeta = options.defaultMeta;
         this.initialize();
     }
 
@@ -54,13 +57,13 @@ export default class DiscordTransport extends Transport {
      */
     private initialize = () => {
         this.initialized = new Promise((resolve, reject) => {
-            const opts = {
+            const options = {
                 url: this.webhook,
                 method: 'GET',
                 json: true
             };
 
-            axios.get(opts.url)
+            axios.get(options.url)
                 .then(response => {
                     this.id = response.data.id;
                     this.token = response.data.token;
@@ -77,7 +80,7 @@ export default class DiscordTransport extends Transport {
      * @param info Log message from winston
      * @param callback Callback to winston to complete the log
      */
-    log(info: any, callback: { (): void }) {
+    log(info: WinstonBaseInfo, callback: { (): void }) {
         if (info.discord !== false) {
             setImmediate(() => {
                 this.initialized?.then(() => {
@@ -91,19 +94,26 @@ export default class DiscordTransport extends Transport {
         callback();
     }
 
+    private createPrettyEmbed (info: WinstonBaseInfo) {
+        const messageArray = info.message.split('\n');
+
+        const prettyEmbed = new MessageEmbed()
+            .setTitle(messageArray[0])
+            .setColor(DiscordTransport.COLORS[info.level])
+            .setTimestamp(new Date())
+        
+        prettyEmbed.addField(messageArray[1], messageArray.slice(2).join('\n'));
+        return prettyEmbed;
+    }
+
+
+
     /**
      * Sends log message to discord
      */
-    private sendToDiscord = async (info: any) => {
-        const postBody = {
-            content: "",
-            embeds: [{
-                description: info.message,
-                color: DiscordTransport.COLORS[info.level],
-                fields: [] as any[],
-                timestamp: new Date().toISOString(),
-            }]
-        };
+    private sendToDiscord = async (info: WinstonBaseInfo) => {
+        const mainEmbed = this.createPrettyEmbed(info);
+        const postBody: MessageOptions = {embeds: [mainEmbed]};
 
         // if (this.defaultMeta) {
         //     Object.keys(this.defaultMeta).forEach(key => {
