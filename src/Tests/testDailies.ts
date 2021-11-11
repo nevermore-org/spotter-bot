@@ -1,4 +1,4 @@
-import { filterSaveDailies, saveAchievementsToJSON, toAbsPath } from "../Util/fileManipulators";
+import { filterSaveDailies, saveAchievementsToJSON, toAbsPath } from "../Util/scripts";
 import * as fs from 'fs';
 import { Achievement } from "../Model/Guildwars/Achievement";
 import { chunk } from "../Util/util";

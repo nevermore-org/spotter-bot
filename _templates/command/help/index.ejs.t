@@ -1,0 +1,15 @@
+---
+message: |
+    - GENERAL INFO
+    -
+    - [NAME] should be in camelCase if you want/need multiword command name
+    - The --name flag can also be skipped here since we only use one command line argument (which is auto-assigned to name)
+    -
+    - HOW TO USE
+    -
+    - Scaffold new command with all its components:
+    - $ npx hygen command new --name [NAME]
+    -
+    - Scaffold only one specific component of the command (e.g. view)
+    - $ npx hygen command new:[SPECIFIC_COMPONENT] --name [NAME]
+---
