@@ -1,10 +1,10 @@
+import DiscordCommandInterface from "../../Model/Discord/DiscordCommandInterface";
+import { OPTION_TYPES } from "./enum/OPTION_TYPES";
 import FractalsController from "../Controller/Guildwars/FractalsController";
 import DailiesController from "../Controller/Guildwars/DailiesController"
 import PingController from "../Controller/PingController";
 import PactSupplyController from "../Controller/Guildwars/PactSupplyController";
-import DiscordCommandInterface from "../../Model/Discord/DiscordCommandInterface";
 import GuildStashController from "../Controller/Guildwars/GuildStashController";
-import { OPTION_TYPES } from "./enum/OPTION_TYPES";
 
 /*
 Made like this, so discord api can chomp happily on the whole data object.
@@ -76,8 +76,7 @@ export const COMMANDS: DiscordCommandInterface[] = [
         },
         controller: new GuildStashController(),
     },
-
-]
+] // END_OF_COMMANDS (used to regex-match for scaffolding)
 
 // example of contents of options array - gives the person who invoked the cmd a required choice
 // {name: 'category', description: 'Dailies', type: 3, required: true, choices: [{name:'PvE', value:'pve'}, {name:'PvP', value:'pvp'}]}
