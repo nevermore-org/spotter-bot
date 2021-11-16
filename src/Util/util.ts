@@ -68,7 +68,7 @@ export function createRarityItemMap(items: Item[], rarities: string[]){
     return itemMap;
 }
 
-export function chunk <T>(items: T[], chunkSize: number) {
+export function chunkify <T>(items: T[], chunkSize: number) {
     var chunks = [],
         index = 0,
         originLen = items.length;
@@ -84,4 +84,13 @@ export function chunk <T>(items: T[], chunkSize: number) {
 export const objectWithoutKey = <T>(object:Record<string, T>, key:string) => {
     const {[key]: _, ...otherKeys} = object;
     return otherKeys;
+}
+
+/**
+ * returns A \ B 
+ * @param setA 
+ * @param setB 
+ */
+export const differenceSet = <T>(setA: Set<T>, setB: Set<T>) => {
+    return new Set([...setA].filter( element => !setB.has(element)));
 }

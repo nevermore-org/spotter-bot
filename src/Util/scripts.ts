@@ -2,7 +2,7 @@ import axios from "axios";
 import path from "path/posix";
 import GW_ACHIEV_IDS from "../Guildwars/General/enum/GW_ACHIEV_IDS";
 import { GW_API_URL } from "../Guildwars/General/enum/GW_API_URL";
-import { chunk, objectWithoutKey } from "./util";
+import { chunkify, objectWithoutKey } from "./util";
 import * as fs from 'fs';
 import { Achievement, AchievementMod } from "../Model/Guildwars/Achievement";
 import { DailyData, Location } from "../Model/Guildwars/Daily";
@@ -49,6 +49,7 @@ export const splitWaypointField = (dailyData: DailyData, recordTitle: string = '
     stream.end();
 }
 
+// a lot of the stuff below is pretty much deprecated
 
 export function appendToJSONFile <T>(outputRelPath: string, dataChunk: T[], silent:boolean=true) {
     const absPath = toAbsPath(outputRelPath);
@@ -72,7 +73,7 @@ export function appendToJSONFile <T>(outputRelPath: string, dataChunk: T[], sile
  * And appends! it to a json file (the file needs to exist and have at least one [] inside)
  */
  export const saveAchievementsToJSON = async (outputRelPath: string) => {
-    const chunkedAchievs = chunk(GW_ACHIEV_IDS, 200);
+    const chunkedAchievs = chunkify(GW_ACHIEV_IDS, 200);
 
     for (let i = 0; i < chunkedAchievs.length; i++) {
         const achievChunk = await axios.get(`${GW_API_URL.ACHIEVEMENTS}?ids=${chunkedAchievs[i]}`);

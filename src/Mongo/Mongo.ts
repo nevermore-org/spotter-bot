@@ -1,4 +1,5 @@
 import { Collection, Db, FindCursor, FindOptions, IndexSpecification, MongoClient } from "mongodb";
+import { COLLECTIONS } from "./enum/DB_CONFIG";
 
 let _client: MongoClient;
 
@@ -73,6 +74,26 @@ export const getIdsFromCollection = async (ids: number[], collectionName: string
         const collection = db.collection(collectionName);
         return collection.find({_id: {$in : ids}}, options).toArray();
     };
+}
+
+/**
+ * First drops the entire collection, then recreates it from scratch
+ * For now doesn't recreate indexes -> will have to add a proper DBconfig file
+ * doesn't do anything if the doesn't exist in the first place
+ */
+ export const recreateCollection = async(collectionName: string, db: Db) => {
+    if (!collectionExists(collectionName, db)) {
+        console.error(`Collection ${collectionName} does not exist`);
+        return;
+    }
+    if (!COLLECTIONS[collectionName]){
+        console.error(`Collection ${collectionName} is not in DB_CONFIG/COLLECTIONS`);
+        return;
+    }
+
+    await dropCollectionIfExists(collectionName, db);
+    const collection = db.collection(collectionName);
+    await COLLECTIONS[collectionName].createFunction(collection);
 }
 
 

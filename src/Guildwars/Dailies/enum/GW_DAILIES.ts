@@ -63,7 +63,6 @@ export const NORMALIZE_DAILY: Record<string, string> = {
     "Spender": "Big Spender"
 }
 
-// TODO - fix GATHERING !
 export const GW_DAILY: Record<string, DailyFormat> = {
     "Lumberer": {
         endOfName: -1,

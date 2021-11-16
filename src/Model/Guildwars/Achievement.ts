@@ -6,8 +6,10 @@ export type AchievementResponse = {
     required_access?: {product: string, condition: string},
 }
 
+// this is what we store in the DB
 export interface AchievementMod {
     _id: number;
+    id?: number; // only here so we can build our achievement more easily
     name: string;
     special_flag: string;
     description: string;
@@ -22,6 +24,7 @@ export interface AchievementMod {
     fractal_info?: FractalInfo;
 }
 
+// we get this from GW_API
 export type Achievement = {
     id: number;
     name: string;
