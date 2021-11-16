@@ -1,7 +1,7 @@
-import { filterSaveDailies, saveAchievementsToJSON, toAbsPath } from "../Util/scripts";
+import { toAbsPath } from "../Util/scripts";
 import * as fs from 'fs';
 import { Achievement } from "../Model/Guildwars/Achievement";
-import { chunk } from "../Util/util";
+import { chunkify} from "../Util/util";
 import { WebhookClient } from "discord.js";
 import ViewDailies from "../Discord/View/ViewDailies";
 import { EMBED_ID } from "../Discord/View/enum/EMBED_ID";
@@ -17,7 +17,7 @@ export const testDailies = async() => {
 
     const dailiesFile = fs.readFileSync(toAbsPath('../Util/enum/dailyAchievements.json'), "utf-8");
     const allDailies: Achievement[] = JSON.parse(dailiesFile);
-    const chunkedDailies = chunk(allDailies, 10);
+    const chunkedDailies = chunkify(allDailies, 10);
 
     const webhook = new WebhookClient({url: process.env.WEBHOOK_URL_DAILIES ?? ''});
 
