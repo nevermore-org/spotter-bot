@@ -12,7 +12,7 @@ import { insertMany } from "./Mongo";
  * Gets data from GW_API in chunks; then modifies and inserts them into the DB
  * @param collection 
  */
-export const createAchievements: CollectionCreateFunction = async(collection: Collection<Document>) => {
+export const createAchievements: CollectionCreateFunction = async(collection: Collection<Document>): Promise<void> => {
     const achievIds = await axios.get(GW_API_URL.ACHIEVEMENTS);
     const chunkedAchievs: Achievement[][] = chunkify(achievIds.data, 200);
 
@@ -24,7 +24,7 @@ export const createAchievements: CollectionCreateFunction = async(collection: Co
 
         await insertMany(chunkModified, collection);
     }
-    console.log(`Succesfully created the "achievements" collection with ${achievIds.data.length} documents`);
+    console.log(`--- Succesfully created the "achievements" collection with ${achievIds.data.length} documents ---`);
 }
 
 /**

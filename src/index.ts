@@ -3,10 +3,11 @@ import loadDotenv from './Config/Config';
 import COMMANDS from './Discord/Command/Commands';
 import { WEBHOOKS } from './Discord/Webhook/enum/WEBHOOKS';
 import DiscordCommandInterface from './Model/Discord/DiscordCommandInterface';
-import { setUpDB } from "./Mongo/Mongo";
+import { scheduleRecreate, setUpDB } from "./Mongo/Mongo";
 import { testDailies } from './Tests/testDailies';
 import winston from 'winston';
 import DiscordTransport from "./Discord/Webhook/DiscordTransport";
+import { COLLECTIONS } from './Mongo/enum/DB_CONFIG';
 
 loadDotenv();
 setUpDB();
@@ -19,6 +20,13 @@ client.once('ready', () => {
     client.user?.setActivity("Guild Wars 2");
 
     console.log(`Logged in as ${client?.user?.tag}`);
+
+    // schedule all DB recreates (drop + create)
+    for (const name in COLLECTIONS) {
+        if(COLLECTIONS[name].wantCron) {
+            scheduleRecreate(name);
+        }                 
+    }
 
     // schedule all webhooks
     WEBHOOKS.forEach(webhook => {

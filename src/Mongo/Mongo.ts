@@ -1,4 +1,5 @@
 import { Collection, Db, FindCursor, FindOptions, IndexSpecification, MongoClient } from "mongodb";
+import { RecurrenceRule, scheduleJob } from "node-schedule";
 import { COLLECTIONS } from "./enum/DB_CONFIG";
 
 let _client: MongoClient;
@@ -44,7 +45,7 @@ export async function createCollectionIfNotExists(collectionName: string, databa
 
 export async function dropCollectionIfExists(collectionName: string, database: Db): Promise<void> {
     if (await collectionExists(collectionName, database)) {
-        console.log(`Dropping ${collectionName} from ${printDatabase(database)}`);
+        console.log(`--- Dropping ${collectionName} from ${printDatabase(database)} ---`);
         await database.collection(collectionName).drop();
     }
 }
@@ -81,20 +82,38 @@ export const getIdsFromCollection = async (ids: number[], collectionName: string
  * For now doesn't recreate indexes -> will have to add a proper DBconfig file
  * doesn't do anything if the doesn't exist in the first place
  */
- export const recreateCollection = async(collectionName: string, db: Db) => {
+ export const recreateCollection = async (collectionName: string, db: Db) => {
     if (!collectionExists(collectionName, db)) {
-        console.error(`Collection ${collectionName} does not exist`);
+        console.error(`--- Collection ${collectionName} does not exist ---`);
         return;
     }
     if (!COLLECTIONS[collectionName]){
-        console.error(`Collection ${collectionName} is not in DB_CONFIG/COLLECTIONS`);
+        console.error(`--- Collection ${collectionName} is not in DB_CONFIG/COLLECTIONS ---`);
         return;
     }
+
+    console.log(`--- Started the scheduled Drop&Update of the ${collectionName} collection ---`);
 
     await dropCollectionIfExists(collectionName, db);
     const collection = db.collection(collectionName);
     await COLLECTIONS[collectionName].createFunction(collection);
 }
+
+/**
+ * Handles the actual scheduling
+ * @param collectionName 
+ * @returns 
+ */
+export async function scheduleRecreate (collectionName: string) {
+    const db = await getDb(process.env.MONGO_INITDB_DATABASE);
+
+    const cronRule = new RecurrenceRule();
+    cronRule.tz = 'Etc/UTC';
+    cronRule.hour = 3;
+    cronRule.minute = 0;
+
+    return scheduleJob(cronRule, function() {return recreateCollection(collectionName, db)});
+} 
 
 
 export async function setUpDB() {
