@@ -24,7 +24,7 @@ export const createAchievements: CollectionCreateFunction = async(collection: Co
 
         await insertMany(chunkModified, collection);
     }
-    console.log(`--- Succesfully created the "achievements" collection with ${achievIds.data.length} documents ---`);
+    console.log(`[DB] Succesfully created the "achievements" collection with ${achievIds.data.length} documents.`);
 }
 
 /**
