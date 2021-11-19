@@ -6,4 +6,5 @@ export enum EMBED_ID {
     DAILIES = "dailies",
     PACT_SUPPLY = "pact-supply",
     GUILD_STASH = "guild-stash",
+    API_KEY = "api-key",
 }

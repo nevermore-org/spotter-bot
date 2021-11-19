@@ -5,6 +5,7 @@ import DailiesController from "../Controller/Guildwars/DailiesController"
 import PingController from "../Controller/PingController";
 import PactSupplyController from "../Controller/Guildwars/PactSupplyController";
 import GuildStashController from "../Controller/Guildwars/GuildStashController";
+import ApiKeyController from "../Controller/Guildwars/ApiKeyController";
 
 /*
 Made like this, so discord api can chomp happily on the whole data object.
@@ -76,6 +77,38 @@ export const COMMANDS: DiscordCommandInterface[] = [
         },
         controller: new GuildStashController(),
     },
+    {
+        data: {
+            name: 'api-key',
+            description: "handles all GW-API key business",
+            options: [
+                {
+                    name: 'show',
+                    description: 'show all API keys associated with this Discord account',
+                    type: OPTION_TYPES.SUB_COMMAND
+                },
+                {
+                    name: 'add',
+                    description: 'add new GW_API key',
+                    type: OPTION_TYPES.SUB_COMMAND,
+                    options: [
+                        {
+                            name: 'api-key',
+                            description: "GW2 API key",
+                            type: OPTION_TYPES.STRING,
+                            required: true
+                        }
+                    ]
+                },
+                // {
+                //     name: 'remove',
+                //     description: 'remove specified GW_API key',
+                //     type: OPTION_TYPES.SUB_COMMAND
+                // },
+            ]
+        },
+        controller: new ApiKeyController(),
+    }, 
 ] // END_OF_COMMANDS (used to regex-match for scaffolding)
 
 // example of contents of options array - gives the person who invoked the cmd a required choice

@@ -2,6 +2,7 @@ import { ColorResolvable, MessageActionRow, MessageButton, MessageButtonStyleRes
 import ViewDefault from "../../Model/Discord/ViewDefault";
 import { THUMBNAILS } from "./enum/THUMBNAILS";
 import { v4 as uuidv4 } from 'uuid';
+import { EMBED_COLORS } from "./enum/EMBED_COLORS";
 
 /**
  * Acts as a base class for all views
@@ -10,7 +11,7 @@ export default class View implements ViewDefault {
     defaultColor: number;
     defaultTitle: string;
     defaultThumbnail: string;
-    //This allows us to have ONE view with MULTIPLE embeds and buttons without code magic. Yay!
+    // This allows us to have ONE view with MULTIPLE embeds and buttons without code magic. Yay!
     embeds: Map<string, MessageEmbed>;
     actionRows: Map<string, MessageActionRow[]>;
     //
@@ -20,9 +21,9 @@ export default class View implements ViewDefault {
      * @param seed - uses v4 uuid
      */
     constructor(seed: string = uuidv4()) {
-        this.defaultColor = 0xBAD4A1;
+        this.defaultColor = EMBED_COLORS.DEFAULT;
         this.defaultTitle = "default title";
-        this.defaultThumbnail = THUMBNAILS.DEFAULT;
+        this.defaultThumbnail = ''; // THUMBNAILS.DEFAULT
         this.embeds = new Map<string, MessageEmbed>();
         this.actionRows = new Map<string, MessageActionRow[]>();
         this.seed = seed;

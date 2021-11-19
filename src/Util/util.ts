@@ -94,3 +94,15 @@ export const objectWithoutKey = <T>(object:Record<string, T>, key:string) => {
 export const differenceSet = <T>(setA: Set<T>, setB: Set<T>) => {
     return new Set([...setA].filter( element => !setB.has(element)));
 }
+
+/**
+ * From https://github.com/sindresorhus/escape-string-regexp
+ * Will come in handy for the names of API keys, since those are unescaped
+ */ 
+export function escapeStringRegexp(unescapedString: string) {
+	// Escape characters with special meaning either inside or outside character sets.
+	// Use a simple backslash escape when it’s always valid, and a `\xnn` escape when the simpler form would be disallowed by Unicode patterns’ stricter grammar.
+	return unescapedString
+		.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&')
+		.replace(/-/g, '\\x2d');
+}
