@@ -27,7 +27,7 @@ export default class ApiKeyController implements DiscordControllerInterface {
             this.optarg = await this.handleAddAPIkey(userID, subCommand);
         }
 
-        const userInfo = <UserDB[]> await this.apiKeyApi.getUserInfoFromDB(userID);
+        const userInfo = <UserDB> await this.apiKeyApi.getUserInfoFromDB(userID);
         const view = new ViewApiKey(subCommand.name, userInfo, this.optarg);
         view.sendFirstInteractionResponse(interaction);
     }

@@ -9,7 +9,7 @@ import { EMBED_COLORS } from "./enum/EMBED_COLORS";
 
 export default class ViewApiKey extends View {
     commandName: string;
-    userInfos: UserDB[];
+    userInfo: UserDB;
     embedSetters: Record<string, (embed: MessageEmbed) => Promise<ViewApiKey>>;
     neededPermissions: string[] = ['account'];
     // could maybe be inside its own file
@@ -37,10 +37,10 @@ export default class ViewApiKey extends View {
      * @param userInfos 
      * @param optarg - can store things like api key to add or the index of the to-be-removed api key
     */
-    public constructor(commandName: string, userInfos: UserDB[], optarg: string) {
+    public constructor(commandName: string, userInfo: UserDB, optarg: string) {
         super();
         this.commandName = commandName;
-        this.userInfos = userInfos;
+        this.userInfo = userInfo;
         this.embedSetters = {
             'show': this.setEmbedKeyShow,
             'add': this.setEmbedKeyAdd,
@@ -75,8 +75,10 @@ export default class ViewApiKey extends View {
      * @returns 
     */
     private setEmbedKeyShow = async(embed: MessageEmbed): Promise<ViewApiKey> => {
+        
         // user is not in our DB or hasn't added any key yet
-        if (!this.userInfos || this.userInfos.length === 0 || this.userInfos[0].API_Keys.length === 0){
+        if (!this.userInfo || this.userInfo.API_Keys.length === 0){
+            embed.setColor(EMBED_COLORS.SILENT);
             const lines = [
                 "No worries though, you can use: **/api-key add <YOUR-API-KEY>** to add a new key.",
                 `The API key should have at least the following permissions: \`${this.neededPermissions.join('\`, \`')}\``,
@@ -87,14 +89,13 @@ export default class ViewApiKey extends View {
         }
         // means we have the user in the DB, and have at least one api key stored for them
         else {
-            const userInfo = this.userInfos[0];
             embed.addField(':closed_lock_with_key: Your GW2 API Keys', `If you'd like to add another one, use **/api-key add**.`);
 
-            for (let index = 0; index < userInfo.API_Keys.length; index++){
-                const isPreferredKey = index === userInfo.preferredAPIKey;
+            for (let index = 0; index < this.userInfo.API_Keys.length; index++){
+                const isPreferredKey = index === this.userInfo.preferredAPIKey;
                 const emojiStatus = isPreferredKey ? ':sunny:' : ':cloud:'; // Pretty symbolic, I guess
 
-                embed.addField(`${emojiStatus} DefaultUser.1234 - DefaultAPIKeyName`, `:white_check_mark: \`${userInfo.API_Keys[index]}\``)
+                embed.addField(`${emojiStatus} DefaultUser.1234 - DefaultAPIKeyName`, `:white_check_mark: \`${this.userInfo.API_Keys[index]}\``)
             }
             
         }
@@ -103,7 +104,7 @@ export default class ViewApiKey extends View {
     }
 
     private setEmbedKeyAdd = async(embed: MessageEmbed): Promise<ViewApiKey> => {
-        const userKeys = this.userInfos[0]?.API_Keys;
+        const userKeys = this.userInfo.API_Keys;
         const lastKey = userKeys[userKeys.length - 1];
 
         embed.addField(':white_check_mark: Success!', `The API Key \`${lastKey}\` is valid and ready to go. You can use it right away!`);

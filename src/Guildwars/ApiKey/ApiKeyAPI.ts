@@ -14,8 +14,8 @@ export default class ApiKeyAPI {
     */    
     public getUserInfoFromDB = async (userID: string) => {
         const collection = await getCollection('users');
-        const userInfo = await collection?.find({_id: userID}).toArray();
-        return userInfo ? userInfo : [];
+        const userInfo = await collection?.findOne({_id: userID});
+        return userInfo;
     }
 
     /** 
@@ -57,24 +57,24 @@ export default class ApiKeyAPI {
         const collection = await getCollection('users');
         if(!collection) {return 'err-default'}; // Ahhhh
 
-        const userInfo = <UserDB[]> await this.getUserInfoFromDB(userID);
+        const userInfo = <UserDB> await this.getUserInfoFromDB(userID);
         
         // validate key here first
         if (! await this.isAPIKeyValid(APIKey)) {return 'err-invalid-api-key'}
 
         // if the user is not in our DB, add their default skeleton object
-        if (! userInfo || userInfo.length === 0){
+        if (! userInfo){
             await this.addUserToCollection(userID, collection);
         }
 
         // unless the insert failed, user has to be in the DB
-        const userInfoNew = <UserDB[]> await this.getUserInfoFromDB(userID);
+        const userInfoNew = <UserDB> await this.getUserInfoFromDB(userID);
 
         // check if the new api key is unique
-        if (userInfoNew[0].API_Keys.includes(APIKey)){return 'err-non-unique-key'}
+        if (userInfoNew.API_Keys.includes(APIKey)){return 'err-non-unique-key'}
 
         // Push the new key to the API_Keys array, and set the preferred key to be the one we just pushed
-        const lastIndex = userInfoNew[0].API_Keys.length;
+        const lastIndex = userInfoNew.API_Keys.length;
         await collection.updateOne({_id: userID}, {$set: {preferredAPIKey: lastIndex}, $push: {API_Keys: APIKey}});
         return 'success';
     }
