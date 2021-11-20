@@ -3,13 +3,13 @@ import View from "./View";
 import { THUMBNAILS } from "./enum/THUMBNAILS";
 import { EMBED_ID } from "./enum/EMBED_ID";
 import EMOJIS from "./enum/EMOJIS";
-import UserDB from "../../Model/Guildwars/UserDB";
 import { EMBED_COLORS } from "./enum/EMBED_COLORS";
+import APIKeyInfo from "../../Model/Guildwars/APIKeyInfo";
 
 
 export default class ViewApiKey extends View {
     commandName: string;
-    userInfo: UserDB;
+    userKeys: APIKeyInfo[] | undefined;
     embedSetters: Record<string, (embed: MessageEmbed) => Promise<ViewApiKey>>;
     neededPermissions: string[] = ['account'];
     // could maybe be inside its own file
@@ -37,10 +37,10 @@ export default class ViewApiKey extends View {
      * @param userInfos 
      * @param optarg - can store things like api key to add or the index of the to-be-removed api key
     */
-    public constructor(commandName: string, userInfo: UserDB, optarg: string) {
+    public constructor(commandName: string, userKeys: APIKeyInfo[] | undefined, optarg: string) {
         super();
         this.commandName = commandName;
-        this.userInfo = userInfo;
+        this.userKeys = userKeys;
         this.embedSetters = {
             'show': this.setEmbedKeyShow,
             'add': this.setEmbedKeyAdd,
@@ -77,7 +77,7 @@ export default class ViewApiKey extends View {
     private setEmbedKeyShow = async(embed: MessageEmbed): Promise<ViewApiKey> => {
         
         // user is not in our DB or hasn't added any key yet
-        if (!this.userInfo || this.userInfo.API_Keys.length === 0){
+        if (!this.userKeys || this.userKeys.length === 0){
             embed.setColor(EMBED_COLORS.SILENT);
             const lines = [
                 "No worries though, you can use: **/api-key add <YOUR-API-KEY>** to add a new key.",
@@ -91,11 +91,13 @@ export default class ViewApiKey extends View {
         else {
             embed.addField(':closed_lock_with_key: Your GW2 API Keys', `If you'd like to add another one, use **/api-key add**.`);
 
-            for (let index = 0; index < this.userInfo.API_Keys.length; index++){
-                const isPreferredKey = index === this.userInfo.preferredAPIKey;
-                const emojiStatus = isPreferredKey ? ':sunny:' : ':cloud:'; // Pretty symbolic, I guess
+            for (let index = 0; index < this.userKeys.length; index++){
+                const userKey = this.userKeys[index];
+                const isValidEmoji = userKey.is_valid ? ':white_check_mark:' : ':x:';
+                const isPreferredEmoji = userKey.is_preferred ? ':sunny:' : ':cloud:'; // Pretty symbolic, I guess
+                const prettyPerms = `:lock: \`${userKey.key_permissions.map(perm => perm.toUpperCase()).join('\`, \`')}\``;
 
-                embed.addField(`${emojiStatus} DefaultUser.1234 - DefaultAPIKeyName`, `:white_check_mark: \`${this.userInfo.API_Keys[index]}\``)
+                embed.addField(`${isPreferredEmoji} ${userKey.account_name} - ${userKey.key_name}`, `${isValidEmoji} \`${userKey.key_id}\`\n${prettyPerms}`);
             }
             
         }
@@ -104,10 +106,10 @@ export default class ViewApiKey extends View {
     }
 
     private setEmbedKeyAdd = async(embed: MessageEmbed): Promise<ViewApiKey> => {
-        const userKeys = this.userInfo.API_Keys;
-        const lastKey = userKeys[userKeys.length - 1];
+        if (! this.userKeys) {return this}; // "should" never happen
+        const lastKey = this.userKeys[this.userKeys.length - 1];
 
-        embed.addField(':white_check_mark: Success!', `The API Key \`${lastKey}\` is valid and ready to go. You can use it right away!`);
+        embed.addField(':white_check_mark: Success!', `The API Key \`${lastKey.key_id}\` is valid and ready to go. You can use it right away!`);
         return this;
     }
 
@@ -118,8 +120,6 @@ export default class ViewApiKey extends View {
      */
     public sendFirstInteractionResponse(interaction: CommandInteraction) {
         const apiKeyEmbed: MessageEmbed = this.getEmbed(`${EMBED_ID.API_KEY}-${this.commandName}`);
-
         interaction.user.send({ embeds: [apiKeyEmbed] });
-        interaction.reply(`${EMOJIS['SpotterMail']} Answered your command as a private message.`);
     }
 }
