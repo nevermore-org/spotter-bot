@@ -11,7 +11,7 @@ import UserAPIKeyInfo from "../../Model/Guildwars/UserAPIKeyInfo";
 export default class ViewApiKey extends View {
     commandName: string;
     userKeys: APIKeyInfo[] | undefined;
-    preferredKeyIndex: number | undefined;
+    preferredKey: string | undefined;
     embedSetters: Record<string, (embed: MessageEmbed) => Promise<ViewApiKey>>;
     neededPermissions: string[] = ['account'];
     // could maybe be inside its own file
@@ -43,7 +43,7 @@ export default class ViewApiKey extends View {
         super();
         this.commandName = commandName;
         this.userKeys = userKeysInfo ? userKeysInfo.api_keys : undefined;
-        this.preferredKeyIndex = userKeysInfo ? userKeysInfo.preferred_key_index : undefined;
+        this.preferredKey = userKeysInfo ? userKeysInfo.preferred_api_key : undefined;
         this.embedSetters = {
             'show': this.setEmbedKeyShow,
             'add': this.setEmbedKeyAdd,
@@ -97,7 +97,7 @@ export default class ViewApiKey extends View {
             for (let index = 0; index < this.userKeys.length; index++){
                 const userKey = this.userKeys[index];
                 const isValidEmoji = userKey.is_valid ? ':white_check_mark:' : ':x:';
-                const isPreferredEmoji = this.preferredKeyIndex === index ? ':sunny:' : ':cloud:'; // Pretty symbolic, I guess
+                const isPreferredEmoji = userKey.key_id === this.preferredKey ? ':sunny:' : ':cloud:'; // Pretty symbolic, I guess
                 const prettyPerms = `:lock: \`${userKey.key_permissions.map(perm => perm.toUpperCase()).join('\`, \`')}\``;
 
                 embed.addField(`${isPreferredEmoji} ${userKey.account_name} - ${userKey.key_name}`, `${isValidEmoji} ||${userKey.key_id}||\n${prettyPerms}`);

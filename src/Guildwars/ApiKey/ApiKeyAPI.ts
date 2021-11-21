@@ -50,7 +50,7 @@ export default class ApiKeyAPI {
         const userSkeleton: UserAPIKeyInfo = {
             _id: userID,
             api_keys: [],
-            preferred_key_index: -1
+            preferred_api_key: ""
         }
     
         await insertOne(userSkeleton, collection);
@@ -83,7 +83,7 @@ export default class ApiKeyAPI {
 
         return <UserAPIKeyInfo> {
             _id: userInfo._id,
-            preferred_key_index: userInfo.preferred_key_index,
+            preferred_api_key: userInfo.preferred_api_key,
             api_keys: updatedKeys
         };
     }
@@ -129,13 +129,11 @@ export default class ApiKeyAPI {
         // check if the new api key is unique
         if (userDBNew.api_keys.some(key => key.key_id === APIKey)){return 'err-non-unique-key'}
 
-        // Push the new key to the API_Keys array, and set the preferred key to be the one we just pushed
-        const lastIndex = userDBNew.api_keys.length;
-
         // need to transform apikey to the obj
         const apiKeyInfo = await this.getValidAPIKeyInfo(APIKey);
 
-        await collection.updateOne({_id: userID}, {$set: {preferred_key_index: lastIndex}, $push: {api_keys: apiKeyInfo}});
+        // Push the new key to the API_Keys array, and set the preferred key to be the one we just added
+        await collection.updateOne({_id: userID}, {$set: {preferred_api_key: APIKey}, $push: {api_keys: apiKeyInfo}});
         return 'success';
     }
 
