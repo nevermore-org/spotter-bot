@@ -2,9 +2,9 @@ import { CommandInteraction, CommandInteractionOption } from "discord.js";
 import DiscordControllerInterface from "../../../Model/Discord/DiscordControllerInterface";
 import ApiKeyAPI from "../../../Guildwars/ApiKey/ApiKeyAPI";
 import ViewApiKey from "../../View/ViewApiKey";
-import UserDB from "../../../Model/Guildwars/UserDB";
 import APIKeyInfo from "../../../Model/Guildwars/APIKeyInfo";
 import EMOJIS from "../../View/enum/EMOJIS";
+import UserAPIKeyInfo from "../../../Model/Guildwars/UserAPIKeyInfo";
 
 
 export default class ApiKeyController implements DiscordControllerInterface {
@@ -32,10 +32,14 @@ export default class ApiKeyController implements DiscordControllerInterface {
             this.optarg = await this.handleAddAPIkey(userID, subCommand);
         }
 
-        const userDB = await this.apiKeyApi.getUserFromDB(userID);
-        const userKeys: APIKeyInfo[] | undefined = userDB ? await this.apiKeyApi.createAPIKeysInfo(<UserDB> userDB) : undefined;
+        let userDB = <UserAPIKeyInfo | undefined> await this.apiKeyApi.getUserFromDB(userID);
 
-        const view = new ViewApiKey(subCommand.name, userKeys, this.optarg);
+        // it validates all keys on show command
+        if (subCommand.name === 'show'){
+            userDB = await this.apiKeyApi.validateAPIKeys(userDB);
+        }
+
+        const view = new ViewApiKey(subCommand.name, userDB, this.optarg);
         view.sendFirstInteractionResponse(interaction);
     }
 

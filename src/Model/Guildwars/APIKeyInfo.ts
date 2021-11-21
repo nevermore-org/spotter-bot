@@ -4,5 +4,4 @@ export default interface APIKeyInfo {
     key_name: string;
     key_permissions: string[];
     is_valid: boolean;
-    is_preferred: boolean;
 }
