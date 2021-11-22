@@ -32,7 +32,8 @@ export default class ViewApiKey extends View {
         this.embedSetters = {
             'show': this.setEmbedKeyShow,
             'add': this.setEmbedKeyAdd,
-            'remove': this.setEmbedKeyRemove
+            'remove': this.setEmbedKeyRemove,
+            'switch-preferred': this.setEmbedKeySwitchPreferred
         }
 
         this.setEmbeds();
@@ -113,6 +114,19 @@ export default class ViewApiKey extends View {
         const countRemoved = ~~this.optarg.split('-')[1];
 
         embed.addField(`:white_check_mark: Success!`, `${EMOJIS['Bin']} Removed ${countRemoved} GW2 API Key${countRemoved === 1 ? '' : 's'}.`);
+        
+        return this;
+    }
+
+    private setEmbedKeySwitchPreferred = async(embed: MessageEmbed): Promise<ViewApiKey> => {
+        const keyObj = this.userKeys?.find(key => key.key_id === this.preferredKey);
+        
+        const lines = [
+            `Your preferred API Key is now **${keyObj?.account_name} - ${keyObj?.key_name}.**`,
+            `Any commands that need GW2 API Key will now use this key.`,            
+        ]
+
+        embed.addField(`:white_check_mark: Success!`, lines.join('\n'));
         
         return this;
     }

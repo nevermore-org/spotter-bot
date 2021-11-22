@@ -159,6 +159,12 @@ export default class ApiKeyAPI {
         return ['err-default'];
     }
 
+    /**
+     * Deletes all keys that are in the keysToRemove from the user's api_keys array
+     * @param userID 
+     * @param keysToRemove - cannot be empty
+     * @returns 
+     */
     public removeUserKeysFromDB = async(userID: string, keysToRemove: string[]): Promise<string> => {
         const users = await getCollection('users');
         if(!users) {return 'err-default'}; // Ahhhh
@@ -167,6 +173,23 @@ export default class ApiKeyAPI {
         return `success-${keysToRemove.length}`;   
     }
 
-    // changepreferredAPIKeyToUse
+    /**
+     * 
+     * @param userInfo 
+     * @param index 1-indexed
+     * @returns 
+     */
+    public switchUserPreferredKeyInDB = async(userInfo: UserAPIKeyInfo, index: number): Promise<string> => {
+        const users = await getCollection('users');
+        if(!users) {return 'err-default'}; // Ahhhh
+
+        if(!userInfo.api_keys[index - 1]) {return 'err-wrong-key-index'};
+        if(userInfo.api_keys[index - 1].key_id === userInfo.preferred_api_key) {return 'err-already-preferred'}
+
+        const newPreferredKey = userInfo.api_keys[index - 1].key_id;
+        await users.updateOne({_id: userInfo._id}, {$set: {'preferred_api_key': newPreferredKey}});
+
+        return `success`;    
+    }
 }
 

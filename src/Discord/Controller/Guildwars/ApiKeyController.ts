@@ -1,4 +1,4 @@
-import { CommandInteraction, CommandInteractionOption } from "discord.js";
+import { CommandInteraction, CommandInteractionOption, MessageEmbed } from "discord.js";
 import DiscordControllerInterface from "../../../Model/Discord/DiscordControllerInterface";
 import ApiKeyAPI from "../../../Guildwars/ApiKey/ApiKeyAPI";
 import ViewApiKey from "../../View/ViewApiKey";
@@ -10,10 +10,16 @@ import UserAPIKeyInfo from "../../../Model/Guildwars/UserAPIKeyInfo";
 export default class ApiKeyController implements DiscordControllerInterface {
     private apiKeyApi: ApiKeyAPI;
     optarg: string;
+    handlers: Record<string, (userID:string, subCommand: CommandInteractionOption) => Promise<string>>;
 
     constructor() {
         this.apiKeyApi = new ApiKeyAPI();
         this.optarg = '_';
+        this.handlers = {
+            'add': this.handleAddAPIKey,
+            'remove': this.handleRemoveAPIKey,
+            'switch-preferred': this.handleSwitchPreferredAPIKey
+        }
     }
 
     /**
@@ -28,12 +34,9 @@ export default class ApiKeyController implements DiscordControllerInterface {
         const userID = interaction.user.id;
         this.optarg = '_'; // need to reset optarg on each interaction
 
-        if (subCommand.name === 'add'){
-            this.optarg = await this.handleAddAPIKey(userID, subCommand);
-        }
-
-        if (subCommand.name === 'remove'){
-            this.optarg = await this.handleRemoveAPIKey(userID, subCommand);
+        // show is the only one that doesnt actually modify the DB as of now
+        if (subCommand.name !== 'show'){
+            this.optarg = await this.handlers[subCommand.name](userID, subCommand);
         }
 
         let userDB = <UserAPIKeyInfo | undefined> await this.apiKeyApi.getUserFromDB(userID);
@@ -69,4 +72,19 @@ export default class ApiKeyController implements DiscordControllerInterface {
 
         return await this.apiKeyApi.removeUserKeysFromDB(userID, keysToRemove);
     }
+
+    
+
+    public handleSwitchPreferredAPIKey = async(userID: string, subCommand: CommandInteractionOption): Promise<string> => {
+        const userInfo = <UserAPIKeyInfo> await this.apiKeyApi.getUserFromDB(userID);
+
+        if(!subCommand.options || !subCommand.options.length){return 'err-default'};
+        if(!userInfo){return 'err-no-user'};
+        if(userInfo.api_keys.length === 0) {return 'err-no-api-keys'};
+
+        // discord validates for us that the index is actually a number
+        // care that DB is 0-indexed, but user sees 1-indexed lists
+        return await this.apiKeyApi.switchUserPreferredKeyInDB(userInfo, (<number> subCommand.options[0].value))
+    }
+
 }

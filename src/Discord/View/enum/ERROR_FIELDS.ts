@@ -18,7 +18,7 @@ const ERROR_FIELDS: Record<string, EmbedField> = {
     },
     'err-no-api-keys': {
         name: 'No GW2 API keys to remove',
-        value: 'I either do not have any of your keys stored, or there are no keys matching your removal-criteria.',
+        value: 'I either do not have any of your keys stored, or there are no keys matching your criteria.',
         inline: false
     },
     'err-no-user': {
@@ -34,6 +34,11 @@ const ERROR_FIELDS: Record<string, EmbedField> = {
     'err-remove-preferred': {
         name: 'Cannot remove your preferred API Key',
         value: 'If you want to delete your preferred key, you can either switch to another key first, or remove all keys.',
+        inline: false
+    },
+    'err-already-preferred': {
+        name: 'This API Key is already your prefered key',
+        value: 'You can switch to any non-preferred key.\nUse **/api-key show** for the list of all your keys.',
         inline: false
     }
 }

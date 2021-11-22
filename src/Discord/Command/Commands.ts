@@ -122,7 +122,7 @@ export const COMMANDS: DiscordCommandInterface[] = [
                             options: [
                                 {
                                     name: 'index',
-                                    description: "Specify the index of the key. If you want to see the list of indexed keys, use /api-key show",
+                                    description: "Specify the index of the key to delete. To show all your keys use /api-key show",
                                     type: OPTION_TYPES.NUMBER,
                                     required: true
                                 }
@@ -130,6 +130,19 @@ export const COMMANDS: DiscordCommandInterface[] = [
                         },
                     ]
                 },
+                {
+                    name: 'switch-preferred',
+                    description: "Switch your preferred key to a different API Key",
+                    type: OPTION_TYPES.SUB_COMMAND,
+                    options: [
+                        {
+                            name: 'index',
+                            description: "Specify the index of the key to switch to. To show all your keys use /api-key show",
+                            type: OPTION_TYPES.NUMBER,
+                            required: true
+                        }
+                    ]
+                }
             ]
         },
         controller: new ApiKeyController(),
