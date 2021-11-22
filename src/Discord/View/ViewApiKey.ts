@@ -148,6 +148,12 @@ export default class ViewApiKey extends View {
      */
     public sendFirstInteractionResponse(interaction: CommandInteraction) {
         const apiKeyEmbed: MessageEmbed = this.getEmbed(`${EMBED_ID.API_KEY}-${this.commandName}`);
-        interaction.user.send({ embeds: [apiKeyEmbed] });
+        // send the Answered... message only if not in PMs
+        if (interaction.member){
+            interaction.user.send({ embeds: [apiKeyEmbed] });
+        }
+        else {
+            interaction.reply({ embeds: [apiKeyEmbed] });
+        }
     }
 }

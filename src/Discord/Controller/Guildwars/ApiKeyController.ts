@@ -37,10 +37,10 @@ export default class ApiKeyController implements DiscordControllerInterface {
         this.optarg = '_'; // need to reset optarg on each interaction
 
         // All the key validation takes some time, don't want discord to give up on us completely
-        if(interaction.channelId !== userID){
+        // Want to send this only if not in PMs
+        if(interaction.member){
             interaction.reply(`${EMOJIS['SpotterMail']} Answered your command as a private message.`);
         }
-
 
         // show is the only one that doesnt actually modify the DB as of now
         if (subCommand.name !== 'show'){
