@@ -142,6 +142,19 @@ export const COMMANDS: DiscordCommandInterface[] = [
                             required: true
                         }
                     ]
+                },
+                {
+                    name: 'purge-all-data',
+                    description: "! WARNING ! - Deletes ALL data we have stored for you. This is irreversible.",
+                    type: OPTION_TYPES.SUB_COMMAND,
+                    options: [
+                        {
+                            name:'are-you-absolutely-sure',
+                            description: "Please type 'Yes, do as I say!', if you want to proceed with the purging process",
+                            type: OPTION_TYPES.STRING,
+                            required: true
+                        }
+                    ]
                 }
             ]
         },

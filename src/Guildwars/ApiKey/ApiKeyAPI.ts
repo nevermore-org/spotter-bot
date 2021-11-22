@@ -191,5 +191,13 @@ export default class ApiKeyAPI {
 
         return `success`;    
     }
+
+    public purgeAllUserDataFromDB = async(userID: string): Promise<string> => {
+        const users = await getCollection('users');
+        if(!users) {return 'err-default'}; // Ahhhh
+        
+        await users.deleteOne({_id: userID});
+        return `success`;
+    }
 }
 

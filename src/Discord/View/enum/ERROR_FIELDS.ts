@@ -40,6 +40,11 @@ const ERROR_FIELDS: Record<string, EmbedField> = {
         name: 'This API Key is already your prefered key',
         value: 'You can switch to any non-preferred key.\nUse **/api-key show** for the list of all your keys.',
         inline: false
+    },
+    'err-user-not-sure': {
+        name: 'Incorrect purge check answer',
+        value: `You have to type exactly '**Yes, do as I say!**' (without quotes) to succesfully purge.`,
+        inline: false
     }
 }
 

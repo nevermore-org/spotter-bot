@@ -33,7 +33,8 @@ export default class ViewApiKey extends View {
             'show': this.setEmbedKeyShow,
             'add': this.setEmbedKeyAdd,
             'remove': this.setEmbedKeyRemove,
-            'switch-preferred': this.setEmbedKeySwitchPreferred
+            'switch-preferred': this.setEmbedKeySwitchPreferred,
+            'purge-all-data': this.setEmbedPurgeAllData
         }
 
         this.setEmbeds();
@@ -127,6 +128,14 @@ export default class ViewApiKey extends View {
         ]
 
         embed.addField(`:white_check_mark: Success!`, lines.join('\n'));
+        
+        return this;
+    }
+
+    private setEmbedPurgeAllData = async(embed: MessageEmbed): Promise<ViewApiKey> => {
+        embed.setColor(EMBED_COLORS.SILENT);
+
+        embed.addField(`${EMOJIS['Bin']} Success!`, `All your data that you have stored with us was purged.`);
         
         return this;
     }

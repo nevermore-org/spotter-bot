@@ -18,7 +18,8 @@ export default class ApiKeyController implements DiscordControllerInterface {
         this.handlers = {
             'add': this.handleAddAPIKey,
             'remove': this.handleRemoveAPIKey,
-            'switch-preferred': this.handleSwitchPreferredAPIKey
+            'switch-preferred': this.handleSwitchPreferredAPIKey,
+            'purge-all-data': this.handlePurgeAllUserData
         }
     }
 
@@ -71,9 +72,7 @@ export default class ApiKeyController implements DiscordControllerInterface {
         if (keysToRemove[0].startsWith('err')){return keysToRemove[0]}; // in case of error, "bubble up" the error message
 
         return await this.apiKeyApi.removeUserKeysFromDB(userID, keysToRemove);
-    }
-
-    
+    }    
 
     public handleSwitchPreferredAPIKey = async(userID: string, subCommand: CommandInteractionOption): Promise<string> => {
         const userInfo = <UserAPIKeyInfo> await this.apiKeyApi.getUserFromDB(userID);
@@ -87,4 +86,16 @@ export default class ApiKeyController implements DiscordControllerInterface {
         return await this.apiKeyApi.switchUserPreferredKeyInDB(userInfo, (<number> subCommand.options[0].value))
     }
 
+    public handlePurgeAllUserData = async(userID: string, subCommand: CommandInteractionOption): Promise<string> => {
+        const userInfo = <UserAPIKeyInfo> await this.apiKeyApi.getUserFromDB(userID);
+
+        if(!subCommand.options || !subCommand.options.length){return 'err-default'};
+        if(!userInfo){return 'err-no-user'};
+
+        const userAnswer = <string> subCommand.options[0].value;
+        const isUserSure = userAnswer === 'Yes, do as I say!';
+        if(! isUserSure) {return 'err-user-not-sure'};
+
+        return await this.apiKeyApi.purgeAllUserDataFromDB(userID);
+    }
 }
