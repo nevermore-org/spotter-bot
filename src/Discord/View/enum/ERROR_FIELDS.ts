@@ -13,7 +13,7 @@ const ERROR_FIELDS: Record<string, EmbedField> = {
     },
     'err-non-unique-key': {
         name: 'Non-unique GW2 API Key',
-        value: 'You cannot add the same key twice.',
+        value: 'You cannot add the same API Key twice.',
         inline: false
     },
     'err-no-api-keys': {
@@ -22,7 +22,7 @@ const ERROR_FIELDS: Record<string, EmbedField> = {
         inline: false
     },
     'err-no-user': {
-        name: 'No data asocciated with you',
+        name: 'No data asocciated with this account',
         value: 'I do not have you in my archives.',
         inline: false
     },
@@ -37,8 +37,8 @@ const ERROR_FIELDS: Record<string, EmbedField> = {
         inline: false
     },
     'err-already-preferred': {
-        name: 'This API Key is already your prefered key',
-        value: 'You can switch to any non-preferred key.\nUse **/api-key show** for the list of all your keys.',
+        name: 'This API Key is already your preferred key',
+        value: 'You can only switch to any non-preferred key.\nUse **/api-key show** for the list of all your keys.',
         inline: false
     },
     'err-user-not-sure': {

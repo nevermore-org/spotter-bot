@@ -41,7 +41,8 @@ export default class ViewApiKey extends View {
     }
 
     /**
-     * Sets embeds
+     * Decides which embedSetter to use based on the subcommandName
+     * In case of errors, handles error messages the user sees
      */
     public setEmbeds = async (): Promise<ViewApiKey> => {
         const apiKeyEmbed = this.createEmbed(`${EMBED_ID.API_KEY}-${this.commandName}`, `Guild Wars 2 API Key Settings`);

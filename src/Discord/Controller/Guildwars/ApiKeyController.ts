@@ -14,7 +14,11 @@ export default class ApiKeyController implements DiscordControllerInterface {
 
     constructor() {
         this.apiKeyApi = new ApiKeyAPI();
-        this.optarg = '_';
+        /** return values of functions that interact with the APIs and DB are stored inside the optarg var
+         * so the View can choose which embed to send to the user
+         * without actually interacting with the DB or APIs directly in any way
+         * **/ 
+        this.optarg = '_'; 
         this.handlers = {
             'add': this.handleAddAPIKey,
             'remove': this.handleRemoveAPIKey,
