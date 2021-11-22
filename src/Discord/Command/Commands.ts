@@ -5,6 +5,7 @@ import DailiesController from "../Controller/Guildwars/DailiesController"
 import PingController from "../Controller/PingController";
 import PactSupplyController from "../Controller/Guildwars/PactSupplyController";
 import GuildStashController from "../Controller/Guildwars/GuildStashController";
+import ApiKeyController from "../Controller/Guildwars/ApiKeyController";
 
 /*
 Made like this, so discord api can chomp happily on the whole data object.
@@ -76,6 +77,89 @@ export const COMMANDS: DiscordCommandInterface[] = [
         },
         controller: new GuildStashController(),
     },
+    {
+        data: {
+            name: 'api-key',
+            description: "Handles all GW2 API key business",
+            options: [
+                {
+                    name: 'show',
+                    description: 'Show all API keys associated with this Discord account',
+                    type: OPTION_TYPES.SUB_COMMAND
+                },
+                {
+                    name: 'add',
+                    description: 'Add new API key',
+                    type: OPTION_TYPES.SUB_COMMAND,
+                    options: [
+                        {
+                            name: 'api-key',
+                            description: "GW2 API key",
+                            type: OPTION_TYPES.STRING,
+                            required: true
+                        }
+                    ]
+                },
+                {
+                    name: 'remove',
+                    description: "Remove specified API key(s)",
+                    type: OPTION_TYPES.SUB_COMMAND_GROUP,
+                    options: [
+                        {
+                            name: 'all',
+                            description: "Remove all your GW2 API keys",
+                            type: OPTION_TYPES.SUB_COMMAND
+                        },
+                        {
+                            name: 'non-preferred',
+                            description: "Remove all your non-preferred GW2 API keys",
+                            type: OPTION_TYPES.SUB_COMMAND
+                        },
+                        {
+                            name: 'by-index',
+                            description: "Remove single API key specified by index",
+                            type: OPTION_TYPES.SUB_COMMAND,
+                            options: [
+                                {
+                                    name: 'index',
+                                    description: "Specify the index of the key to delete. To show all your keys use /api-key show",
+                                    type: OPTION_TYPES.NUMBER,
+                                    required: true
+                                }
+                            ]
+                        },
+                    ]
+                },
+                {
+                    name: 'switch-preferred',
+                    description: "Switch your preferred key to a different API Key",
+                    type: OPTION_TYPES.SUB_COMMAND,
+                    options: [
+                        {
+                            name: 'index',
+                            description: "Specify the index of the key to switch to. To show all your keys use /api-key show",
+                            type: OPTION_TYPES.NUMBER,
+                            required: true
+                        }
+                    ]
+                },
+                {
+                    name: 'purge-all-data',
+                    description: "! WARNING ! - Deletes ALL data we have stored for you. This is irreversible.",
+                    type: OPTION_TYPES.SUB_COMMAND,
+                    options: [
+                        {
+                            name:'are-you-absolutely-sure',
+                            description: "Please type 'Yes, do as I say!', if you want to proceed with the purging process",
+                            type: OPTION_TYPES.STRING,
+                            required: true
+                        }
+                    ]
+                }
+            ]
+        },
+        controller: new ApiKeyController(),
+    }, 
 ] // END_OF_COMMANDS (used to regex-match for scaffolding)
 
 // example of contents of options array - gives the person who invoked the cmd a required choice

@@ -50,6 +50,16 @@ export async function dropCollectionIfExists(collectionName: string, database: D
     }
 }
 
+/**
+ * So, for some reason this one works, but!
+ * if we were to use the insertOne function directly in the code with custom _id of a type different than the default ObjectId
+ * it wouldn't even compile Typescript
+ * praise the T, i guess
+ */
+export async function insertOne<T>(document: T, targetCollection: Collection){
+    await targetCollection.insertOne(document);
+}
+
 export async function insertMany<T>(documents: T[], targetCollection: Collection): Promise<number> {
     const insertManyRes = await targetCollection.insertMany(documents);
     const inserted = insertManyRes.insertedCount;
@@ -113,14 +123,22 @@ export async function scheduleRecreate (collectionName: string) {
     cronRule.minute = 0;
 
     return scheduleJob(cronRule, function() {return recreateCollection(collectionName, db)});
-} 
+}
 
+export const getCollection = async(collectionName: string) => {
+    const db = await getDb(process.env.MONGO_INITDB_DATABASE);
+        
+    if (await collectionExists(collectionName, db)){
+        return db.collection(collectionName);
+    }
+}
 
 export async function setUpDB() {
     await initConnection(<string>process.env.MONGO_URL);
     const db = await getDb(process.env.MONGO_INITDB_DATABASE);
     await createCollectionIfNotExists("items", db);
-    await createCollectionIfNotExists("achievements", db, {name: 1});
+    await createCollectionIfNotExists("achievements", db);
+    await createCollectionIfNotExists("users", db);
 
     //await insertAchievementsToDB();
 }

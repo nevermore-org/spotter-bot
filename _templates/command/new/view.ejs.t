@@ -35,6 +35,6 @@ export default class View<%=Name%> extends View {
      */
     public sendFirstInteractionResponse(interaction: CommandInteraction) {
         const <%=h.changeCase.camel(name)%>Embed: MessageEmbed = this.getEmbed(EMBED_ID.<%=h.changeCase.constantCase(name)%>);
-        interaction.reply({ embeds: [<%=h.changeCase.camel(name)%>Embed] })
+        interaction.reply({ embeds: [<%=h.changeCase.camel(name)%>Embed] });
     }
 }

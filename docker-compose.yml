@@ -37,6 +37,7 @@ services:
             - spotter-mongo:/data/db
         ports:
             - "27017:27017"
+        command: --quiet --logpath /dev/null # sweet silence
 
 networks:
     spotter-app-network:
