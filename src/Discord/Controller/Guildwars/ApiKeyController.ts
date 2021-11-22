@@ -39,7 +39,7 @@ export default class ApiKeyController implements DiscordControllerInterface {
         // All the key validation takes some time, don't want discord to give up on us completely
         // Want to send this only if not in PMs
         if(interaction.member){
-            interaction.reply(`${EMOJIS['SpotterMail']} Answered your command as a private message.`);
+            interaction.reply({content: `${EMOJIS['SpotterMail']} Answered your command as a private message.`, ephemeral: true});
         }
 
         // show is the only one that doesnt actually modify the DB as of now
