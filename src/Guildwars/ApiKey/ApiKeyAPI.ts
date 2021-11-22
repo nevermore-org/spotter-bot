@@ -1,4 +1,5 @@
 import axios from "axios"
+import { CommandInteractionOption } from "discord.js";
 import { Collection, Document } from "mongodb";
 import AccountInfo from "../../Model/Guildwars/AccountInfo";
 import APIKeyInfo from "../../Model/Guildwars/APIKeyInfo";
@@ -46,14 +47,14 @@ export default class ApiKeyAPI {
     }
 
 
-    public insertDefaultUserSkeleton = async (userID: string, collection: Collection<Document>) => {
+    public insertDefaultUserSkeleton = async (userID: string, users: Collection<Document>) => {
         const userSkeleton: UserAPIKeyInfo = {
             _id: userID,
             api_keys: [],
             preferred_api_key: ""
         }
     
-        await insertOne(userSkeleton, collection);
+        await insertOne(userSkeleton, users);
     }
 
     /**
@@ -71,7 +72,7 @@ export default class ApiKeyAPI {
                 account_name: '?',
                 key_id: APIKey,
                 key_name: 'Invalid API Key',
-                key_permissions: [],
+                key_permissions: ['No Permissions'],
                 is_valid: false,
             }
         }
@@ -110,8 +111,8 @@ export default class ApiKeyAPI {
      * @param APIKey 
      */
     public addAPIKeyToDB = async (userID: string, APIKey: string) => {
-        const collection = await getCollection('users');
-        if(!collection) {return 'err-default'}; // Ahhhh
+        const users = await getCollection('users');
+        if(!users) {return 'err-default'}; // Ahhhh
         
         // validate key here first
         if (! await this.isAPIKeyValid(APIKey)) {return 'err-invalid-api-key'}
@@ -120,7 +121,7 @@ export default class ApiKeyAPI {
 
         // if the user is not in our DB, add their default skeleton object
         if (! userDB){
-            await this.insertDefaultUserSkeleton(userID, collection);
+            await this.insertDefaultUserSkeleton(userID, users);
         }
 
         // unless the insert failed, user has to be in the DB
@@ -133,14 +134,39 @@ export default class ApiKeyAPI {
         const apiKeyInfo = await this.getValidAPIKeyInfo(APIKey);
 
         // Push the new key to the API_Keys array, and set the preferred key to be the one we just added
-        await collection.updateOne({_id: userID}, {$set: {preferred_api_key: APIKey}, $push: {api_keys: apiKeyInfo}});
+        await users.updateOne({_id: userID}, {$set: {preferred_api_key: APIKey}, $push: {api_keys: apiKeyInfo}});
         return 'success';
     }
 
+    /**
+     * Decides based on the mode, which api keys are to be deleted
+     * @returns 
+     */
+    public getUserKeysToRemove = async(userInfo: UserAPIKeyInfo, mode: CommandInteractionOption):Promise<string[]> => {
+        switch (mode.name) {
+            case 'all':
+                return userInfo.api_keys.map(key => key.key_id);
+            case 'non-preferred':
+                return userInfo.api_keys.filter(key => key.key_id !== userInfo.preferred_api_key).map(key => key.key_id);
+            
+            // returns ['err-<ERR NAME>'] in case of error, hacky/not ideal, should refactor in future
+            case 'by-index':
+                const index = <number> mode.options?.[0].value;
+                const api_key = userInfo.api_keys[index - 1];
+                return api_key ? (api_key.key_id !== userInfo.preferred_api_key ? [api_key.key_id] : ['err-remove-preferred']) : ['err-wrong-key-index'];
+        }
 
+        return ['err-default'];
+    }
 
-    // removeAPIKey
+    public removeUserKeysFromDB = async(userID: string, keysToRemove: string[]): Promise<string> => {
+        const users = await getCollection('users');
+        if(!users) {return 'err-default'}; // Ahhhh
+
+        await users.updateOne({_id: userID}, {$pull: {'api_keys': {'key_id': {$in: keysToRemove}}}});
+        return `success-${keysToRemove.length}`;   
+    }
+
     // changepreferredAPIKeyToUse
-    
 }
 

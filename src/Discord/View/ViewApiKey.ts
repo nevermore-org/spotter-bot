@@ -6,32 +6,16 @@ import EMOJIS from "./enum/EMOJIS";
 import { EMBED_COLORS } from "./enum/EMBED_COLORS";
 import APIKeyInfo from "../../Model/Guildwars/APIKeyInfo";
 import UserAPIKeyInfo from "../../Model/Guildwars/UserAPIKeyInfo";
+import ERROR_FIELDS from "./enum/ERROR_FIELDS";
 
 
 export default class ViewApiKey extends View {
     commandName: string;
     userKeys: APIKeyInfo[] | undefined;
     preferredKey: string | undefined;
+    optarg: string; // contains return values from lower-level functions
     embedSetters: Record<string, (embed: MessageEmbed) => Promise<ViewApiKey>>;
     neededPermissions: string[] = ['account'];
-    // could maybe be inside its own file
-    errorFields: Record<string, EmbedField> = {
-        'err-default': {
-            name: 'Something went wrong',
-            value: 'Lumberjack Jack has some work to do.', 
-            inline: false
-        },
-        'err-invalid-api-key': {
-            name: 'Invalid GW2 API Key', 
-            value: 'Please provide a valid GW2 API Key.', 
-            inline: false
-        },
-        'err-non-unique-key': {
-            name: 'Non-unique GW2 API Key',
-            value: 'You cannot add the same key twice.',
-            inline: false
-        }
-    }
 
     /**
      * 
@@ -44,23 +28,25 @@ export default class ViewApiKey extends View {
         this.commandName = commandName;
         this.userKeys = userKeysInfo ? userKeysInfo.api_keys : undefined;
         this.preferredKey = userKeysInfo ? userKeysInfo.preferred_api_key : undefined;
+        this.optarg = optarg;
         this.embedSetters = {
             'show': this.setEmbedKeyShow,
             'add': this.setEmbedKeyAdd,
+            'remove': this.setEmbedKeyRemove
         }
 
-        this.setEmbeds(optarg);
+        this.setEmbeds();
     }
 
     /**
      * Sets embeds
      */
-    public setEmbeds = async (optarg: string): Promise<ViewApiKey> => {
+    public setEmbeds = async (): Promise<ViewApiKey> => {
         const apiKeyEmbed = this.createEmbed(`${EMBED_ID.API_KEY}-${this.commandName}`, `Guild Wars 2 API Key Settings`);
 
         // 'err' is consistent for all subcommands so this handles displayal of all errors the user should see
-        if (optarg.includes('err')){
-            const errorField = this.errorFields[optarg];
+        if (this.optarg.includes('err')){
+            const errorField = ERROR_FIELDS[this.optarg];
 
             apiKeyEmbed.color = EMBED_COLORS.ERROR;
             apiKeyEmbed.addField(`Error: ${errorField.name}`, errorField.value, errorField.inline);
@@ -68,7 +54,14 @@ export default class ViewApiKey extends View {
             return this;
         }
 
-        await this.embedSetters[this.commandName](apiKeyEmbed);
+        // just in case
+        try {
+            await this.embedSetters[this.commandName](apiKeyEmbed);
+        }
+        catch (err) {
+            console.error(err);
+        }
+        
         return this;
     }
 
@@ -100,7 +93,7 @@ export default class ViewApiKey extends View {
                 const isPreferredEmoji = userKey.key_id === this.preferredKey ? ':sunny:' : ':cloud:'; // Pretty symbolic, I guess
                 const prettyPerms = `:lock: \`${userKey.key_permissions.map(perm => perm.toUpperCase()).join('\`, \`')}\``;
 
-                embed.addField(`${isPreferredEmoji} ${userKey.account_name} - ${userKey.key_name}`, `${isValidEmoji} ||${userKey.key_id}||\n${prettyPerms}`);
+                embed.addField(`${isPreferredEmoji} ${index + 1}. ${userKey.account_name} - ${userKey.key_name}`, `${isValidEmoji} ||${userKey.key_id}||\n${prettyPerms}`);
             }
             
         }
@@ -113,6 +106,14 @@ export default class ViewApiKey extends View {
         const lastKey = this.userKeys[this.userKeys.length - 1];
 
         embed.addField(':white_check_mark: Success!', `The API Key ||${lastKey.key_id}|| is valid and ready to go. You can use it right away!`);
+        return this;
+    }
+
+    private setEmbedKeyRemove = async(embed: MessageEmbed): Promise<ViewApiKey> => {
+        const countRemoved = ~~this.optarg.split('-')[1];
+
+        embed.addField(`:white_check_mark: Success!`, `${EMOJIS['Bin']} Removed ${countRemoved} GW2 API Key${countRemoved === 1 ? '' : 's'}.`);
+        
         return this;
     }
 

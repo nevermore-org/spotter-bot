@@ -80,16 +80,16 @@ export const COMMANDS: DiscordCommandInterface[] = [
     {
         data: {
             name: 'api-key',
-            description: "handles all GW-API key business",
+            description: "Handles all GW2 API key business",
             options: [
                 {
                     name: 'show',
-                    description: 'show all API keys associated with this Discord account',
+                    description: 'Show all API keys associated with this Discord account',
                     type: OPTION_TYPES.SUB_COMMAND
                 },
                 {
                     name: 'add',
-                    description: 'add new GW_API key',
+                    description: 'Add new API key',
                     type: OPTION_TYPES.SUB_COMMAND,
                     options: [
                         {
@@ -100,11 +100,36 @@ export const COMMANDS: DiscordCommandInterface[] = [
                         }
                     ]
                 },
-                // {
-                //     name: 'remove',
-                //     description: 'remove specified GW_API key',
-                //     type: OPTION_TYPES.SUB_COMMAND
-                // },
+                {
+                    name: 'remove',
+                    description: "Remove specified API key(s)",
+                    type: OPTION_TYPES.SUB_COMMAND_GROUP,
+                    options: [
+                        {
+                            name: 'all',
+                            description: "Remove all your GW2 API keys",
+                            type: OPTION_TYPES.SUB_COMMAND
+                        },
+                        {
+                            name: 'non-preferred',
+                            description: "Remove all your non-preferred GW2 API keys",
+                            type: OPTION_TYPES.SUB_COMMAND
+                        },
+                        {
+                            name: 'by-index',
+                            description: "Remove single API key specified by index",
+                            type: OPTION_TYPES.SUB_COMMAND,
+                            options: [
+                                {
+                                    name: 'index',
+                                    description: "Specify the index of the key. If you want to see the list of indexed keys, use /api-key show",
+                                    type: OPTION_TYPES.NUMBER,
+                                    required: true
+                                }
+                            ]
+                        },
+                    ]
+                },
             ]
         },
         controller: new ApiKeyController(),

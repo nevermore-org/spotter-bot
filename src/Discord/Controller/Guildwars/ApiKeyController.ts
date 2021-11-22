@@ -29,7 +29,11 @@ export default class ApiKeyController implements DiscordControllerInterface {
         this.optarg = '_'; // need to reset optarg on each interaction
 
         if (subCommand.name === 'add'){
-            this.optarg = await this.handleAddAPIkey(userID, subCommand);
+            this.optarg = await this.handleAddAPIKey(userID, subCommand);
+        }
+
+        if (subCommand.name === 'remove'){
+            this.optarg = await this.handleRemoveAPIKey(userID, subCommand);
         }
 
         let userDB = <UserAPIKeyInfo | undefined> await this.apiKeyApi.getUserFromDB(userID);
@@ -43,10 +47,26 @@ export default class ApiKeyController implements DiscordControllerInterface {
         view.sendFirstInteractionResponse(interaction);
     }
 
-    public handleAddAPIkey = async(userID:string, subCommand: CommandInteractionOption): Promise<string> => {
+    public handleAddAPIKey = async(userID:string, subCommand: CommandInteractionOption): Promise<string> => {
         if(!subCommand.options || !subCommand.options.length){return 'err-default'}; // "should" never get in here
         const APIkey = <string> subCommand.options[0].value;
         
         return await this.apiKeyApi.addAPIKeyToDB(userID, APIkey);
+    }
+
+    public handleRemoveAPIKey = async(userID: string, subCommand: CommandInteractionOption): Promise<string> => {
+        const userInfo = <UserAPIKeyInfo> await this.apiKeyApi.getUserFromDB(userID);
+
+        // to display different error messages to the user
+        if(!subCommand.options || !subCommand.options.length){return 'err-default'};
+        if(!userInfo){return 'err-no-user'};
+        if(userInfo.api_keys.length === 0) {return 'err-no-api-keys'};
+
+        const keysToRemove = await this.apiKeyApi.getUserKeysToRemove(userInfo, subCommand.options[0]);
+        
+        if(keysToRemove.length === 0) {return 'err-no-api-keys'};
+        if (keysToRemove[0].startsWith('err')){return keysToRemove[0]}; // in case of error, "bubble up" the error message
+
+        return await this.apiKeyApi.removeUserKeysFromDB(userID, keysToRemove);
     }
 }
