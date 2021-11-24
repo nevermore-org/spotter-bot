@@ -1,7 +1,5 @@
-## SpotterBot [![Deploy](https://github.com/LeGaZViper/SpotterBot/actions/workflows/main.yml/badge.svg)](https://github.com/LeGaZViper/SpotterBot/actions/workflows/main.yml)
+# SpotterBot [![Deploy](https://github.com/LeGaZViper/SpotterBot/actions/workflows/main.yml/badge.svg)](https://github.com/LeGaZViper/SpotterBot/actions/workflows/main.yml)
 
-## Useful links:
+This project is about a discord bot thas uses certain GW2 APIs, which leads to plenty of cool features such as info about daily routines or helpful guides.
 
-https://discordjs.guide/  
-https://daveceddia.com/deploy-git-repo-to-server/  
-https://discord.com/developers/docs/intro
+The bot is currently very basic and a lot of features are being implemented.
