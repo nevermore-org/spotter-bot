@@ -1,4 +1,4 @@
-import { CommandInteraction, CommandInteractionOption, MessageEmbed } from "discord.js";
+import { CommandInteraction, CommandInteractionOption } from "discord.js";
 import DiscordControllerInterface from "../../../Model/Discord/DiscordControllerInterface";
 import ApiKeyAPI from "../../../Guildwars/ApiKey/ApiKeyAPI";
 import ViewApiKey from "../../View/ViewApiKey";
@@ -47,7 +47,7 @@ export default class ApiKeyController implements DiscordControllerInterface {
             this.optarg = await this.handlers[subCommand.name](userID, subCommand);
         }
 
-        let userDB = <UserAPIKeyInfo | undefined> await this.apiKeyApi.getUserFromDB(userID);
+        let userDB = await this.apiKeyApi.getUserFromDB(userID);
 
         // it validates all keys on show command
         if (subCommand.name === 'show'){

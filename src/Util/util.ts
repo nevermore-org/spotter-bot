@@ -87,12 +87,19 @@ export const objectWithoutKey = <T>(object:Record<string, T>, key:string) => {
 }
 
 /**
- * returns A \ B 
+ * returns A \ B, as Set, faster 
  * @param setA 
  * @param setB 
  */
 export const differenceSet = <T>(setA: Set<T>, setB: Set<T>) => {
     return new Set([...setA].filter( element => !setB.has(element)));
+}
+
+/**
+ * return A \ B, as Array, slower than set, should be called on smaller
+ */
+export const differenceArray = <T>(arrA: Array<T>, arrB: Array<T>) => {
+    return [...arrA].filter( element => !arrB.includes(element));
 }
 
 /**

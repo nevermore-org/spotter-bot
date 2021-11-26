@@ -23,7 +23,7 @@ const ERROR_FIELDS: Record<string, EmbedField> = {
     },
     'err-no-user': {
         name: 'No data asocciated with this account',
-        value: 'I do not have you in my archives.',
+        value: `I do not have you in my database.\n If you'd like to add new API Key please use **/api-key add**`,
         inline: false
     },
     'err-wrong-key-index': {
@@ -44,6 +44,16 @@ const ERROR_FIELDS: Record<string, EmbedField> = {
     'err-user-not-sure': {
         name: 'Incorrect purge check answer',
         value: `You have to type exactly '**Yes, do as I say!**' (without quotes) to succesfully purge.`,
+        inline: false
+    },
+    'err-invalid-key': {
+        name: 'Invalid preferred API Key',
+        value: `Your preferred API Key is currently invalid.\nIf you are 100% sure, that your API Key is valid, it is possible, that GW2 servers are just having hiccups.\nIf you'd like to add a new API Key, please use **/api-key add**.`,
+        inline: false
+    },
+    'err-missing-permissions': {
+        name: 'Missing API Key permissions',
+        value: 'Your preferred API Key does not have all the permissions it needs to have for this command.\nPlease add or switch to an API Key which has the following permissions:\n',
         inline: false
     }
 }
