@@ -17,7 +17,7 @@ export default class ApiKeyAPI {
     public getUserFromDB = async (userID: string) => {
         const collection = await getCollection('users');
         const userInfo = await collection?.findOne({_id: userID});
-        return userInfo;
+        return <UserAPIKeyInfo | undefined> userInfo;
     }
     
     public getAPIKeyTokenInfo = async(APIKey: string) => {

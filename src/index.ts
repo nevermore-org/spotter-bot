@@ -8,6 +8,7 @@ import { testDailies } from './Tests/testDailies';
 import winston from 'winston';
 import DiscordTransport from "./Discord/Webhook/DiscordTransport";
 import { COLLECTIONS } from './Mongo/enum/DB_CONFIG';
+import { validatePermissions } from './Validators/validatePermissions';
 
 loadDotenv();
 setUpDB();
@@ -48,6 +49,14 @@ client.on("interactionCreate", async (interaction: Interaction) => {
     const command: DiscordCommandInterface | undefined = COMMANDS.find(cmd => cmd.data.name === commandName);
 
     if (command) {
+        // API Key permissions validation
+        if (command.needsAPIKey){
+            if (await validatePermissions(interaction, <string[]> command.permissionsNeeded) === -1) {
+                await interaction.reply({content: "Could not validate the command. See PM for more info.", ephemeral: true});
+                return;
+            };
+        }
+        
         await command.controller.handleInteraction(interaction);
     }
     else {

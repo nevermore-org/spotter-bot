@@ -20,6 +20,7 @@ export const COMMANDS: DiscordCommandInterface[] = [
             options: []
         },
         controller: new PingController(),
+        needsAPIKey: false
     },
     {
         data: {
@@ -46,6 +47,7 @@ export const COMMANDS: DiscordCommandInterface[] = [
             ]
         },
         controller: new FractalsController(),
+        needsAPIKey: false,
     },
     {
         data: {
@@ -54,6 +56,7 @@ export const COMMANDS: DiscordCommandInterface[] = [
             options: []
         },
         controller: new DailiesController(),
+        needsAPIKey: false
     },
     {
         data: {
@@ -62,6 +65,7 @@ export const COMMANDS: DiscordCommandInterface[] = [
             options: []
         },
         controller: new PactSupplyController(),
+        needsAPIKey: false
     },
     {
         data: {
@@ -76,6 +80,7 @@ export const COMMANDS: DiscordCommandInterface[] = [
             ]
         },
         controller: new GuildStashController(),
+        needsAPIKey: false
     },
     {
         data: {
@@ -159,6 +164,7 @@ export const COMMANDS: DiscordCommandInterface[] = [
             ]
         },
         controller: new ApiKeyController(),
+        needsAPIKey: false
     }, 
 ] // END_OF_COMMANDS (used to regex-match for scaffolding)
 
