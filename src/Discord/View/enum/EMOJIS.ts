@@ -21,7 +21,9 @@ const EMOJIS: Record<string, string> = {
     'PSNA': "<:psna:896816322581774357>",
     'BadgeOfHonor': "<:badge_of_honor:897531055303704587>",
     'SpotterMail': "<:spotter_mail:910594701718065264>",
-    'Bin': "<:bin:912181085872488456>"
+    'Bin': "<:bin:912181085872488456>",
+    'CommanderTagRed': "<:commander_tag_red:914220562170134599>",
+    'CommanderTagGreen': "<:commander_tag_green:914221440553852998>",
 }
 
 export default EMOJIS;

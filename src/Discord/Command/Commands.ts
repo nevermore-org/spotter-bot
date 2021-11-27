@@ -5,6 +5,7 @@ import DailiesController from "../Controller/Guildwars/DailiesController"
 import PingController from "../Controller/PingController";
 import PactSupplyController from "../Controller/Guildwars/PactSupplyController";
 import GuildStashController from "../Controller/Guildwars/GuildStashController";
+import AccountController from "../Controller/Guildwars/AccountController";
 import ApiKeyController from "../Controller/Guildwars/ApiKeyController";
 
 /*
@@ -165,6 +166,16 @@ export const COMMANDS: DiscordCommandInterface[] = [
         },
         controller: new ApiKeyController(),
         needsAPIKey: false
+    }, 
+    {
+        data: {
+            name: 'account',
+            description: "returns basic account info",
+            options: []
+        },
+        controller: new AccountController(),
+        needsAPIKey: true,
+        permissionsNeeded: ["account"]
     }, 
 ] // END_OF_COMMANDS (used to regex-match for scaffolding)
 
