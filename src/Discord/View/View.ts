@@ -39,12 +39,14 @@ export default class View implements ViewDefault {
      */
     public createEmbed(
         id: string,
-        title: string = this.defaultTitle,
+        title?: string,
         thumbnail: string = this.defaultThumbnail,
         color: ColorResolvable = this.defaultColor
     ): MessageEmbed {
         const embed = new MessageEmbed();
-        embed.setColor(color).setTitle(title).setThumbnail(thumbnail).setTimestamp();
+        embed.setColor(color).setThumbnail(thumbnail).setTimestamp();
+        if (title) {embed.setTitle(title)};
+        
         this.embeds.set(id, embed);
         return embed; //We can return embed object and further update it, because embed map holds references to this object
     }
