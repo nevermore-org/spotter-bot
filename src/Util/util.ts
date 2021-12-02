@@ -43,15 +43,17 @@ export function zipArraysAsMap(keyArray: string[], valueArray: string[]){
 
 /**
  * Returns argument string in title case
+ * separator is only used to recognize words in the input string
  * e.g. random words => Random Words
  */
-export const titleCase = (str: string) => {
+export const titleCase = (str: string, separator: string = ' ') => {
     return str
         .toLowerCase()
-        .split(' ')
+        .split(separator)
         .map(word => word[0].toUpperCase() + word.slice(1))
         .join(' ');
 };
+
 
 /**
  * Sort items based on their rarities

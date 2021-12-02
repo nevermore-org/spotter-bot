@@ -8,7 +8,7 @@ before: \] // END_OF_COMMANDS
             name: '<%=h.changeCase.param(name)%>',
             description: "FILL IN DESCRIPTION",
             options: [],
-            needsAPIKey: false
         },
         controller: new <%=Name%>Controller(),
+        needsAPIKey: false,
     }, -%>
