@@ -9,4 +9,6 @@ export enum GW_API_URL {
     TOKENINFO = "https://api.guildwars2.com/v2/tokeninfo",
     ACCOUNT = "https://api.guildwars2.com/v2/account",
     WORLDS = "https://api.guildwars2.com/v2/worlds",
+    RAIDS = "https://api.guildwars2.com/v2/raids",
+    ACCOUNT_RAIDS = "https://api.guildwars2.com/v2/account/raids"
 }

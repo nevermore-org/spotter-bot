@@ -5,6 +5,7 @@ import DailiesController from "../Controller/Guildwars/DailiesController"
 import PingController from "../Controller/PingController";
 import PactSupplyController from "../Controller/Guildwars/PactSupplyController";
 import GuildStashController from "../Controller/Guildwars/GuildStashController";
+import RaidsWeeklyController from "../Controller/Guildwars/RaidsWeeklyController";
 import AccountController from "../Controller/Guildwars/AccountController";
 import ApiKeyController from "../Controller/Guildwars/ApiKeyController";
 
@@ -176,6 +177,16 @@ export const COMMANDS: DiscordCommandInterface[] = [
         controller: new AccountController(),
         needsAPIKey: true,
         permissionsNeeded: ["account"]
+    },
+    {
+        data: {
+            name: 'weekly-bosses',
+            description: "returns your weekly cleared raid bosses",
+            options: [],
+        },
+        controller: new RaidsWeeklyController(),
+        needsAPIKey: true,
+        permissionsNeeded: ["account", "progression"]
     }, 
 ] // END_OF_COMMANDS (used to regex-match for scaffolding)
 

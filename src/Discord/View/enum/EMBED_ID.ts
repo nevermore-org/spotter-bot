@@ -8,4 +8,5 @@ export enum EMBED_ID {
     GUILD_STASH = "guild-stash",
     API_KEY = "api-key",
     ACCOUNT = "account",
+    RAIDS_WEEKLY = "raids-weekly",
 }
