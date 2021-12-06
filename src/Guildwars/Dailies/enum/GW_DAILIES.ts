@@ -60,7 +60,8 @@ export const NORMALIZE_DAILY: Record<string, string> = {
     "Megadestroyer": "Boss",
     "Behemoth": "Boss",
     "Shatterer": "Boss",
-    "Spender": "Big Spender"
+    "Spender": "Big Spender",
+    "Fractal": "Fractal"
 }
 
 export const GW_DAILY: Record<string, DailyFormat> = {
@@ -159,7 +160,7 @@ export const GW_DAILY: Record<string, DailyFormat> = {
     "Activity": {
         endOfName: -1,
         wantWaypoint: true,
-        location: () => {return {waypoint:"Gate Hub Plaza Waypoint",chatcode: "[&BBEEAAA=]", description: " "}},
+        location: () => {return {waypoint:"Gate Hub Plaza Waypoint", chatcode: "[&BBEEAAA=]", description: " "}},
         prettyFormat: (location) => {
             // weekday is indexed from 1
             const weekday: number = DateTime.utc().weekday - 1;
@@ -203,6 +204,14 @@ export const GW_DAILY: Record<string, DailyFormat> = {
             return `${EMOJIS['BadgeOfHonor']} Spend 25 Badges of Honor in World versus World.`;
         }
     },
+    "Fractal": {
+        endOfName: 0,
+        wantWaypoint: true,
+        location: () => {return {waypoint:"Fort Marriner Waypoint", chatcode: "[&BDAEAAA=]", description: " "}},
+        prettyFormat: (location) => {
+            return `${EMOJIS["Waypoint"]} ${location.waypoint} - ${location.chatcode}\n*${EMOJIS['T4Fractal']} Complete 1 fractal in Fractals of the Mists.*`;
+        }
+    }
 }
 
 
