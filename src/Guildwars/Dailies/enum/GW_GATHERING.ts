@@ -27,12 +27,12 @@ const GW_GATHERING: Gathering = {
         "Lumberer": {
             waypoint: "Wynchona Rally Point Waypoint",
             chatcode: "[&BKgAAAA=]",
-            description: "There is always a lot of trees around this waypoint, especially to East"
+            description: "There is always a lot of trees around this waypoint, especially to East."
         },
         "Miner": {
-            waypoint: "Cereboth Waypoint",
-            chatcode: "[&BBIAAAA=]",
-            description: "Rich node, either Iron or Silver, in the cave at the bottom of the waterfall to the north"
+            waypoint: "Phinney Waypoint",
+            chatcode: "[&BPMAAAA=]",
+            description: "Run north, Rich Copper Vein under the hill with Ettin."
         },
     },
     'Maguuma_Jungle': {
