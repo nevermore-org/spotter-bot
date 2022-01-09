@@ -29,7 +29,8 @@ export default class FractalAPI {
      * @param levels
      */
     public getInstabilities(fractals: FractalInfo[], wantTomorrow: boolean = false) {
-        const today = DateTime.utc().plus({days: wantTomorrow ? 1 : 0}).ordinal;
+        // - 1, cause new year shifted the instabilities for some reason
+        const today = DateTime.utc().plus({days: wantTomorrow ? 1 : 0}).ordinal - 1;
 
         // replaces each level with list of instability indices; then replaces those with their names
         let getInstabilitiesForLevel = (level: number) => (GW_INSTABILITIES[level][today]).map(index => GW_INST_NAMES[index]);
