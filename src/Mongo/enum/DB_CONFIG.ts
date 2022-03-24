@@ -1,11 +1,14 @@
 import { Collection, Document } from "mongodb";
-import { createAchievements } from "../createAchievements";
+import { createAchievements, isAchievAPIAvailable } from "../createAchievements";
 
 
 export type CollectionCreateFunction = (collection: Collection<Document>) => Promise<void>;
+export type PreUpdateCheckFunction = () => Promise<boolean>;
+
 export interface CollectionConfig {
     wantCron: boolean
-    createFunction: CollectionCreateFunction
+    createFunction: CollectionCreateFunction,
+    preUpdateCheck?: PreUpdateCheckFunction
 }
 
 export type Collections  = Record<string, CollectionConfig>;
@@ -14,6 +17,7 @@ export type Collections  = Record<string, CollectionConfig>;
 export const COLLECTIONS: Collections = {
     "achievements": {
         wantCron: true,
-        createFunction: createAchievements
+        createFunction: createAchievements,
+        preUpdateCheck: isAchievAPIAvailable
     }
 }

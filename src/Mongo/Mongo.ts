@@ -97,16 +97,22 @@ export const getIdsFromCollection = async (ids: number[], collectionName: string
         console.error(`Collection ${collectionName} does not exist`);
         return;
     }
-    if (!COLLECTIONS[collectionName]){
+
+    const collectionToUpdate = COLLECTIONS[collectionName];
+
+    if (!collectionToUpdate){
         console.error(`Collection ${collectionName} is not in DB_CONFIG/COLLECTIONS`);
         return;
     }
 
-    console.log(`[DB] Starting the scheduled update of the "${collectionName}" collection.`);
+    // if either no pre-update check is needed or the check passed, continue with the update
+    if (! collectionToUpdate.preUpdateCheck || await collectionToUpdate.preUpdateCheck()) {
+        console.log(`[DB] Starting the scheduled update of the "${collectionName}" collection.`);
 
-    await dropCollectionIfExists(collectionName, db);
-    const collection = db.collection(collectionName);
-    await COLLECTIONS[collectionName].createFunction(collection);
+        await dropCollectionIfExists(collectionName, db);
+        const collection = db.collection(collectionName);
+        await collectionToUpdate.createFunction(collection);
+    }
 }
 
 /**
