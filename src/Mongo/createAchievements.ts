@@ -8,6 +8,21 @@ import { CollectionCreateFunction } from "./enum/DB_CONFIG";
 import { insertMany } from "./Mongo";
 
 /**
+ * Runs before the scheduled update of the collection
+ * Just so we don't end up with nothing when updating
+ */
+export const isAchievAPIAvailable = async (): Promise<boolean> => {
+    try {
+        await axios.get(`${GW_API_URL.ACHIEVEMENTS}?ids=1`);
+        return true;
+    }
+    catch(err) {
+        console.log(`[DB] Canceled the scheduled update of the "achievements" collection.`);
+        return false;
+    }
+}
+
+/**
  * Creates achievements collection from scratch
  * Gets data from GW_API in chunks; then modifies and inserts them into the DB
  * @param collection 
