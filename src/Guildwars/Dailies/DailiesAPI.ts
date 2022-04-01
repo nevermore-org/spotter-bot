@@ -13,15 +13,14 @@ export default class DailiesAPI {
         const fullResponse = await axios.get(GW_API_URL.DAILY);
         const dailyAchievements: AchievementResponse[] = fullResponse.data.pve;
 
-        // want dailies for lvl 80s + access to all expansions        
-        const filteredDailies = dailyAchievements.filter(daily => daily.level.max === 80 
-            && (daily.required_access ? daily.required_access.condition === 'HasAccess' : true));
+        // want dailies for lvl 80s ////+ access to all expansions
+        const filteredDailies = dailyAchievements.filter(daily => daily.level.max === 80);
 
         const dailyIds: number[] = filteredDailies.map((achiev: AchievementResponse) => achiev.id);
         //const dailyIdResponse = await axios.get(`${GW_API_URL.ACHIEVEMENTS}?ids=${dailyIds}`);
         //const dailyNames: string[] = dailyIdResponse.data.map((daily: DailyResponse) => daily.name);
 
-        const dailiesDB = await getIdsFromCollection(dailyIds, 'achievements', {projection: {name: 1, _id: 0}});      
+        const dailiesDB = await getIdsFromCollection(dailyIds, 'achievements', { projection: { name: 1, _id: 0 } });  
         const dailyNames: string[] = dailiesDB ? dailiesDB.map(daily => daily.name) : [];
 
         // id 1852 == Big Spender
