@@ -1,4 +1,4 @@
-name: Deploy
+name: CI
 
 on:
   push:
@@ -6,18 +6,20 @@ on:
       - main
 
 jobs:
-  deploy:
+  build:
+
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{ secrets.HEROKU_API_TOKEN }}
-          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
-          heroku_email: ${{ secrets.HEROKU_EMAIL }}
-          env_file: .env
-          branch: production
-          dontuseforce: true
-          dontautocreate: true
-          usedocker: true
-          docker_heroku_process_type: worker
+    - uses: actions/checkout@v2
+      with:
+          fetch-depth: 0
+
+    - id: deploy
+      name: Deploy to dokku
+      uses: idoberko2/dokku-deploy-github-action@v1
+      with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          dokku-host: ${{ secrets.DOKKU_SERVER }}
+          app-name: 'spotter-bot'
+          git-push-flags: '--force'
